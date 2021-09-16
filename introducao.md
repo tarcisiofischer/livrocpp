@@ -24,9 +24,5 @@ Somos uma comunidade aberta e ativa no Telegram com mais de 700 membros. Novos m
 
 ## Como esse livro é organizado
 
-O capítulo inicial traz um "Olá mundo" sobre duas perspectivas: A primeira é rápida e pragmática, e a segunda é mais densa e detalhada. Ambas são importantes, pois são abordagens complementares sobre o mesmo problema. O objetivo é nivelar o leitor para que tenha o contato com a escrita de um programa em C++, o processo de compilação, e execução do mesmo.
-
-O segundo capítulo traz a sintaxe básica da linguagem: Variáveis e tipos primitivos, estruturas de controle e funções.
-
-...TODO...
+O capítulo inicial traz um "Olá mundo" sobre uma perspectiva rápida e pragmática. O objetivo é que o leitor tenha um contato inicial com a escrita de um programa em C++, o processo de compilação, e execução. O segundo capítulo traz a sintaxe básica da linguagem: Variáveis e tipos primitivos, estruturas de controle e funções.
 
