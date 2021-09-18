@@ -220,7 +220,7 @@ Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 #include <cstdlib>
 
 int main() {
-    std::cout << "Olá mundo!" << std::endl;
+    std::cout << "Olá mundo!\n";
     return EXIT_SUCCESS;
 }
 ```
