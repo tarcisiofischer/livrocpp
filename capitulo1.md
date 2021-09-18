@@ -187,12 +187,8 @@ $ tree
 Perceba que existem 2 arquivos `CMakeLists.txt`. O que está na pasta raiz do projeto irá definir as configurações de base, e irá adicionar a pasta `src` no projeto. O conteúdo do arquivo na pasta raiz deve ser conforme segue:
 
 ```
-project(OlaMundo)
-
 cmake_minimum_required(VERSION 3.19)
-
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(OlaMundo CXX)
 
 add_subdirectory(src)
 ```
@@ -202,9 +198,18 @@ Onde a primeira linha `project(OlaMundo)` define o nome desse projeto para o CMa
 A última linha adiciona a pasta de nome `src` ao projeto. Dentro dela se encontra outro arquivo `CMakeLists.txt`, que descreve o projeto a partir dessa pasta. O comando `add_executable`, no arquivo `src/CMakeLists.txt` determina que o arquivo `main.cpp` deve ser compilado e traduzido para um executável.
 
 ```
-add_executable(
+add_Executable(HelloWorld)
+
+target_sources(
     HelloWorld
-    main.cpp
+    PRIVATE
+        main.cpp
+)
+
+target_compile_features(
+    HelloWorld
+    PRIVATE
+        cxx_std_17
 )
 ```
 
