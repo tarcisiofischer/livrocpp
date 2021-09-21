@@ -9,7 +9,7 @@ O objetivo desse capítulo é introduzir vários conceitos básicos de programa�
  
 int main()
 {
-   std::cout << "Olá Mundo!" << std::endl;
+   std::cout << "Olá Mundo!\n";
    return 0;
 }
 ```
@@ -110,7 +110,7 @@ Utilize algum "editor de texto pra programação" pra escrever algo no arquivo c
 O arquivo deve conter informações básicas do projeto, como seu titulo, uma breve descrição, autor, informações de como compilar o projeto, bibliotecas e ferramentas dependentes, e qualquer outras informações relevantes para outros desenvolvedores. Exemplo:
 
 ```
-# Projeto: Oi Mundo Mais Complicado do Mundo
+# Projeto: Olá mundo
 
 Esse projeto serve como esboço do que é necessário para começar
 a trabalhar com C++ no mundo real.
@@ -193,12 +193,10 @@ project(OlaMundo CXX)
 add_subdirectory(src)
 ```
 
-Onde a primeira linha `project(OlaMundo)` define o nome desse projeto para o CMake. A segunda linha define a versão minima de CMake que seu código irá rodar. As linhas seguintes definem qual a versão minima de C++ aceita para o projeto. Escolher uma versão muito antiga te deixa de fora de muitas coisas novas e interessantes da linguagem, e escolher uma muito nova pode encontrar em um bug de compilador, ou em uma feature não implementada. Sugere-se verificar a tabela de compiladores em https://en.cppreference.com/w/cpp/compiler_support para decidir qual versão do c++ você irá utilizar para seu projeto.
-
-A última linha adiciona a pasta de nome `src` ao projeto. Dentro dela se encontra outro arquivo `CMakeLists.txt`, que descreve o projeto a partir dessa pasta. O comando `add_executable`, no arquivo `src/CMakeLists.txt` determina que o arquivo `main.cpp` deve ser compilado e traduzido para um executável.
+Onde a primeira linha define a versão minima de CMake que seu código irá executar. A segunda linha especifica o nome desse projeto para o CMake. A última linha adiciona a pasta `src` ao projeto. Nessa pasta, encontra-se outro arquivo `CMakeLists.txt`, contendo configurações de compilação.
 
 ```
-add_Executable(HelloWorld)
+add_executable(HelloWorld)
 
 target_sources(
     HelloWorld
@@ -213,7 +211,7 @@ target_compile_features(
 )
 ```
 
-Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
+O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será composto pelo artefato gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, pela compilação do arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Escolher uma versão muito antiga te deixa de fora de muitas coisas novas e interessantes da linguagem, e escolher uma muito nova pode encontrar em um bug de compilador, ou em uma feature não implementada. Sugere-se verificar a tabela https://en.cppreference.com/w/cpp/compiler_support para decidir qual versão do C++ você irá utilizar para seu projeto. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 
 ```
 #include <iostream>
