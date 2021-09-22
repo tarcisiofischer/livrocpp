@@ -31,7 +31,7 @@ Somos uma comunidade aberta e ativa no Telegram com mais de 700 membros. Novos m
     - 2.3: Funções
     - 2.4: Tipos definidos pelo usuário
     - 2.5: Ponteiros, referências, smart pointers
-    - 2.6: const, constexpr
+    - 2.6: const, constexpr, consteval
     - 2.7: namespaces, typedefs e using
 - [Capítulo 3](./capitulo3.md): Introdução à biblioteca padrão do C++
     - 3.1: vector
