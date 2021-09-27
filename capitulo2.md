@@ -225,7 +225,7 @@ Assim como qualquer outro tipo de variável, é possível adicionar `Point` como
 
 ## 2.5 Referências
 
-Referências permitem criar "apelidos" para variáveis, isto é, uma referência para uma variável acessa o valor daquela variável, mas nomeada de outra forma. Considere o exemplo abaixo, onde é criada uma referência de nome "b" para uma variável de nome "a". Utiliza-se o simbolo "&" junto ao tipo da variável para declarar uma referência. Diferente de uma variável "comum", alterar o valor da referência altera o valor da variável referenciada. Portanto, no exemplo abaixo, o resultado vai ser a mensagem `a = 7, b = 7`.
+Referências permitem criar "apelidos" para variáveis, isto é, uma referência para uma variável acessa o valor daquela variável, nomeada de outra forma. Considere o código abaixo, onde é criada uma referência de nome "b" para uma variável de nome "a". Utiliza-se o simbolo "&" junto ao tipo da variável para declarar uma referência. Diferente de uma variável "comum", alterar o valor da referência altera o valor da variável referenciada. Portanto, no exemplo abaixo, o resultado vai ser a mensagem `a = 7, b = 7`.
 
 ```
 #include <iostream>
@@ -242,9 +242,9 @@ int main()
 }
 ```
 
-Como uma referência é um "apelido" para outra variável, não é possível criar uma referência para um valor (Por exemplo, `int& b = 9;` não faz sentido, e ocasiona em um erro de compilação). O uso de referências não é restrito ao caso de variáveis locais. Por exemplo, é possível invocar funções passando referências como parâmetros. É importante lembrar que, normalmente, os parâmetros da mesma são copiados para o escopo da função. Para tipos primitivos, isso não é um problema, porém, para estruturas mais complexas é possível que se tenha uma degradação de performance devido à cópias desnecessárias.
+Como uma referência é um "apelido" para outra variável, é impossível criar uma referência para um valor (Por exemplo, `int& b = 9;` não faz sentido, e ocasiona em um erro de compilação). É possível usar referências também na passagem de parâmetros de funções. Quando não são utilizadas referências nos parâmetros de uma função, as variáveis são copiadas para o escopo da função. Referências passadas por parâmetro e modificadas dentro do escopo de uma função alteram o valor da variável original de onde foi chamada.
 
-Considere o exemplo abaixo. Imagine que `Matrix` é uma estrutura de dados que representa uma matriz 100x100. A função `sum_elements` soma todos os elementos dessa matriz. O loop na função `main` foi criado sintéticamente para representar muitas chamadas da função `sum_elements`. Para cada invocação da função `sum_elements`, a estrutura de dados da matriz é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.
+Para exemplificar o uso de referências na passagem de parâmetros para funções, considere o código abaixo. Imagine que `Matrix` é uma estrutura de dados que representa uma matriz 100x100. A função `sum_elements` soma todos os elementos dessa matriz. O loop na função `main` foi criado sintéticamente para representar muitas chamadas da função `sum_elements`. Para cada invocação da função `sum_elements`, uma instância da estrutura de dados `Matrix` é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.
 
 ```
 /**
@@ -301,12 +301,12 @@ int main()
 {
    double a = 8;
    double const& b = a;
-   a = 9; // OK. a is non-const
+   a = 9; // OK. a is non-const (b is also 9 now)
    b = 7; // Compile error. b is a const reference.
 }
 ```
 
-O código acima não irá compilar. O motivo é que não se pode alterar o valor de "a" por meio da referencia "b", pois ela é uma referência `const`. Um detalhe importante a se comentar, é que o modificador const se aplica sempre ao tipo à sua esquerda. Se não houver nada à esquerda, ele se aplica ao tipo à direita. Dessa forma temos:
+O código acima não irá compilar. O motivo é que não se pode alterar o valor de "a" por meio da referencia "b", pois ela é uma referência `const`. Um detalhe importante a se comentar, é que o modificador `const` se aplica sempre ao tipo à sua esquerda. Se não houver nada à esquerda, ele se aplica ao tipo à direita. Dessa forma temos:
 
 - `double const& my_data`: Cria uma referência para um `const double`
 - `const double& my_data`: Cria uma referência para um `const double` (Igual à anterior)
