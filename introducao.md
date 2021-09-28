@@ -30,9 +30,10 @@ Somos uma comunidade aberta e ativa no Telegram com mais de 700 membros. Novos m
     - 2.2: Estruturas de controle
     - 2.3: Funções
     - 2.4: Tipos definidos pelo usuário
-    - 2.5: Ponteiros, referências, smart pointers
-    - 2.6: const, constexpr, consteval
-    - 2.7: namespaces, typedefs e using
+    - 2.5: Referências
+    - 2.6: Ponteiros e smart pointers
+    - 2.7: const, constexpr, consteval
+    - 2.8: namespaces, typedefs e using
 - [Capítulo 3](./capitulo3.md): Introdução à biblioteca padrão do C++
     - 3.1: vector
     - 3.2: map
