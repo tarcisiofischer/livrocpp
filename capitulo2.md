@@ -2,7 +2,7 @@
 
 ## 2.1. Variáveis
 
-C++ é uma linguagem de programação estaticamente tipada. Isso significa que todas as variáveis possuem um tipo, e o tipo da variável não muda, até o fim de sua vida. Em C++, a definição de uma variável se dá da seguinte forma:
+C++ é uma linguagem de programação estaticamente tipada. Isso significa que todas as variáveis possuem um tipo, e o tipo da variável não muda, até que ela deixe de existir (nos referimos a isso como "tempo de vida", ou "_lifetime_", de uma variável). Em C++, a definição de uma variável se dá da seguinte forma:
 
 ```
 int main()
@@ -16,9 +16,9 @@ int main()
 }
 ```
 
-O tempo de vida de uma variável é delimitado por seu escopo. O escopo de uma variável é determinado pela última abertura de chaves mais próxima. O exemplo anterior possui quatro variáveis, cada uma de um tipo diferente, e todas elas estão no escopo da função "main". Toda variável é destruída quando sai do escopo que a contém. Se uma variável está fora de qualquer escopo, ela é chamada de variável global.
+O tempo de vida de uma variável é delimitado por seu escopo. O escopo de uma variável é determinado pelo bloco que a contém, delimitado por chaves (`{}`). O exemplo anterior possui quatro variáveis, cada uma de um tipo diferente, e todas elas estão no escopo da função "main". Uma variável chega ao fim do seu tempo de vida ao final do escopo que a contém. Se uma variável está fora de qualquer escopo, ela é chamada de _variável global_.
 
-Alternativamente, C++ moderno traz uma sintaxe alternativa para definir o tipo das variáveis, por meio da palavra chave `auto`. Dessa forma, não é necessário explicitar o tipo das variáveis. Note que a variável ainda possui um tipo bem definido. A única diferença é que o tipo é determinado automaticamente em tempo de compilação:
+Alternativamente, C++ moderno (do padrão C++11 em diante) traz uma sintaxe alternativa para definir o tipo das variáveis, por meio da palavra chave `auto`. Dessa forma, não é necessário explicitar o tipo das variáveis. Note que a variável ainda possui um tipo bem definido. A única diferença é que o tipo é determinado automaticamente em tempo de compilação, através de um processo chamado _inferência_:
 
 ```
 int main()
@@ -32,30 +32,39 @@ int main()
 }
 ```
 
-O tipo `string` não é um tipo primitivo no C++. Dessa forma, para utilizar uma `string`, é necessário incluir o header `<string>` da biblioteca padrão do C++ (STL - Standart Template Library).
+Em C++, o tipo `string`, para representar textos, não é um tipo primitivo. Por isso, existe o tipo `std::string` na biblioteca padrão do C++ (_stdlib_). Para utilizá-lo, é necessário incluir o header `<string>`, da mesma forma que incluímos `<iostream>` anteriormente para podermos escrever na tela.
 
 ```
+#include <string>
+
 int main()
 {
     std::string some_string = "my string";
-    auto some_other_string = "other string";
+
+    // ou, alternativamente
+
+    using namespace std::string_literals;
+    auto some_other_string = "other string"s;
 
     return 0;
 }
 ```
 
+Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`. Isto causa um pouco de confusão, e será melhor explicado adiante. Por ora, mantenha em mente as formas de declarar vistas acima.
+
+
 ## 2.2 Estruturas de controle
 
-Estruturas de controle auxiliam a desenvolver algoritmos (sequencias de passos para resolver determinado problema). A estrutura if..else if..else permite mudar o fluxo de execução de um programa, dependendo de uma condição pré-estabelecida. O exemplo abaixo introduz também uma forma de ler dados de input do usuário. Na linha 5, a variável age é inicializada com o valor 0. Porém, na linha 6, a função std::cin permite o usuário que estiver executando o programa a modificar o valor de age. Dessa forma, o real valor de age será conhecido apenas ao executar o programa.
+Estruturas de controle auxiliam a desenvolver algoritmos (sequências de passos para resolver determinado problema). A estrutura if..else if..else permite mudar o fluxo de execução de um programa, dependendo de uma condição pré-estabelecida. O exemplo abaixo introduz também uma forma de ler dados de input do usuário. Na linha 5, a variável age é inicializada com o valor 0. Porém, na linha 6, a função std::cin permite o usuário que estiver executando o programa a modificar o valor de age. Dessa forma, o real valor de age será conhecido apenas ao executar o programa.
 
 ```
 #include <iostream>
- 
+
 int main()
 {
    int age = 0;
    std::cin >> age;
- 
+
    std::cout << "Sua idade é " << age << std::endl;
    if (age <= 12) {
        std::cout << "Você é uma criança!" << std::endl;
@@ -64,7 +73,7 @@ int main()
    } else {
        std::cout << "Tenha um bom dia." << std::endl;
    }
- 
+
    return 0;
 }
 ```
@@ -75,7 +84,7 @@ As estruturas de controle `while` e `for` servem para repetir um bloco de códig
 
 ```
 #include <iostream>
- 
+
 int main()
 {
    char answer = 0;
@@ -83,13 +92,13 @@ int main()
        std::cout << "Você deseja aprender C++? [s/n]: ";
        std::cin >> answer;
    }
- 
+
    if (answer == 's') {
        std::cout << "Esse é o espírito!" << std::endl;
    } else {
        std::cout << "Que triste..." << std::endl;
    }
- 
+
    return 0;
 }
 ```
@@ -97,9 +106,9 @@ int main()
 O laço “for” é apenas uma facilidade de execução, que acaba adicionando mais legibilidade ao código, colocando tanto a inicialização quanto o teste de continuidade e uma atualização de uma variável-alvo na mesma linha. Ou seja, tudo que é feito com um laço "for" pode também ser feito com um laço "while" e vice versa. A diferença é que, em alguns casos, a leitura do código fica mais natural com um ou com outro. No código abaixo, o laço for itera com valores de `i = a` até valor de `i = b`, somando 1 ao valor de `i` a cada iteração. Uma forma alternativa e mais compacta de escrever `i = i + 1` seria escrever `i++`.
 
 ```
-// Calculate the sum of the natural numbers that are present in a given interval [A, B] 
+// Calculate the sum of the natural numbers that are present in a given interval [A, B]
 #include <iostream>
- 
+
 int main()
 {
    int a = 0;
@@ -108,13 +117,13 @@ int main()
    std::cin >> a;
    std::cout << "Digite o valor de B: ";
    std::cin >> b;
- 
+
    int sum = 0;
    for (int i = a; i <= b; i = i + 1) {
        sum += i;
    }
    std::cout << "Sum [" << a << ", " << b << "] = " << sum << std::endl;
- 
+
    return 0;
 }
 ```
@@ -125,7 +134,7 @@ Para deixar partes do programa reutilizável, ou para adicionar legibilidade ao 
 
 ```
 #include <iostream>
- 
+
 int calculate_sum(int a, int b)
 {
    int sum = 0;
@@ -134,7 +143,7 @@ int calculate_sum(int a, int b)
    }
    return sum;
 }
- 
+
 int main()
 {
    int a = 0;
@@ -143,9 +152,9 @@ int main()
    std::cin >> a;
    std::cout << "Digite o valor de B: ";
    std::cin >> b;
- 
+
    std::cout << "Sum [" << a << ", " << b << "] = " << calculate_sum(a, b) << std::endl;
- 
+
    return 0;
 }
 ```
@@ -154,9 +163,9 @@ No código acima, foi definida uma função `calculate_sum`, que efetua a soma d
 
 ```
 #include <iostream>
- 
+
 int calculate_sum(int a, int b);
- 
+
 int main()
 {
    int a = 0;
@@ -165,12 +174,12 @@ int main()
    std::cin >> a;
    std::cout << "Digite o valor de B: ";
    std::cin >> b;
- 
+
    std::cout << "Sum [" << a << ", " << b << "] = " << calculate_sum(a, b) << std::endl;
- 
+
    return 0;
 }
- 
+
 int calculate_sum(int a, int b)
 {
    int sum = 0;
@@ -193,29 +202,29 @@ void say_hello()
 ## 2.4 Tipos definidos pelo usuário
 
 Structs (estruturas) são uma forma de adicionar tipos novos ao programa (user defined types). São uma forma de adicionar mais semântica à grupos de variáveis que se relacionam de alguma forma.
-No exemplo abaixo, uma estrutura de nome `Point` é definida entre as linhas 4 e 7. Ela possui dois membros: `x` e `y`, ambos do tipo primitivo `double`. Essas linhas definem um novo tipo de dado de nome `Point`, que pode ser utilizado em qualquer lugar do programa. As linhas 16 e 17 instanciam 2 variáveis com o novo tipo `Point`. 
+No exemplo abaixo, uma estrutura de nome `Point` é definida entre as linhas 4 e 7. Ela possui dois membros: `x` e `y`, ambos do tipo primitivo `double`. Essas linhas definem um novo tipo de dado de nome `Point`, que pode ser utilizado em qualquer lugar do programa. As linhas 16 e 17 instanciam 2 variáveis com o novo tipo `Point`.
 
 ```
 #include <iostream>
 #include <cmath>
- 
+
 struct Point {
    double x;
    double y;
 };
- 
+
 double calculate_distance(Point p1, Point p2)
 {
    return sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
 }
- 
+
 int main()
 {
    Point p1{1.1, 2.7};
    Point p2{3.7, 4.4};
- 
+
    std::cout << "A distancia entre os pontos p1 e p2 é " << calculate_distance(p1, p2) << std::endl;
- 
+
    return 0;
 }
 ```
@@ -229,12 +238,12 @@ Referências permitem criar "apelidos" para variáveis, isto é, uma referência
 
 ```
 #include <iostream>
- 
+
 int main()
 {
     int a = 1;
     int& b = a;
- 
+
     b = 7;
     std::cout << "a = " << a << ", b = " << b << std::endl;
 
@@ -288,7 +297,7 @@ double sum_elements(Matrix matrix)
     }
     return sum;
 }
- 
+
 int main()
 {
     // ...
@@ -297,7 +306,7 @@ int main()
         total_sum += sum_elements(matrix);
     }
     std::cout << "Total Sum = " << total_sum << std::endl;
- 
+
     return 0;
 }
 ```
@@ -312,7 +321,7 @@ Uma alternativa para evitar o problema comentado é o uso do modificador `const`
 
 ```
 #include <iostream>
- 
+
 int main()
 {
    double const a = 8;
@@ -324,7 +333,7 @@ O código acima não irá compilar. Isso por que a variável "a" é uma constant
 
 ```
 #include <iostream>
- 
+
 int main()
 {
    double a = 8;
