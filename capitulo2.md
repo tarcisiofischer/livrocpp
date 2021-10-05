@@ -4,7 +4,7 @@
 
 C++ é uma linguagem de programação estaticamente tipada. Isso significa que todas as variáveis possuem um tipo, e o tipo da variável não muda, até que ela deixe de existir (nos referimos a isso como "tempo de vida", ou "_lifetime_", de uma variável). Em C++, a definição de uma variável se dá da seguinte forma:
 
-```
+```cpp
 int main()
 {
     int some_int = 8;
@@ -20,21 +20,19 @@ O tempo de vida de uma variável é delimitado por seu escopo. O escopo de uma v
 
 Alternativamente, C++ moderno (do padrão C++11 em diante) traz uma sintaxe alternativa para definir o tipo das variáveis, por meio da palavra chave `auto`. Dessa forma, não é necessário explicitar o tipo das variáveis. Note que a variável ainda possui um tipo bem definido. A única diferença é que o tipo é determinado automaticamente em tempo de compilação, através de um processo chamado _inferência_:
 
-```
+```cpp
 int main()
 {
     auto some_int = 8;
     auto some_float = 9.2;
     auto some_char = 'a';
     auto some_bool = true;
-
-    return 0;
 }
 ```
 
 Em C++, o tipo `string`, para representar textos, não é um tipo primitivo. Por isso, existe o tipo `std::string` na biblioteca padrão do C++ (_stdlib_). Para utilizá-lo, é necessário incluir o header `<string>`, da mesma forma que incluímos `<iostream>` anteriormente para podermos escrever na tela.
 
-```
+```cpp
 #include <string>
 
 int main()
@@ -45,8 +43,6 @@ int main()
 
     using namespace std::string_literals;
     auto some_other_string = "other string"s;
-
-    return 0;
 }
 ```
 
@@ -55,55 +51,67 @@ Note que um literal de texto entre aspas duplas como `"my string"` não é do ti
 
 ## 2.2 Estruturas de controle
 
-Estruturas de controle auxiliam a desenvolver algoritmos (sequências de passos para resolver determinado problema). A estrutura if..else if..else permite mudar o fluxo de execução de um programa, dependendo de uma condição pré-estabelecida. O exemplo abaixo introduz também uma forma de ler dados de input do usuário. Na linha 5, a variável age é inicializada com o valor 0. Porém, na linha 6, a função std::cin permite o usuário que estiver executando o programa a modificar o valor de age. Dessa forma, o real valor de age será conhecido apenas ao executar o programa.
+### A estrutura `if`/`else if`/`else`
 
-```
+Estruturas de controle são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura `if`/`else if`/`else`. Ela nos permite tomar decisões e executar instruções diferentes dada uma condição. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:
+
+- Clientes abaixo de 10 anos de idade não pagam.
+- Clientes acima de 50 anos pagam meia-entrada.
+- Demais clientes pagam o valor normal da entrada.
+
+```cpp
 #include <iostream>
 
 int main()
 {
    int age = 0;
+   const int price = 20.0;
+   std::cout << "Insira sua idade: ";
    std::cin >> age;
 
-   std::cout << "Sua idade é " << age << std::endl;
-   if (age <= 12) {
-       std::cout << "Você é uma criança!" << std::endl;
-   } else if (age > 50) {
-       std::cout << "Você é velho!" << std::endl;
-   } else {
-       std::cout << "Tenha um bom dia." << std::endl;
-   }
+   std::cout << "Sua idade é " << age << '\n';
 
-   return 0;
+   if (age <= 10) {
+       std::cout << "Você não precisa pagar!\n";
+   } else if (age > 50) {
+       std::cout << "Você paga apenas " << price/2 << "!\n";
+   } else {
+       std::cout << "Você paga " << price << ".\n";
+   }
 }
 ```
 
-No exemplo, a linha 8 sempre será executada, depois de o usuário colocar o valor de age. Porém, a linha 11 será executada apenas se (if) a variável age tiver um valor superior à 50. Teste o programa com vários valores de idade. Em específico, observe os casos onde age = 12 e age = 50.
+O exemplo acima introduz também uma forma de ler dados de entrada providenciados pelo usuário. Note que a variável `age` é inicializada com o valor 0. Porém, a linha `std::cin >> age;` permite ao usuário que estiver executando o programa informar um novo valor para `age`. Desta forma, o valor de `age` que será utilizado pelo programa será conhecido apenas durante a execução.
 
-As estruturas de controle `while` e `for` servem para repetir um bloco de código até que uma condição seja satisfeita. No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (`while`) a resposta não for `s` (sim) nem `n` (não), a mesma pergunta aparecerá para o usuário.
+No exemplo, a linha 10 sempre será executada, depois que o usuário informar o valor de age. Porém, a linha 13 será executada apenas se (`if`) a variável age tiver um valor abaixo de 10. A construção `else if` permite fazer um novo teste caso o teste anterior falhe, ou seja, a condição não seja verdadeira. Já utilizar apenas `else` faz com que, caso nenhuma das condições anteriores tenha sido satisfeita, o código dentro do bloco seguinte execute garantidamente. Experimente alterar o valor de `age` para fazer com que o programa siga cada uma das possibilidades.
+
+### As estruturas `while` e `for`
+
+As estruturas de controle `while` e `for` servem para repetir um bloco de código até que uma condição seja satisfeita. No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (`while`) a resposta não for `s` (sim) nem `n` (não), a mesma pergunta aparecerá para o usuário. Uma vez que o usuário der uma resposta válida, um `if` imprime a reação correspondente à resposta do usuário.
 
 ```
 #include <iostream>
 
 int main()
 {
-   char answer = 0;
+   char answer = '\0';
+
    while (answer != 's' && answer != 'n') {
        std::cout << "Você deseja aprender C++? [s/n]: ";
        std::cin >> answer;
    }
 
    if (answer == 's') {
-       std::cout << "Esse é o espírito!" << std::endl;
+       std::cout << "Esse é o espírito!\n";
    } else {
-       std::cout << "Que triste..." << std::endl;
+       std::cout << "Que triste...\n";
    }
-
-   return 0;
 }
 ```
 
-O laço “for” é apenas uma facilidade de execução, que acaba adicionando mais legibilidade ao código, colocando tanto a inicialização quanto o teste de continuidade e uma atualização de uma variável-alvo na mesma linha. Ou seja, tudo que é feito com um laço "for" pode também ser feito com um laço "while" e vice versa. A diferença é que, em alguns casos, a leitura do código fica mais natural com um ou com outro. No código abaixo, o laço for itera com valores de `i = a` até valor de `i = b`, somando 1 ao valor de `i` a cada iteração. Uma forma alternativa e mais compacta de escrever `i = i + 1` seria escrever `i++`.
+Em geral, usamos o laço `while` quando não existe uma definição clara de quantas vezes precisamos rodar o laço, apenas uma condição de continuidade que deve eventualmente tornar-se falsa.
+
+O laço `for` adiciona legibilidade ao código quando temos uma inicialização e um passo que deve ser executado em toda iteração do laço. Tudo que é feito com um laço `for` pode também ser feito com um laço `while`, e vice versa. A diferença entre eles é que, em alguns casos, a leitura do código fica mais natural com um ou com outro. Ao contrário do `while`, o `for` se presta mais quando sabemos exatamente quantas vezes precisamos repetir as operações. No código abaixo, o laço for itera com valores de `i = a` até valor de `i = b`, somando 1 ao valor de `i` a cada iteração. Uma forma alternativa e mais compacta de escrever `i = i + 1` seria escrever `++i`.
 
 ```
 // Calculate the sum of the natural numbers that are present in a given interval [A, B]
@@ -113,15 +121,19 @@ int main()
 {
    int a = 0;
    int b = 0;
+
    std::cout << "Digite o valor de A: ";
    std::cin >> a;
+
    std::cout << "Digite o valor de B: ";
    std::cin >> b;
 
    int sum = 0;
+
    for (int i = a; i <= b; i = i + 1) {
        sum += i;
    }
+
    std::cout << "Sum [" << a << ", " << b << "] = " << sum << std::endl;
 
    return 0;
@@ -130,7 +142,7 @@ int main()
 
 ## 2.3 Funções
 
-Para deixar partes do programa reutilizável, ou para adicionar legibilidade ao código, utilizamos funções. Funções extraem parcelas do código para fora do local onde ela é utilizada. Funções podem ou não receper parâmetros, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada. Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi invocada. Abaixo um exemplo de função:
+Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao código, utilizamos funções. Funções extraem parcelas do código para fora do local onde ela é utilizada. Funções podem ou não receper parâmetros, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada. Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi invocada. Abaixo um exemplo de função:
 
 ```
 #include <iostream>
