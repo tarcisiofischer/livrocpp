@@ -26,43 +26,56 @@ Somos uma comunidade aberta e ativa no Telegram com mais de 700 membros. Novos m
 
 - [Capítulo 1](./capitulo1.md): Olá mundo!
 - [Capítulo 2](./capitulo2.md): Conceitos básicos
-    - 2.1: Variáveis
-    - 2.2: Estruturas de controle
-    - 2.3: Funções
-    - 2.4: Tipos definidos pelo usuário
-    - 2.5: Referências
-    - 2.6: Ponteiros e smart pointers
-    - 2.7: const, constexpr e consteval
-    - 2.8: namespaces, typedefs e using
-- [Capítulo 3](./capitulo3.md): Introdução à biblioteca padrão do C++
-    - 3.1: vector
-    - 3.2: map
-    - 3.3: array
-- [Capítulo 4](./capitulo4.md): Trabalhando com projetos
-    - 4.1: Processo de compilação
-    - 4.2: Trabalhando com vários arquivos
-    - 4.3: Gerenciamento de pacotes
+  1. Variáveis
+  1. Estruturas de controle
+  1. Funções
+  1. Tipos definidos pelo usuário
+  1. Referências
+  1. Ponteiros e smart pointers
+  1. Const, constexpr e consteval
+  1. Namespaces
+- [Capítulo 3](./capitulo3.md): Visão geral sobre o processo de compilação
+  1. Preprocessamento
+  1. Compilação
+  1. Linkagem
+  1. Carregamento e execução
+  1. Gerenciamento de pacotes
+- [Capítulo 4](./capitulo4.md): Introdução à biblioteca padrão do C++
+  1. String
+  1. I/O (Entrada e saída)
+  1. Array
+  1. Vector
+  1. Map
+  1. Set
+  1. Function e lambdas
+  1. Algoritmos
 - [Capítulo 5](./capitulo5.md): Programação orientada a objetos
-    - 5.1: Classes e objetos
-    - 5.2: Herança e polimorfismo
-    - 5.3: Composição vs herança
-    - 5.4: Tratamento de erros e exceções
-    - 5.5: Sobrecarga de operadores
-    - 5.6: Gerenciamento de recursos e RAII
-- [Capítulo 6](./capitulo6.md): Metaprogramação e templates
-    - 6.1: Templates
-    - 6.2: Metaprogramação estática
-    - 6.3: CRTP
-    - 6.4: SFINAE
-    - 6.5: PIMPL
-- [Capítulo 7](./capitulo7.md): C++ moderno
-    - 7.1: Move semantics
-    - 7.2: concepts
-    - 7.3: Funções lambda
+  1. Classes e objetos
+  1. Herança e polimorfismo
+  1. Composição vs herança
+  1. Tratamento de erros e exceções
+  1. Sobrecarga de operadores
+  1. Gerenciamento de recursos e RAII
+- [Capítulo 6](./capitulo6.md): Bibliotecas de terceiros
+  1. Interface gráfica desktop com Qt
+  1. Teste automatizado de software com Catch2
+  1. Visualização 2D com SDL
+  1. Visualização 3D com OpenGL
+- [Capítulo 7](./capitulo7.md): Metaprogramação e templates
+  1. Templates
+  1. Metaprogramação estática
+  1. CRTP
+  1. SFINAE
+  1. PIMPL
+- [Capítulo 8](./capitulo8.md): C++ moderno
+  1. Move semantics
+  1. Modules
+  1. Concepts
+  1. Funções lambda
 - [Capítulo 8](./capitulo8.md): Algoritmos e estruturas de dados
-    - 8.1: Busca
-    - 8.2: Recursão
-    - 8.3: Grafos
+  1. Busca
+  1. Recursão
+  1. Grafos
 - [Capítulo 9](./capitulo9.md): Programação paralela e concorrente
-    - 9.1: Threads
-    - 9.2: async
+  1. Threads
+  1. Async
