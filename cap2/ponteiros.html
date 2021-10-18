@@ -144,7 +144,8 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="ponteiros-e-smart-pointers"><a class="header" href="#ponteiros-e-smart-pointers">Ponteiros e smart pointers</a></h2>
-<p>Quando definimos uma variável em um programa C++, ela é alocada em uma posição de memória do computador. Um &quot;endereço&quot; é a localização em memória virtual de uma variável. Apenas para fins ilustrativos, imagine que toda a memória do seu computador é uma grande tabela. Cada item da tabela possui um endereço e um valor, como no exemplo abaixo. O código de exemplo captura o endereço da variável &quot;a&quot; e o coloca como valor da variável &quot;b&quot;: A linha 6 cria a variável &quot;b&quot;, do tipo <code>int*</code>, e inicializa essa variável com o endereço de memória da variável &quot;a&quot;.</p>
+<p>Quando definimos uma variável em um programa C++, ela é alocada em uma posição de memória do computador. Um &quot;endereço&quot; é a localização em memória virtual de uma variável.</p>
+<p>Apenas para fins ilustrativos, imagine que toda a memória do seu computador é uma grande tabela. Cada item da tabela possui um endereço e um valor, como no exemplo abaixo. O código de exemplo captura o endereço da variável <code>a</code> e o coloca como valor da variável <code>b</code>: A linha 6 cria a variável <code>b</code>, do tipo <code>int*</code>, e inicializa essa variável com o endereço de memória da variável <code>a</code>.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
@@ -157,12 +158,13 @@ int main()
    return 0;
 }
 </code></pre>
-<p>| Endereço 	| Valor 	| Variável associada 	|
-|---	    |---	    |---	                |
-| 0x7ff0 	| 1 	    | a                 	|
-| 0x7ff4  	| 0x7ff0 	| b                 	|</p>
+<pre><code>| Endereço  | Valor     | Variável associada |
+|---        |---        |---                 |
+| 0x7ff0    | 1         | a                  |
+| 0x7ff4    | 0x7ff0 	| b                  |
+</code></pre>
 <p>Os endereços na tabela estão em hexadecimal, pois é a forma comum de representar endereços de memória. São valores meramente ilustrativos, de forma que, caso você execute o programa no seu computador, irá ter resultados diferentes.</p>
-<p>Apesar do uso do mesmo simbolo (<code>&amp;</code>), nesse caso <code>&amp;a</code> não é uma referência. Essa distinção é importante: Caso <code>&amp;</code> esteja ao lado de um tipo (<code>int</code>, <code>double</code>, <code>Point</code>, etc...) tem-se uma referência. Por outro lado, caso <code>&amp;</code> esteja ao lado do nome de uma variável (como no caso acima), lê-se &quot;endereço de...&quot; (no exemplo, &quot;endereço de a&quot;).</p>
+<p>Apesar do uso do mesmo simbolo (<code>&amp;</code>), nesse caso <code>&amp;a</code> não é uma referência. Essa distinção é importante: Caso <code>&amp;</code> esteja ao lado de um tipo (<code>int</code>, <code>double</code>, <code>Point</code>, etc...) tem-se uma referência. Por outro lado, caso <code>&amp;</code> esteja ao lado do nome de uma variável (como no caso acima), lê-se &quot;endereço de...&quot; (no exemplo, &quot;endereço de <code>a</code>&quot;).</p>
 <p>O operador <code>*</code> aplicado à uma variável cujo tipo é um ponteiro, retorna o valor apontado por aquela variável, da seguinte forma:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
  
@@ -191,7 +193,7 @@ int main()
    return 0;
 }
 </code></pre>
-<p>A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo int*. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.</p>
+<p>A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo <code>int*</code>. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.</p>
 <p>Gerenciar memória da heap não é um problema trivial. O mal gerenciamento da memória pode ocasionar em uma excessiva utilização da memória RAM, como é o caso dos vazamentos de memória (<strong>memory leaks</strong>), que é quando o programador &quot;esquece&quot; de devolver a memória.</p>
 <p>Smart pointers são estruturas de dados que auxiliam no gerenciamento de dados alocados na heap. Basicamente, a estrutura aloca a variável na heap e, ao não ser mais utilizada, remove automaticamente a mesma. O exemplo abaixo é trivial, e apenas mostra o funcionamento da infraestrutura, mas não consegue captar o valor de seu uso. O uso de ponteiros e alocação dinâmica é especialmente relevante nos casos de interfaceamento com bibliotecas de baixo nível (por exemplo, funções C), ou no caso de uso de polimorfismo em programação orientada a objetos em C++, tema que será discutido posteriormente nesse livro.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;

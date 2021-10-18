@@ -144,7 +144,7 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="referências"><a class="header" href="#referências">Referências</a></h2>
-<p>Referências permitem criar &quot;apelidos&quot; para variáveis, isto é, uma referência para uma variável acessa o valor daquela variável, nomeada de outra forma. Considere o código abaixo, onde é criada uma referência de nome &quot;b&quot; para uma variável de nome &quot;a&quot;. Utiliza-se o simbolo &quot;&amp;&quot; junto ao tipo da variável para declarar uma referência. Diferente de uma variável &quot;comum&quot;, alterar o valor da referência altera o valor da variável referenciada. Portanto, no exemplo abaixo, o resultado vai ser a mensagem <code>a = 7, b = 7</code>.</p>
+<p>Referências permitem criar &quot;apelidos&quot; para variáveis, isto é, uma referência para uma variável acessa o valor daquela variável, nomeada de outra forma. Considere o código abaixo, onde é criada uma referência de nome <code>b</code> para uma variável de nome <code>a</code>. Utiliza-se o simbolo <code>&amp;</code> junto ao tipo da variável para declarar uma referência. Diferente de uma variável &quot;comum&quot;, alterar o valor da referência altera o valor da variável referenciada. Portanto, no exemplo abaixo, o resultado vai ser a mensagem <code>a = 7, b = 7</code>.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
@@ -158,7 +158,8 @@ int main()
     return 0;
 }
 </code></pre>
-<p>Como uma referência é um &quot;apelido&quot; para outra variável, é impossível criar uma referência para um valor (Por exemplo, <code>int&amp; b = 9;</code> não faz sentido, e ocasiona em um erro de compilação). É possível usar referências também na passagem de parâmetros de funções. Quando não são utilizadas referências nos parâmetros de uma função, as variáveis são copiadas para o escopo da função. Referências passadas por parâmetro e modificadas dentro do escopo de uma função alteram o valor da variável original de onde foi chamada, como mostra o exemplo abaixo.</p>
+<p>Como uma referência é um &quot;apelido&quot; para outra variável, é impossível criar uma referência para um valor. Por exemplo, <code>int&amp; b = 9;</code> não faz sentido, e ocasiona em um erro de compilação.</p>
+<p>É possível usar referências também na passagem de parâmetros de funções. Quando não são utilizadas referências nos parâmetros de uma função, as variáveis são copiadas para o escopo da função. Referências passadas por parâmetro e modificadas dentro do escopo de uma função alteram o valor da variável original de onde foi chamada, como mostra o exemplo abaixo.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 void wont_change_data(int a)
@@ -183,7 +184,8 @@ int main()
     std::cout &lt;&lt; my_a &lt;&lt; std::endl;
 }
 </code></pre>
-<p>Outro exemplo pode observado no código abaixo. Imagine que <code>Matrix</code> é uma estrutura de dados que representa uma matriz 100x100. A função <code>sum_elements</code> soma todos os elementos dessa matriz. O loop na função <code>main</code> foi criado sintéticamente para representar muitas chamadas da função <code>sum_elements</code>. Para cada invocação da função <code>sum_elements</code>, uma instância da estrutura de dados <code>Matrix</code> é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.</p>
+<p>Outro exemplo pode observado no código abaixo. Imagine que <code>Matrix</code> é uma estrutura de dados que representa uma matriz 100x100. A função <code>sum_elements</code> soma todos os elementos dessa matriz.</p>
+<p>O loop na função <code>main</code> foi criado sintéticamente para representar muitas chamadas da função <code>sum_elements</code>. Para cada invocação da função <code>sum_elements</code>, uma instância da estrutura de dados <code>Matrix</code> é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.</p>
 <pre><code class="language-cpp">/**
  * Sum of elements in a given 100x100 Matrix.
  * :param Matrix matrix:
@@ -212,7 +214,8 @@ int main()
     return 0;
 }
 </code></pre>
-<p>Uma forma de evitar a cópia dessa estrutura de dados é utilizando uma referência para uma <code>Matrix</code>, ou seja, trocando a assinatura da função para <code>double sum_elements(Matrix&amp; matrix)</code>. Apesar de resolver o problema das cópias desnecessárias, a solução mencionada não é ideal, pois passando uma referência à estrutura <code>Matrix</code>, os dados da estrutura podem ser modificados dentro do escopo da função. Normalmente, é interessante evitar funções com esse tipo de &quot;efeito colateral&quot; (&quot;side-effects&quot;), pois a medida que o projeto cresce, isso pode gerar um problema de mantenabilidade. Para ter noção do quanto essas cópias fazem diferença nesse caso, considere a comparação abaixo, extraída a partir de benchmark feito no site <a href="https://quick-bench.com/">Quick Bench</a>.</p>
+<p>Uma forma de evitar a cópia dessa estrutura de dados é utilizando uma referência para uma <code>Matrix</code>, ou seja, trocando a assinatura da função para <code>double sum_elements(Matrix&amp; matrix)</code>. Apesar de resolver o problema das cópias desnecessárias, a solução mencionada não é ideal, pois passando uma referência à estrutura <code>Matrix</code>, os dados da estrutura podem ser modificados dentro do escopo da função.</p>
+<p>Normalmente, é interessante evitar funções com esse tipo de &quot;efeito colateral&quot; (&quot;side-effects&quot;), pois a medida que o projeto cresce, isso pode gerar um problema de mantenabilidade. Para ter noção do quanto essas cópias fazem diferença nesse caso, considere a comparação abaixo, extraída a partir de benchmark feito no site <a href="https://quick-bench.com/">Quick Bench</a>.</p>
 <p><img src="../images/benchmark-ref.png" alt="Benchmark" /></p>
 <p>Existem sim alguns programas que usam referências como parâmetros de funções e modificam seus dados. Não há problemas em fazer isso, desde que seja bem documentado ou seja óbvio ao leitor. Por exemplo, no caso acima, não é esperado que uma função de nome <code>sum_elements</code> altere os elemento da matriz, porém em uma função chamada <code>void sum_one_to_all_elements_in(Matrix&amp; m)</code> fica mais claro que todos os elementos da matriz serão alterados.</p>
 <p>Uma alternativa para evitar o problema comentado é o uso do modificador <code>const</code>, que faz com que a &quot;variável&quot; em questão seja constante, ou seja, não possa ser alterada durante a execução do programa. Antes de partir para seu uso no caso da função <code>sum_elements</code>, considere o uso de <code>const</code> em um exemplo mais simples:</p>
@@ -241,7 +244,8 @@ int main()
 <li><code>const double&amp; my_data</code>: Cria uma referência para um <code>const double</code> (Igual à anterior)</li>
 <li><code>double &amp;const my_data</code>: Erro de compilação, pois não faz sentido ter uma &quot;referencia const&quot;, visto que referencias não são modificáveis</li>
 </ul>
-<p>Por fim, voltando ao problema da matriz, quando escrevemos <code>double sum_elements(Matrix&amp; matrix)</code>, evitamos que a matriz seja copiada, e isso é um ponto positivo, em termos de performance. Porém, introduzimos um possível problema: Se a matriz for modificada dentro do escopo da função <code>sum_elements</code>, então a matriz do escopo da função <code>main</code> também será modificada. Por convenção, não esperamos que ninguém vá de fato modificar os elementos da matriz naquela função. É possível garantir isso utilizando <code>const&amp;</code>, isto é, se alguém por engano alterar a variável matrix de dentro da função <code>sum_elements</code>, um erro de compilação ocorrerá. A assinatura da função fica da seguinte forma: <code>double sum_elements(Matrix const&amp; matrix)</code>, e nenhuma outra modificação é necessária.</p>
+<p>Por fim, voltando ao problema da matriz, quando escrevemos <code>double sum_elements(Matrix&amp; matrix)</code>, evitamos que a matriz seja copiada, e isso é um ponto positivo, em termos de performance. Porém, introduzimos um possível problema: Se a matriz for modificada dentro do escopo da função <code>sum_elements</code>, então a matriz do escopo da função <code>main</code> também será modificada.</p>
+<p>Por convenção, não esperamos que ninguém vá de fato modificar os elementos da matriz naquela função. É possível garantir isso utilizando <code>const&amp;</code>, isto é, se alguém por engano alterar a variável matrix de dentro da função <code>sum_elements</code>, um erro de compilação ocorrerá. A assinatura da função fica da seguinte forma: <code>double sum_elements(Matrix const&amp; matrix)</code>, e nenhuma outra modificação é necessária.</p>
 
                     </main>
 

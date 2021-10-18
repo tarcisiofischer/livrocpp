@@ -144,8 +144,8 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="tipos-definidos-pelo-usuário"><a class="header" href="#tipos-definidos-pelo-usuário">Tipos definidos pelo usuário</a></h2>
-<p>Structs (estruturas) são uma forma de adicionar tipos novos ao programa (user defined types). São uma forma de adicionar mais semântica à grupos de variáveis que se relacionam de alguma forma.
-No exemplo abaixo, uma estrutura de nome <code>Point</code> é definida entre as linhas 4 e 7. Ela possui dois membros: <code>x</code> e <code>y</code>, ambos do tipo primitivo <code>double</code>. Essas linhas definem um novo tipo de dado de nome <code>Point</code>, que pode ser utilizado em qualquer lugar do programa. As linhas 16 e 17 instanciam 2 variáveis com o novo tipo <code>Point</code>.</p>
+<p>Structs (estruturas) são uma forma de adicionar tipos novos ao programa (user defined types). São uma forma de adicionar mais semântica à grupos de variáveis que se relacionam de alguma forma.</p>
+<p>No exemplo abaixo, uma estrutura de nome <code>Point</code> é definida entre as linhas 4 e 7. Ela possui dois membros: <code>x</code> e <code>y</code>, ambos do tipo primitivo <code>double</code>. Essas linhas definem um novo tipo de dado de nome <code>Point</code>, que pode ser utilizado em qualquer lugar do programa. As linhas 16 e 17 criam duas <strong>instâncias</strong> de duas variáveis com o novo tipo <code>Point</code>.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cmath&gt;
 
@@ -169,7 +169,21 @@ int main()
    return 0;
 }
 </code></pre>
-<p>Assim como qualquer outro tipo de variável, é possível adicionar <code>Point</code> como parâmetro para funções, como é o caso do exemplo acima, na linha 9. A função <code>calculate_distance</code> necessita de dois parâmetros, <code>p1</code> e <code>p2</code>, ambos do tipo <code>Point</code> para ser invocada. Note que, ao invocar a função na linha 19, as duas variáveis <code>p1</code> e <code>p2</code> são copiadas para o escopo da função <code>calculate_distance</code>. Ou seja, se alterarmos os valores de <code>p1</code> e <code>p2</code> dentro do corpo da função <code>calculate_distance</code>, os valores de <code>p1</code> e <code>p2</code> presentes no escopo da função <code>main</code> não serão alteradas.</p>
+<p>Assim como qualquer outro tipo de variável, é possível utilizar o tipo <code>Point</code> como parâmetro para funções, como é o caso do exemplo acima, na linha 9.
+A função <code>calculate_distance</code> necessita de dois parâmetros, <code>p1</code> e <code>p2</code>, ambos do tipo <code>Point</code> para ser invocada. Note que, ao invocar a função na linha 19, as duas variáveis <code>p1</code> e <code>p2</code> são copiadas para o escopo da função <code>calculate_distance</code>. Ou seja, se alterarmos os valores de <code>p1</code> e <code>p2</code> dentro do corpo da função <code>calculate_distance</code>, os valores de <code>p1</code> e <code>p2</code> presentes no escopo da função <code>main</code> não serão alteradas.</p>
+<p>Note que, por ser um tipo como qualquer outro, é possível compor estruturas aninhadas. Por exemplo, considere o seguinte problema:
+Você está desenvolvendo um jogo de plataforma, e precisa representar o personagem em um espaço bidimensional. O personagem possui uma
+posição e um número de vidas. Utilizando a estrutura anterior para representar a posição, poderia-se escrever:</p>
+<pre><code class="language-cpp">using Life = unsigned int;
+
+struct Player {
+    Point position;
+    Life life;
+};
+</code></pre>
+<p>No exemplo, utiliza-se a palavra reservada <code>using</code> para criar um <code>type alias</code> (um &quot;apelido&quot; para um tipo qualquer).
+Basicamente, da-se um novo nome para um tipo que já existia. No exemplo acima, <code>Life</code> será equivalente ao tipo <code>unsigned int</code>, ou seja, um inteiro não negativo.
+Nesse caso, essa escolha foi feita a fim de propiciar maior semântica ao leitor.</p>
 
                     </main>
 
