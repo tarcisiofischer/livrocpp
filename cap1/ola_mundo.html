@@ -146,7 +146,7 @@
                         <h1 id="capitulo-1-um-programa-simples-em-c"><a class="header" href="#capitulo-1-um-programa-simples-em-c">Capitulo 1: Um programa simples em C++</a></h1>
 <h2 id="olá-mundo-uma-versão-pragmática"><a class="header" href="#olá-mundo-uma-versão-pragmática">Olá mundo: Uma versão pragmática</a></h2>
 <p>O objetivo deste capítulo é introduzir vários conceitos básicos de programação C++ para iniciantes, ao mesmo tempo. Para isso, inicia-se com o clássico código &quot;Olá mundo&quot;, conforme abaixo. Apesar de simples, esse código tem muito à ensinar, como veremos. Copie o código abaixo para um arquivo de nome <code>ola_mundo.cpp</code>, e salve em algum diretório do seu sistema.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -319,7 +319,7 @@ target_compile_features(
 )
 </code></pre>
 <p>O comando <code>add_executable</code> determina que esse projeto irá gerar um executável <code>HelloWorld</code>. Esse executável será gerado a partir da compilação dos arquivos determinados em <code>target_sources</code> (Ou seja, o arquivo <code>main.cpp</code>). Por fim, <code>target_compile_features</code> especifica as &quot;features&quot; necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no <a href="cppreference">https://en.cppreference.com/w/cpp/compiler_support</a> para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo <code>src/main.cpp</code> é mostrado abaixo.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstdlib&gt;
 
 int main() {

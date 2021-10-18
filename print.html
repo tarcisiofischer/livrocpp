@@ -157,7 +157,7 @@
 <div style="break-before: page; page-break-before: always;"></div><h1 id="capitulo-1-um-programa-simples-em-c"><a class="header" href="#capitulo-1-um-programa-simples-em-c">Capitulo 1: Um programa simples em C++</a></h1>
 <h2 id="olá-mundo-uma-versão-pragmática"><a class="header" href="#olá-mundo-uma-versão-pragmática">Olá mundo: Uma versão pragmática</a></h2>
 <p>O objetivo deste capítulo é introduzir vários conceitos básicos de programação C++ para iniciantes, ao mesmo tempo. Para isso, inicia-se com o clássico código &quot;Olá mundo&quot;, conforme abaixo. Apesar de simples, esse código tem muito à ensinar, como veremos. Copie o código abaixo para um arquivo de nome <code>ola_mundo.cpp</code>, e salve em algum diretório do seu sistema.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -330,7 +330,7 @@ target_compile_features(
 )
 </code></pre>
 <p>O comando <code>add_executable</code> determina que esse projeto irá gerar um executável <code>HelloWorld</code>. Esse executável será gerado a partir da compilação dos arquivos determinados em <code>target_sources</code> (Ou seja, o arquivo <code>main.cpp</code>). Por fim, <code>target_compile_features</code> especifica as &quot;features&quot; necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no <a href="cap1/cppreference">https://en.cppreference.com/w/cpp/compiler_support</a> para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo <code>src/main.cpp</code> é mostrado abaixo.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cstdlib&gt;
 
 int main() {
@@ -567,7 +567,7 @@ int main()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="funções"><a class="header" href="#funções">Funções</a></h2>
 <p>Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao código, utilizamos funções. Funções extraem parcelas do código para fora do local onde ela é utilizada. Funções podem ou não receper parâmetros, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada. Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi invocada. Abaixo um exemplo de função:</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int calculate_sum(int a, int b)
 {
@@ -593,7 +593,7 @@ int main()
 }
 </code></pre>
 <p>No código acima, foi definida uma função <code>calculate_sum</code>, que efetua a soma dos valores entre <code>a</code> até <code>b</code>, inclusive, e retorna essa soma. O tipo de retorno de uma função é determinado em sua assinatora. A assinatura de uma função é o conjunto contendo seu nome, seu tipo e seus parâmetros, por exemplo, <code>int calculate_sum(int a, int b)</code>. As funções devem ser pelo menos declaradas antes de serem utilizadas. Por exemplo, se movermos a definição da função calculate_sum para baixo da função main, teriamos um erro de compilação. Existe uma distinção entre declarar uma função e definir uma função. Declarar uma função é apenas mostrar que ela existe, sem determinar seu funcionamento (Ou seja, sem adicionar o corpo de código dela). Definir uma função é adicionar um corpo de código à uma declaração. No exemplo acima, estamos definindo a função calculate_sum. Um exemplo de separação entre a declaração e a definição de função é mostrado abaixo.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int calculate_sum(int a, int b);
 
@@ -621,7 +621,7 @@ int calculate_sum(int a, int b)
 }
 </code></pre>
 <p>Caso a função não retorne nenhum valor, é possível utilizar a palavra reservada <code>void</code>:</p>
-<pre><code>void say_hello()
+<pre><code class="language-cpp">void say_hello()
 {
    std::cout &lt;&lt; &quot;Ola Mundo!&quot; &lt;&lt; std::endl;
 }
@@ -629,7 +629,7 @@ int calculate_sum(int a, int b)
 <div style="break-before: page; page-break-before: always;"></div><h2 id="tipos-definidos-pelo-usuário"><a class="header" href="#tipos-definidos-pelo-usuário">Tipos definidos pelo usuário</a></h2>
 <p>Structs (estruturas) são uma forma de adicionar tipos novos ao programa (user defined types). São uma forma de adicionar mais semântica à grupos de variáveis que se relacionam de alguma forma.
 No exemplo abaixo, uma estrutura de nome <code>Point</code> é definida entre as linhas 4 e 7. Ela possui dois membros: <code>x</code> e <code>y</code>, ambos do tipo primitivo <code>double</code>. Essas linhas definem um novo tipo de dado de nome <code>Point</code>, que pode ser utilizado em qualquer lugar do programa. As linhas 16 e 17 instanciam 2 variáveis com o novo tipo <code>Point</code>.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cmath&gt;
 
 struct Point {
@@ -655,7 +655,7 @@ int main()
 <p>Assim como qualquer outro tipo de variável, é possível adicionar <code>Point</code> como parâmetro para funções, como é o caso do exemplo acima, na linha 9. A função <code>calculate_distance</code> necessita de dois parâmetros, <code>p1</code> e <code>p2</code>, ambos do tipo <code>Point</code> para ser invocada. Note que, ao invocar a função na linha 19, as duas variáveis <code>p1</code> e <code>p2</code> são copiadas para o escopo da função <code>calculate_distance</code>. Ou seja, se alterarmos os valores de <code>p1</code> e <code>p2</code> dentro do corpo da função <code>calculate_distance</code>, os valores de <code>p1</code> e <code>p2</code> presentes no escopo da função <code>main</code> não serão alteradas.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="referências"><a class="header" href="#referências">Referências</a></h2>
 <p>Referências permitem criar &quot;apelidos&quot; para variáveis, isto é, uma referência para uma variável acessa o valor daquela variável, nomeada de outra forma. Considere o código abaixo, onde é criada uma referência de nome &quot;b&quot; para uma variável de nome &quot;a&quot;. Utiliza-se o simbolo &quot;&amp;&quot; junto ao tipo da variável para declarar uma referência. Diferente de uma variável &quot;comum&quot;, alterar o valor da referência altera o valor da variável referenciada. Portanto, no exemplo abaixo, o resultado vai ser a mensagem <code>a = 7, b = 7</code>.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -669,7 +669,7 @@ int main()
 }
 </code></pre>
 <p>Como uma referência é um &quot;apelido&quot; para outra variável, é impossível criar uma referência para um valor (Por exemplo, <code>int&amp; b = 9;</code> não faz sentido, e ocasiona em um erro de compilação). É possível usar referências também na passagem de parâmetros de funções. Quando não são utilizadas referências nos parâmetros de uma função, as variáveis são copiadas para o escopo da função. Referências passadas por parâmetro e modificadas dentro do escopo de uma função alteram o valor da variável original de onde foi chamada, como mostra o exemplo abaixo.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 void wont_change_data(int a)
 {
@@ -694,7 +694,7 @@ int main()
 }
 </code></pre>
 <p>Outro exemplo pode observado no código abaixo. Imagine que <code>Matrix</code> é uma estrutura de dados que representa uma matriz 100x100. A função <code>sum_elements</code> soma todos os elementos dessa matriz. O loop na função <code>main</code> foi criado sintéticamente para representar muitas chamadas da função <code>sum_elements</code>. Para cada invocação da função <code>sum_elements</code>, uma instância da estrutura de dados <code>Matrix</code> é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.</p>
-<pre><code>/**
+<pre><code class="language-cpp">/**
  * Sum of elements in a given 100x100 Matrix.
  * :param Matrix matrix:
  * :returns double:
@@ -726,7 +726,7 @@ int main()
 <p><img src="cap2/../images/benchmark-ref.png" alt="Benchmark" /></p>
 <p>Existem sim alguns programas que usam referências como parâmetros de funções e modificam seus dados. Não há problemas em fazer isso, desde que seja bem documentado ou seja óbvio ao leitor. Por exemplo, no caso acima, não é esperado que uma função de nome <code>sum_elements</code> altere os elemento da matriz, porém em uma função chamada <code>void sum_one_to_all_elements_in(Matrix&amp; m)</code> fica mais claro que todos os elementos da matriz serão alterados.</p>
 <p>Uma alternativa para evitar o problema comentado é o uso do modificador <code>const</code>, que faz com que a &quot;variável&quot; em questão seja constante, ou seja, não possa ser alterada durante a execução do programa. Antes de partir para seu uso no caso da função <code>sum_elements</code>, considere o uso de <code>const</code> em um exemplo mais simples:</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -735,7 +735,7 @@ int main()
 }
 </code></pre>
 <p>O código acima não irá compilar. Isso por que a variável &quot;a&quot; é uma constante, ou seja, não se pode alterar seu valor, como se está tentando fazer na linha 6. Casos comuns de uso de <code>const</code> são, por exemplo, as variáveis matemáticas <code>PI</code> e <code>e</code>. O modificador <code>const</code> pode também ser utilizado em conjunto com referências, criando-se referências constantes, ou seja, não é possível alterar o valor da variável referenciada.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
 {
@@ -754,7 +754,7 @@ int main()
 <p>Por fim, voltando ao problema da matriz, quando escrevemos <code>double sum_elements(Matrix&amp; matrix)</code>, evitamos que a matriz seja copiada, e isso é um ponto positivo, em termos de performance. Porém, introduzimos um possível problema: Se a matriz for modificada dentro do escopo da função <code>sum_elements</code>, então a matriz do escopo da função <code>main</code> também será modificada. Por convenção, não esperamos que ninguém vá de fato modificar os elementos da matriz naquela função. É possível garantir isso utilizando <code>const&amp;</code>, isto é, se alguém por engano alterar a variável matrix de dentro da função <code>sum_elements</code>, um erro de compilação ocorrerá. A assinatura da função fica da seguinte forma: <code>double sum_elements(Matrix const&amp; matrix)</code>, e nenhuma outra modificação é necessária.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="ponteiros-e-smart-pointers"><a class="header" href="#ponteiros-e-smart-pointers">Ponteiros e smart pointers</a></h2>
 <p>Quando definimos uma variável em um programa C++, ela é alocada em uma posição de memória do computador. Um &quot;endereço&quot; é a localização em memória virtual de uma variável. Apenas para fins ilustrativos, imagine que toda a memória do seu computador é uma grande tabela. Cada item da tabela possui um endereço e um valor, como no exemplo abaixo. O código de exemplo captura o endereço da variável &quot;a&quot; e o coloca como valor da variável &quot;b&quot;: A linha 6 cria a variável &quot;b&quot;, do tipo <code>int*</code>, e inicializa essa variável com o endereço de memória da variável &quot;a&quot;.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
 {
@@ -773,7 +773,7 @@ int main()
 <p>Os endereços na tabela estão em hexadecimal, pois é a forma comum de representar endereços de memória. São valores meramente ilustrativos, de forma que, caso você execute o programa no seu computador, irá ter resultados diferentes.</p>
 <p>Apesar do uso do mesmo simbolo (<code>&amp;</code>), nesse caso <code>&amp;a</code> não é uma referência. Essa distinção é importante: Caso <code>&amp;</code> esteja ao lado de um tipo (<code>int</code>, <code>double</code>, <code>Point</code>, etc...) tem-se uma referência. Por outro lado, caso <code>&amp;</code> esteja ao lado do nome de uma variável (como no caso acima), lê-se &quot;endereço de...&quot; (no exemplo, &quot;endereço de a&quot;).</p>
 <p>O operador <code>*</code> aplicado à uma variável cujo tipo é um ponteiro, retorna o valor apontado por aquela variável, da seguinte forma:</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
 {
@@ -789,7 +789,7 @@ int main()
 <p>As variáveis criadas até agora nos exemplos desse livro são todas criadas numa região de memória denominada <strong>stack</strong>. O gerenciamento dessa memória é feito automaticamente, ou seja, as variáveis são criadas e alocadas na região da stack ao entrar em determinado escopo e, ao sair do mesmo, as variáveis são automaticamente removidas.</p>
 <p>Outra forma de alocar memória é por meio das funções <code>malloc</code> e <code>new</code>. Em C++, sugere-se sempre utilizar <code>new</code> para alocação dinâmica de memória, ao invés de <code>malloc</code>, pois para instâncias de classes o <code>new</code> chama o construtor, fazendo a inicialização da variável, como será visto em capitulos posteriores.</p>
 <p>Variáveis alocadas com <code>new</code> e <code>malloc</code> são colocadas em uma região de memória denominada <strong>heap</strong>. Diferente da stack, essas variáveis não são removidas automaticamente ao sairem do escopo corrente. O gerenciamento do tempo de vida desse tipo de variável deve ser feito pelo programador. O programador deve devolver a memória ao sistema operacional após término de uso da variável por meio da função <code>delete</code>, como no exemplo abaixo:</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
 {
@@ -803,7 +803,7 @@ int main()
 <p>A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo int*. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.</p>
 <p>Gerenciar memória da heap não é um problema trivial. O mal gerenciamento da memória pode ocasionar em uma excessiva utilização da memória RAM, como é o caso dos vazamentos de memória (<strong>memory leaks</strong>), que é quando o programador &quot;esquece&quot; de devolver a memória.</p>
 <p>Smart pointers são estruturas de dados que auxiliam no gerenciamento de dados alocados na heap. Basicamente, a estrutura aloca a variável na heap e, ao não ser mais utilizada, remove automaticamente a mesma. O exemplo abaixo é trivial, e apenas mostra o funcionamento da infraestrutura, mas não consegue captar o valor de seu uso. O uso de ponteiros e alocação dinâmica é especialmente relevante nos casos de interfaceamento com bibliotecas de baixo nível (por exemplo, funções C), ou no caso de uso de polimorfismo em programação orientada a objetos em C++, tema que será discutido posteriormente nesse livro.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;memory&gt;
 
 int main()
@@ -846,18 +846,18 @@ int main()
 <p>Ao invocar a função <code>sum</code>, a soma dos valores <code>a</code> e <code>b</code> será computada. Esse calculo será feito em <strong>tempo de execução</strong>. Isso significa que a soma será efetuada apenas quando o usuário executar o programa. Por outro lado, ao utilizar <code>constexpr</code> (introduzido no C++11) na função <code>sum</code>, a função potencialmente será executada em <strong>tempo de compilação</strong>, ou seja, o valor de <code>x</code> talvez seja computado no momento de compilação do programa, caso as tenha-se disponível as informações necessárias para tal.</p>
 <p>Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível, específica para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para os casos (a) sem o uso de <code>constexpr</code> e para o caso (b) com o uso de <code>constexpr</code>:</p>
 <p>a) Sem o uso de <code>constexpr</code>:</p>
-<pre><code>mov     esi, 2
+<pre><code class="language-asm">mov     esi, 2
 mov     edi, 1
 call    sum(int, int)
 mov     DWORD PTR [rbp-8], eax
 </code></pre>
 <p>b) Com o uso de <code>constexpr</code>:</p>
-<pre><code>mov     DWORD PTR [rbp-8], 3
+<pre><code class="language-asm">mov     DWORD PTR [rbp-8], 3
 </code></pre>
 <p>Não se preocupe caso não compreenda totalmente os códigos de máquina apresentados acima. Eles apenas ilustram a diferença de código gerado. No caso (a), a linha <code>call sum(int, int)</code> mostra que a função <code>sum</code> será de fato invocada em tempo de execução. Já no caso (b), uma única linha é gerada, contendo o resultado (<code>3</code>) que foi, portanto, calculado em tempo de compilação e por isso aparece diretamente no código gerado.</p>
 <p>É importante notar que <code>constexpr</code> só será executado em tempo de compilação caso seja possível conhecer todos os dados necessários para sua execução. Ainda no exemplo, considerando o caso (c), nota-se que utilizar uma variável não-<code>const</code> em uma função contendo o modificador <code>constexpr</code> ocasionará no seguinte código de máquina gerado:</p>
 <p>c) Com uso de <code>constexpr</code>, porém, a variável <code>a</code> não é <code>const</code></p>
-<pre><code>mov     DWORD PTR [rbp-4], 1
+<pre><code class="language-asm">mov     DWORD PTR [rbp-4], 1
 mov     eax, DWORD PTR [rbp-4]
 mov     esi, 2
 mov     edi, eax
@@ -966,7 +966,7 @@ int main()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="vector"><a class="header" href="#vector">Vector</a></h2>
 <p><code>std::vector</code> permite o programador a criar um vetor com um tamanho dinâmico de elementos. Em outras palavras, é uma estrutura que permite inserir e remover elementos de uma lista em tempo de execução. No exemplo abaixo, A linha 3 inclui o header <code>&lt;vector&gt;</code>, para que seja possível utilizar a estrutura de dados <code>std::vector</code>. A linha 17 cria uma instancia de um <code>vector</code>. Os elementos desse <code>vector</code> serão do tipo <code>Point</code>. Ou seja, não será possível colocar inteiros, doubles, ou variáveis de nenhum outro tipo nesse <code>vector</code>. O <code>vector</code> foi inicializado sem elementos e, nas linhas 19 e 20, dois elementos são adicionados utilizando o método <code>push_back</code>.</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;cmath&gt;
 #include &lt;vector&gt;
  
@@ -995,7 +995,7 @@ int main()
 <p>A linha 22 usa a função <code>calculate_distance</code>, mas passa como parâmetros os elementos cujos índices são 0 e 1 no <code>vector</code>. Tenha cuidado para nunca acessar o <code>vector</code> com indices que não foram populados. Para saber a quantidade de elementos de um vector, é possível utilizar o método <code>size()</code>. Para remover o último elemento adicionado, é possível utilizar o método <code>pop_back()</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="map"><a class="header" href="#map">Map</a></h2>
 <p><code>std::map</code> é uma estrutura de dados que permite mapear dois dados de forma eficiente. Ele é formado por vários pares de chave (<code>key</code>) e valor (<code>value</code>). É necessário explicitar os tipos de dados sendo mapeados, ou seja, <code>std::map&lt;K, V&gt;</code> mapeia dados do tipo <code>K</code> em dados do tipo <code>V</code>. Por exemplo, se <code>K=double</code> e <code>V=int</code>, então <code>std::map&lt;double, int&gt;</code> mapeia valores do tipo double em valores do tipo <code>int</code>. A sintaxe é como o exemplo:</p>
-<pre><code>#include &lt;iostream&gt;
+<pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;map&gt;
 
 int main()

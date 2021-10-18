@@ -174,18 +174,18 @@ int main()
 <p>Ao invocar a função <code>sum</code>, a soma dos valores <code>a</code> e <code>b</code> será computada. Esse calculo será feito em <strong>tempo de execução</strong>. Isso significa que a soma será efetuada apenas quando o usuário executar o programa. Por outro lado, ao utilizar <code>constexpr</code> (introduzido no C++11) na função <code>sum</code>, a função potencialmente será executada em <strong>tempo de compilação</strong>, ou seja, o valor de <code>x</code> talvez seja computado no momento de compilação do programa, caso as tenha-se disponível as informações necessárias para tal.</p>
 <p>Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível, específica para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para os casos (a) sem o uso de <code>constexpr</code> e para o caso (b) com o uso de <code>constexpr</code>:</p>
 <p>a) Sem o uso de <code>constexpr</code>:</p>
-<pre><code>mov     esi, 2
+<pre><code class="language-asm">mov     esi, 2
 mov     edi, 1
 call    sum(int, int)
 mov     DWORD PTR [rbp-8], eax
 </code></pre>
 <p>b) Com o uso de <code>constexpr</code>:</p>
-<pre><code>mov     DWORD PTR [rbp-8], 3
+<pre><code class="language-asm">mov     DWORD PTR [rbp-8], 3
 </code></pre>
 <p>Não se preocupe caso não compreenda totalmente os códigos de máquina apresentados acima. Eles apenas ilustram a diferença de código gerado. No caso (a), a linha <code>call sum(int, int)</code> mostra que a função <code>sum</code> será de fato invocada em tempo de execução. Já no caso (b), uma única linha é gerada, contendo o resultado (<code>3</code>) que foi, portanto, calculado em tempo de compilação e por isso aparece diretamente no código gerado.</p>
 <p>É importante notar que <code>constexpr</code> só será executado em tempo de compilação caso seja possível conhecer todos os dados necessários para sua execução. Ainda no exemplo, considerando o caso (c), nota-se que utilizar uma variável não-<code>const</code> em uma função contendo o modificador <code>constexpr</code> ocasionará no seguinte código de máquina gerado:</p>
 <p>c) Com uso de <code>constexpr</code>, porém, a variável <code>a</code> não é <code>const</code></p>
-<pre><code>mov     DWORD PTR [rbp-4], 1
+<pre><code class="language-asm">mov     DWORD PTR [rbp-4], 1
 mov     eax, DWORD PTR [rbp-4]
 mov     esi, 2
 mov     edi, eax
