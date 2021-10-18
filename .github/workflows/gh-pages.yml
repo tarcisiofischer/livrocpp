@@ -3,7 +3,7 @@ name: github pages
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
   workflow_dispatch:
 
@@ -22,10 +22,8 @@ jobs:
 
       - name: Build mdBook
         run: |
-          tree
           mdbook build
           tree
-          mdbook --help
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
