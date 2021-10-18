@@ -1,6 +1,8 @@
 ## Ponteiros e smart pointers
 
-Quando definimos uma variável em um programa C++, ela é alocada em uma posição de memória do computador. Um "endereço" é a localização em memória virtual de uma variável. Apenas para fins ilustrativos, imagine que toda a memória do seu computador é uma grande tabela. Cada item da tabela possui um endereço e um valor, como no exemplo abaixo. O código de exemplo captura o endereço da variável "a" e o coloca como valor da variável "b": A linha 6 cria a variável "b", do tipo `int*`, e inicializa essa variável com o endereço de memória da variável "a".
+Quando definimos uma variável em um programa C++, ela é alocada em uma posição de memória do computador. Um "endereço" é a localização em memória virtual de uma variável.
+
+Apenas para fins ilustrativos, imagine que toda a memória do seu computador é uma grande tabela. Cada item da tabela possui um endereço e um valor, como no exemplo abaixo. O código de exemplo captura o endereço da variável `a` e o coloca como valor da variável `b`: A linha 6 cria a variável `b`, do tipo `int*`, e inicializa essa variável com o endereço de memória da variável `a`.
 
 ```cpp
 #include <iostream>
@@ -16,14 +18,16 @@ int main()
 }
 ```
 
-| Endereço 	| Valor 	| Variável associada 	|
-|---	    |---	    |---	                |
-| 0x7ff0 	| 1 	    | a                 	|
-| 0x7ff4  	| 0x7ff0 	| b                 	|
+```
+| Endereço  | Valor     | Variável associada |
+|---        |---        |---                 |
+| 0x7ff0    | 1         | a                  |
+| 0x7ff4    | 0x7ff0 	| b                  |
+```
 
 Os endereços na tabela estão em hexadecimal, pois é a forma comum de representar endereços de memória. São valores meramente ilustrativos, de forma que, caso você execute o programa no seu computador, irá ter resultados diferentes.
 
-Apesar do uso do mesmo simbolo (`&`), nesse caso `&a` não é uma referência. Essa distinção é importante: Caso `&` esteja ao lado de um tipo (`int`, `double`, `Point`, etc...) tem-se uma referência. Por outro lado, caso `&` esteja ao lado do nome de uma variável (como no caso acima), lê-se "endereço de..." (no exemplo, "endereço de a").
+Apesar do uso do mesmo simbolo (`&`), nesse caso `&a` não é uma referência. Essa distinção é importante: Caso `&` esteja ao lado de um tipo (`int`, `double`, `Point`, etc...) tem-se uma referência. Por outro lado, caso `&` esteja ao lado do nome de uma variável (como no caso acima), lê-se "endereço de..." (no exemplo, "endereço de `a`").
 
 O operador `*` aplicado à uma variável cujo tipo é um ponteiro, retorna o valor apontado por aquela variável, da seguinte forma:
 
@@ -61,7 +65,7 @@ int main()
 }
 ```
 
-A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo int*. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.
+A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo `int*`. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.
 
 Gerenciar memória da heap não é um problema trivial. O mal gerenciamento da memória pode ocasionar em uma excessiva utilização da memória RAM, como é o caso dos vazamentos de memória (__memory leaks__), que é quando o programador "esquece" de devolver a memória.
 

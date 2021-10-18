@@ -1,6 +1,6 @@
 ## Estruturas de controle
 
-### A estrutura `if`/`else if`/`else`
+### A estrutura "`if`" / "`else if`" / "`else`"
 
 Estruturas de controle são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura `if`/`else if`/`else`. Ela nos permite tomar decisões e executar instruções diferentes dada uma ou mais condições. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:
 
