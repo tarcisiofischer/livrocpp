@@ -4,7 +4,7 @@
 
 O objetivo deste capítulo é introduzir vários conceitos básicos de programação C++ para iniciantes, ao mesmo tempo. Para isso, inicia-se com o clássico código "Olá mundo", conforme abaixo. Apesar de simples, esse código tem muito à ensinar, como veremos. Copie o código abaixo para um arquivo de nome `ola_mundo.cpp`, e salve em algum diretório do seu sistema.
 
-```
+```cpp
 #include <iostream>
 
 int main()
@@ -210,7 +210,7 @@ target_compile_features(
 
 O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [https://en.cppreference.com/w/cpp/compiler_support](cppreference) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 
-```
+```cpp
 #include <iostream>
 #include <cstdlib>
 
