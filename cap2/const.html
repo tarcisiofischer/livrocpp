@@ -1,0 +1,273 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Const, constexpr e consteval</title>
+                
+
+        <!-- Custom HTML head -->
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+                <link rel="icon" href="../favicon.svg">
+                        <link rel="shortcut icon" href="../favicon.png">
+                <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+                <link rel="stylesheet" href="../css/print.css" media="print">
+        
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+                <link rel="stylesheet" href="../fonts/fonts.css">
+        
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+            </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../introducao.html"><strong aria-hidden="true">1.</strong> Introdução</a></li><li class="chapter-item expanded "><a href="../cap1/ola_mundo.html"><strong aria-hidden="true">2.</strong> Olá mundo!</a></li><li class="chapter-item expanded "><a href="../cap2/variaveis.html"><strong aria-hidden="true">3.</strong> Conceitos básicos</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cap2/variaveis.html"><strong aria-hidden="true">3.1.</strong> Variáveis</a></li><li class="chapter-item expanded "><a href="../cap2/estruturas_de_controle.html"><strong aria-hidden="true">3.2.</strong> Estruturas de controle</a></li><li class="chapter-item expanded "><a href="../cap2/funcoes.html"><strong aria-hidden="true">3.3.</strong> Funções</a></li><li class="chapter-item expanded "><a href="../cap2/structs.html"><strong aria-hidden="true">3.4.</strong> Tipos definidos pelo usuário</a></li><li class="chapter-item expanded "><a href="../cap2/referencias.html"><strong aria-hidden="true">3.5.</strong> Referências</a></li><li class="chapter-item expanded "><a href="../cap2/ponteiros.html"><strong aria-hidden="true">3.6.</strong> Ponteiros e smart pointers</a></li><li class="chapter-item expanded "><a href="../cap2/const.html" class="active"><strong aria-hidden="true">3.7.</strong> Const, constexpr e consteval</a></li><li class="chapter-item expanded "><a href="../cap2/namespaces.html"><strong aria-hidden="true">3.8.</strong> Namespaces</a></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.</strong> Visão geral sobre o processo de compilação</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">4.1.</strong> Preprocessamento</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.2.</strong> Compilação</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.3.</strong> Linkagem</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.4.</strong> Carregamento e execução</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">4.5.</strong> Gerenciamento de pacotes</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.</strong> Introdução à biblioteca padrão do C++</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">5.1.</strong> String</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.2.</strong> I/O (Entrada e saída)</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.3.</strong> Array</div></li><li class="chapter-item expanded "><a href="../cap4/vector.html"><strong aria-hidden="true">5.4.</strong> Vector</a></li><li class="chapter-item expanded "><a href="../cap4/map.html"><strong aria-hidden="true">5.5.</strong> Map</a></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.6.</strong> Set</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.7.</strong> Function e lambdas</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">5.8.</strong> Algoritmos</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.</strong> Programação orientada a objetos</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">6.1.</strong> Classes e objetos</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.2.</strong> Herança e polimorfismo</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.3.</strong> Composição vs herança</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.4.</strong> Tratamento de erros e exceções</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.5.</strong> Sobrecarga de operadores</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">6.6.</strong> Gerenciamento de recursos e RAII</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.</strong> Bibliotecas de terceiros</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">7.1.</strong> Interface gráfica desktop com Qt</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.2.</strong> Teste automatizado de software com Catch2</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.3.</strong> Visualização 2D com SDL</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">7.4.</strong> Visualização 3D com OpenGL</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.</strong> Metaprogramação e templates</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">8.1.</strong> Templates</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.2.</strong> Metaprogramação estática</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.3.</strong> CRTP</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.4.</strong> SFINAE</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">8.5.</strong> PIMPL</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.</strong> Algoritmos e estruturas de dados</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">9.1.</strong> Busca</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.2.</strong> Recursão</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">9.3.</strong> Grafos</div></li></ol></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.</strong> Programação paralela e concorrente</div></li><li><ol class="section"><li class="chapter-item expanded "><div><strong aria-hidden="true">10.1.</strong> Threads</div></li><li class="chapter-item expanded "><div><strong aria-hidden="true">10.2.</strong> Async</div></li></ol></li></ol>            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                                                <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                                            </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                                                <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                                                                        
+                    </div>
+                </div>
+
+                                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="const-constexpr-e-consteval"><a class="header" href="#const-constexpr-e-consteval">const, constexpr e consteval</a></h2>
+<p>Conforme apresentado no capítulo 2.6, o modificador <code>const</code> pode ser utilizado para criar constantes (variáveis com acesso apenas de leitura). Alterar uma variável que contém o modificador <code>const</code> causa um erro de compilação:</p>
+<pre><code class="language-cpp">int main()
+{
+    const int i = 10;
+    i = 11; // Compile error: assignment of read-only variable ‘i’
+    return 0;
+}
+</code></pre>
+<p>Esse capítulo apresenta a diferença entre os modificadores <code>const</code>, <code>constexpr</code> e <code>consteval</code>, considerando seu uso em relação à variáveis e funções. O uso do modificador <code>constinit</code> e do modificador <code>const</code> em relação à métodos de classes será abordado apenas em capítulos posteriores.</p>
+<p>Para compreender a diferença entre os modificadores, considere o seguinte código:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+int sum(int a, int b) // Case (a)
+// constexpr int sum(int a, int b) // Case (b)
+{
+    int c = a + b;
+    return c;
+}
+
+int main()
+{
+    const int a = 1;
+    // int a = 1; // Case (c)
+    int x = sum(a, 2);
+    std::cout &lt;&lt; x;
+}
+</code></pre>
+<p>Ao invocar a função <code>sum</code>, a soma dos valores <code>a</code> e <code>b</code> será computada. Esse calculo será feito em <strong>tempo de execução</strong>. Isso significa que a soma será efetuada apenas quando o usuário executar o programa. Por outro lado, ao utilizar <code>constexpr</code> (introduzido no C++11) na função <code>sum</code>, a função potencialmente será executada em <strong>tempo de compilação</strong>, ou seja, o valor de <code>x</code> talvez seja computado no momento de compilação do programa, caso as tenha-se disponível as informações necessárias para tal.</p>
+<p>Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível, específica para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para os casos (a) sem o uso de <code>constexpr</code> e para o caso (b) com o uso de <code>constexpr</code>:</p>
+<p>a) Sem o uso de <code>constexpr</code>:</p>
+<pre><code>mov     esi, 2
+mov     edi, 1
+call    sum(int, int)
+mov     DWORD PTR [rbp-8], eax
+</code></pre>
+<p>b) Com o uso de <code>constexpr</code>:</p>
+<pre><code>mov     DWORD PTR [rbp-8], 3
+</code></pre>
+<p>Não se preocupe caso não compreenda totalmente os códigos de máquina apresentados acima. Eles apenas ilustram a diferença de código gerado. No caso (a), a linha <code>call sum(int, int)</code> mostra que a função <code>sum</code> será de fato invocada em tempo de execução. Já no caso (b), uma única linha é gerada, contendo o resultado (<code>3</code>) que foi, portanto, calculado em tempo de compilação e por isso aparece diretamente no código gerado.</p>
+<p>É importante notar que <code>constexpr</code> só será executado em tempo de compilação caso seja possível conhecer todos os dados necessários para sua execução. Ainda no exemplo, considerando o caso (c), nota-se que utilizar uma variável não-<code>const</code> em uma função contendo o modificador <code>constexpr</code> ocasionará no seguinte código de máquina gerado:</p>
+<p>c) Com uso de <code>constexpr</code>, porém, a variável <code>a</code> não é <code>const</code></p>
+<pre><code>mov     DWORD PTR [rbp-4], 1
+mov     eax, DWORD PTR [rbp-4]
+mov     esi, 2
+mov     edi, eax
+call    sum(int, int)
+mov     DWORD PTR [rbp-8], eax
+</code></pre>
+<p>Uma forma de evitar que uma função <code>constexpr</code> gere valores em tempo de execução inesperadamente, é utilizar <code>consteval</code> (a partir do C++20). Diferente de <code>constexpr</code>, <code>consteval</code> ocasiona em um erro de compilação caso não consiga processar a função em tempo de compilação. Por exemplo:</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+
+consteval int sum(int a, int b)
+{
+    int c = a + b;
+    return c;
+}
+
+int main()
+{
+    // int a = 1; // Case (a)
+    constexpr int a = 1; // Case (b)
+    // const int a = 1; // Case (c)
+    int x = sum(a, 2);
+    std::cout &lt;&lt; x;
+}
+</code></pre>
+<p>No exemplo acima, o caso (a) ocasionará em um erro de compilação. Os casos (b) e (c) geram o valor da variável <code>x</code> em tempo de compilação garantidamente. Note que, apesar dos casos (b) e (c) produzirem o mesmo código nesse caso, o uso de <code>const</code> e de <code>constexpr</code> não é equivalente, como será visto à seguir.</p>
+<p>Basicamente, o modificador <code>const</code> aplicado à uma variável declara que aquela variável não será modificada em tempo de execução. O modificador <code>constexpr</code> aplicado à uma variável declara que aquela variável será computada em tempo de compilação e não será modificada em tempo de execução. Dessa forma, o caso (a) abaixo irá compilar normalmente, pois a variável <code>a</code> irá conter uma cópia constante da variável <code>var</code>, em tempo de execução. Já o caso (b) não irá compilar, pois a variável <code>a</code> não pode ser processada em tempo de compilação, visto que a variável <code>var</code> poderia ter sido modificada em algum momento no código.</p>
+<pre><code class="language-cpp">int main()
+{
+    int var = 1;
+
+    const int a = var; // Case (a)
+    // constexpr int a = var; // Case (b)
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                                                    <a rel="prev" href="../cap2/ponteiros.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+                                                    <a rel="next" href="../cap2/namespaces.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                                    <a rel="prev" href="../cap2/ponteiros.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+                                    <a rel="next" href="../cap2/namespaces.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                            </nav>
+
+        </div>
+
+        
+        
+        
+                <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        
+        
+                <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+        
+    </body>
+</html>
