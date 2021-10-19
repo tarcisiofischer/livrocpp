@@ -1,4 +1,4 @@
-# Linguagem de Programação C++ Moderno
+# A Linguagem de Programação C++
 
 ## Qual o objetivo desse livro?
 
