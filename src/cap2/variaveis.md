@@ -35,13 +35,18 @@ Em C++, o tipo `string`, para representar textos, não é um tipo primitivo. Por
 
 int main()
 {
-    std::string some_string = "my string";
+    std::string some_string = "First string";
+    
+    // ... or, using `auto`:
+    auto some_string_2 = std::string("Second string");
 
-    // ou, alternativamente
-
+    // ... or using `auto` and string literals:
     using namespace std::string_literals;
-    auto some_other_string = "other string"s;
+    auto some_string_3 = "Third string"s; // Note the "s" after the string!
 }
 ```
 
-Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`. Isto causa um pouco de confusão, e será melhor explicado adiante. Por ora, mantenha em mente as formas de declarar vistas acima.
+Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`.
+Isto causa um pouco de confusão, e será melhor explicado adiante.
+Por ora, mantenha em mente as formas de declarar vistas acima (Perceba o sufixo "s" no terceiro caso utilizando `auto`!)
+
