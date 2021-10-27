@@ -120,7 +120,7 @@ Note que a compilação não gerou um executável nesse caso, pois a opção `-E
 compilação após a etapa de pré-processamento.
 
 ```cpp
-// ... other contents here ...
+// ... Outros comentários aqui ...
 int main()
 {
     std::cout << 4*4 << std::endl;

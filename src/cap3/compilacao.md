@@ -203,8 +203,8 @@ g++ -c f.cc -I.
 g++ -c main.cc -I.
 ```
 
-Esses comandos geram os arquivos `g.o`, `f.o` e `main.o`. Esses arquivos não são executáveis. Agora, para finalizar o
-processo de compilação, é necessário invocar (Não estou utilizando diretamente o _linker_ nesse caso): `g++ f.o g.o main.o`.
+Esses comandos geram os arquivos chamados _código objeto_: `g.o`, `f.o` e `main.o`. Esses arquivos não são executáveis.
+Para finalizar o processo de compilação, é necessário invocar (Não estou utilizando diretamente o _linker_ nesse caso): `g++ f.o g.o main.o`.
 Uma representação do que foi feito é mostrada abaixo:
 
 ![Diagrama de compilação e linkagem](./images/diagrama_compilacao_e_linkagem.png)

@@ -1,4 +1,0 @@
-Carregamento e execução
-===
-
-TODO

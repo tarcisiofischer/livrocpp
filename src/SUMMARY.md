@@ -1,7 +1,7 @@
 # Sumário
 
 - [Introdução](introducao.md)
-- [Olá mundo!](cap1/ola_mundo.md)
+  - [Olá mundo!](cap1/ola_mundo.md)
 - [Conceitos básicos](cap2/variaveis.md)
     - [Variáveis](cap2/variaveis.md)
     - [Estruturas de controle](cap2/estruturas_de_controle.md)
@@ -15,7 +15,6 @@
     - [Preprocessamento](cap3/preprocessamento.md)
     - [Compilação](cap3/compilacao.md)
     - [Linkagem](cap3/linkagem.md)
-    - [Carregamento e execução](cap3/carregamento_execucao.md)
     - [Gerenciamento de pacotes](cap3/pacotes.md)
 - [Introdução à biblioteca padrão do C++]()
     - [String]()
