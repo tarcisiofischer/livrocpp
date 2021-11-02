@@ -53,7 +53,7 @@ O loop na função `main` foi criado sintéticamente para representar muitas cha
 
 ```cpp
 /**
- * Sum of elements in a given 100x100 Matrix.
+ * Soma dos elementos de uma matriz 100x100
  * :param Matrix matrix:
  * :returns double:
  */
@@ -97,7 +97,7 @@ Uma alternativa para evitar o problema comentado é o uso do modificador `const`
 int main()
 {
    double const a = 8;
-   a = 9; // Compile error
+   a = 9; // Erro de compilação
 }
 ```
 
@@ -110,8 +110,8 @@ int main()
 {
    double a = 8;
    double const& b = a;
-   a = 9; // OK. a is non-const (b is also 9 now)
-   b = 7; // Compile error. b is a const reference.
+   a = 9; // OK. `a` não é `const`. (b também assume o valor `9`)
+   b = 7; // Erro de compilação: `b` é uma referência const
 }
 ```
 

@@ -37,12 +37,12 @@ int main()
 {
     std::string some_string = "First string";
     
-    // ... or, using `auto`:
+    // ... alternativamente, usando `auto`:
     auto some_string_2 = std::string("Second string");
 
-    // ... or using `auto` and string literals:
+    // ... ou, usando `auto` e `string literals`:
     using namespace std::string_literals;
-    auto some_string_3 = "Third string"s; // Note the "s" after the string!
+    auto some_string_3 = "Third string"s; // Note o `s` após a string!
 }
 ```
 

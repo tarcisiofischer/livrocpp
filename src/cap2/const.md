@@ -6,7 +6,7 @@ Conforme apresentado no capítulo 2.6, o modificador `const` pode ser utilizado 
 int main()
 {
     const int i = 10;
-    i = 11; // Compile error: assignment of read-only variable ‘i’
+    i = 11; // Erro de compilação: Atribuição à uma variável somente-leitura
     return 0;
 }
 ```
@@ -19,7 +19,7 @@ Para compreender a diferença entre os modificadores, considere o seguinte códi
 #include <iostream>
 
 int sum(int a, int b) // Case (a)
-// constexpr int sum(int a, int b) // Case (b)
+// constexpr int sum(int a, int b) // Caso (b)
 {
     int c = a + b;
     return c;
@@ -28,7 +28,7 @@ int sum(int a, int b) // Case (a)
 int main()
 {
     const int a = 1;
-    // int a = 1; // Case (c)
+    // int a = 1; // Caso (c)
     int x = sum(a, 2);
     std::cout << x;
 }
@@ -78,9 +78,9 @@ consteval int sum(int a, int b)
 
 int main()
 {
-    // int a = 1; // Case (a)
-    constexpr int a = 1; // Case (b)
-    // const int a = 1; // Case (c)
+    // int a = 1; // Caso (a)
+    constexpr int a = 1; // Caso (b)
+    // const int a = 1; // Caso (c)
     int x = sum(a, 2);
     std::cout << x;
 }
@@ -95,7 +95,7 @@ int main()
 {
     int var = 1;
 
-    const int a = var; // Case (a)
-    // constexpr int a = var; // Case (b)
+    const int a = var; // Caso (a)
+    // constexpr int a = var; // Caso (b)
 }
 ```

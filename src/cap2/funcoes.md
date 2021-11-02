@@ -42,7 +42,7 @@ No exemplo acima, estamos definindo a função `calculate_sum`. Um exemplo de se
 ```cpp
 #include <iostream>
 
-// Function declaration
+// Declaração da função `calculate_sum`
 int calculate_sum(int a, int b);
 
 int main()
@@ -59,7 +59,7 @@ int main()
    return 0;
 }
 
-// Function definition
+// Definição da função `calculate_sum`
 int calculate_sum(int a, int b)
 {
    int sum = 0;
@@ -77,7 +77,7 @@ void say_hello()
 {
    std::cout << "Ola Mundo!" << std::endl;
 
-   // Unnecessary:
+   // Opcional:
    // return
 }
 ```
