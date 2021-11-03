@@ -27,14 +27,14 @@ Para resolver o problema comentado, poderia-se escrever o código anterior da se
 namespace main_display {
     void write(std::string const& message)
     {
-        // ... Main display implementation ...
+        // ... Implementação do display principal
     }
 }
 
 namespace secondary_display {
     void write(std::string const& message)
     {
-        // ... Secondary display implementation ...
+        // ... Implementação do display secundário
     }
 }
 ```
@@ -46,7 +46,7 @@ Para usar uma ou outra implementação, é necessário explicitar o `namespace` 
 int main()
 {
     main_display::write("Mensagem no display principal");
-    secondary_display::write("Mensagem no display secundario");
+    secondary_display::write("Mensagem no display secundário");
 
     return 0;
 }
@@ -61,7 +61,6 @@ apareceu já nos primeiros capítulos desse livro, para utilizar a função `cou
 int main()
 {
     std::cout << "Ola mundo!" << std::endl;
-    
     return 0;
 }
 ```
@@ -74,12 +73,12 @@ discutido novamente em capítulos posteriores desse livro.
 ```cpp
 #include <iostream>
 
-// It is suggested to avoid doing this:
+// Sugere-se evitar `using` global
 // using namespace std;
 
 int main()
 {
-    // `using` inside a code block is usually preferred
+    // `using` dentro do escopo de alguma função é preferível
     using namespace std;
     cout << "Ola mundo!" << endl;
     

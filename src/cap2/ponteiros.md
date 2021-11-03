@@ -81,6 +81,6 @@ int main()
  
    std::cout << "a = " << *a << std::endl;
 
-   // delete will be automatically done
+   // A variável `a` será deletada automaticamente quando o escopo terminar
 }
 ```
