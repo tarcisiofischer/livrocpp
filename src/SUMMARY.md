@@ -1,8 +1,8 @@
 # Sumário
 
 - [Introdução](introducao.md)
-  - [Olá mundo!](cap1/ola_mundo.md)
-- [Conceitos básicos](cap2/variaveis.md)
+    - [Olá mundo!](cap1/ola_mundo.md)
+- [Conceitos básicos](cap2/introducao.md)
     - [Variáveis](cap2/variaveis.md)
     - [Estruturas de controle](cap2/estruturas_de_controle.md)
     - [Funções](cap2/funcoes.md)
