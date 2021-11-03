@@ -1,13 +1,13 @@
 Input/Output (Entrada/Saída)
 ===
 
-O termo `I/O` se refere aos dispositivos de Entrada (_Input_) e Saída (_Output_). Mais especificamente, essa seção traz
-uma introdução para trabalhar com a leitura de dados do usuário pelo terminal (CMD), e a escrita de dados em terminal e
+O termo `I/O` se refere aos dispositivos de Entrada (_Input_) e Saída (_Output_). Essa seção traz
+uma introdução para trabalhar com a leitura de dados do usuário pelo terminal (CMD) e a escrita de dados em terminal e
 em arquivos de texto.
 
-A forma mais comum de escrever texto em tela do terminal em C++ é a partir de `std::cout` ("Character Output"), e é a
-forma como esse livro vem trazendo desde os primeiros capítulos. Para utilizar o `std::cout`, é necessário incluir o
-_header_ `<iostream>`.
+A forma mais comum de escrever dados no terminal, em C++, é a partir de `std::cout` ("Character Output"), e é a
+forma como vêm sendo escritos os exemplos desse livro desde os primeiros capítulos.
+Para utilizar o `std::cout`, é necessário incluir o _header_ `<iostream>`, como mostra o exemplo abaixo.
 
 ```c++
 #include <iostream>
@@ -20,14 +20,15 @@ int main()
 ```
 
 A sintaxe é diferente em relação às chamadas de função normalmente utilizada. Note que ao invés de `std::cout("texto")`,
-deve-se escrever `std::cout << "texto";`. Isso se dá pela forma como `std::cout` foi implementado. Na verdade, ele é um
+escreve-se `std::cout << "texto";`. Isso se dá pela forma como `std::cout` foi implementado. Na verdade, ele é um
 objeto que possui um `operator<<`, e não uma função. Essa informação é apenas a título de curiosidade, e não afeta o uso
-do `std::cout`, porém, é o início da explicação sobre por que **não** é possível utilizar `std::cout` dessa forma: `"texto" >> std::cout`.
+do `std::cout`.
 
 Não é necessário converter os dados para string para utilizar o `std::cout`. Ele consegue lidar com dados de outros
-tipos, como `int` e `float`, por exemplo.
+tipos, como `int` e `float`. Basta escrever `std::cout << my_int;`, sendo `my_int` uma variável do tipo
+`int`, por exemplo.
 
-De forma semelhante, é possível ler dados do usuário a partir de `std::cin` ("Character input"), como no exemplo abaixo.
+É possível ler dados do usuário a partir de `std::cin` ("Character input"), como no exemplo abaixo.
 Os dados lidos podem ser de qualquer tipo primitivo ou string. Os dados podem ser separados por quebra de linha ou por
 espaço.
 
@@ -51,13 +52,13 @@ int main()
 }
 ```
 
-Note que, até agora, todos os programas apresentados guardavam suas variáveis em memória. Isso significa que, ao
-reiniciar o programa, todos os cálculos com as variáveis são perdidos. Para persistir (guardar) dados em disco,
-é possível utilizar o `fstream`, como no exemplo abaixo. Claro que isso é uma forma bastante primitiva de persistir
-dados. É importante lembrar que existem softwares de banco de dados e bibliotecas de gerenciamento de arquivos muito
+Note que até agora todos os programas apresentados guardavam as suas variáveis em memória. Isso significa que, ao
+reiniciar o programa, todos os cálculos com as variáveis são perdidos. Uma das formas de persistir (guardar) dados em
+disco é utilizando o `fstream`, como no exemplo abaixo. Claro que isso é uma forma bastante primitiva de persistir
+dados. É importante lembrar que existem softwares de banco de dados e bibliotecas de gerenciamento de arquivos
 mais robustas. Mesmo assim, é interessante conhecer a biblioteca padrão, por ser uma alternativa válida para a
-persistência de dados em algumas situações. É importante apenas entender que não é a única e não é necessariamente a
-melhor ferramenta para resolver qualquer problema.
+persistência de dados em algumas situações. É importante apenas manter em mente que não é a única e nem necessariamente
+a melhor ferramenta para resolver qualquer problema.
 
 ```c++
 #include <iostream>
@@ -83,10 +84,16 @@ int main() {
 ```
 
 O exemplo acima abre um arquivo chamado `arquivo.txt` em *modo de saída* (`std::ios::out`). O programa verifica se foi
-possível abrir o arquivo e, caso negativo, gera uma mensagem e sai do programa. Uma vez aberto, escreve-se o conteúdo do
-arquivo e uma variável do tipo float. Note que o arquivo não é explicitamente fechado (`close`). Isso por que o
+possível abrir o arquivo e, caso negativo, gera uma mensagem e sai do programa com um código de erro (`return -1`).
+Uma vez aberto, escreve-se uma string de exemplo,
+e uma variável do tipo `float`. Note que o arquivo não é explicitamente fechado (`close`). Isso por que o
 `fstream` garante que o arquivo será fechado ao fim do escopo de vida do mesmo. Dessa forma, não é necessário fechar
-o arquivo explicitamente. De forma análoga, é possível ler o conteúdo de um arquivo conforme exemplo abaixo.
+o arquivo explicitamente.
+
+O código capaz de gerar um programa que faz a leitura do mesmo arquivo é mostrado abaixo. Na verdade, essa é apenas uma
+das formas de fazer a leitura dos dados de um arquivo. Também é possível ler o conteúdo de um arquivo caracter por
+caracter. Para isso, poderia-se utilizar o método `file_stream.get(l);`, com `l` sendo do tipo `char`. Cada forma de
+leitura tem suas vantagens e desvantagens, e seu uso vai depender do problema que se está tentando resolver.
 
 ```c++
 #include <iostream>
@@ -115,16 +122,12 @@ int main() {
 }
 ```
 
-Também é possível ler o conteúdo de um arquivo caracter por caracter. Para isso, poderia-se utilizar o método
-`file_stream.get(l);`, com `l` sendo do tipo `char`. Cada forma de leitura tem suas vantagens e desvantagens, e seu uso
-vai depender do problema que se está tentando resolver.
-
 ### Estudo de Caso: Input de dados para juizes online
 
 Existem vários sites na internet para exercitar a prática de programação e algoritmos. Esses sites são conhecidos como
-"juizes online", por exemplo, [UVa](https://onlinejudge.org/) e [Spoj](https://www.spoj.com/). Nesses sites, é comum
-encontrar problemas com um formato bastante específico de inputs de exemplo. Essa subseção traz um breve tutorial para
-iniciantes em C++, em relação a como poderia-se fazer a leitura dos dados para esse tipo de problema.
+"juizes online" como, por exemplo, [UVa](https://onlinejudge.org/) e [Spoj](https://www.spoj.com/). Nesses sites, é comum
+encontrar problemas com um formato bastante específico para os inputs dos dados dos desafios. Essa subseção traz um breve tutorial para
+iniciantes em C++, em relação a como poderia-se fazer a leitura dos dados para esses tipos de problema.
 
 Para o exercício, considere o problema [PRIME1](https://www.spoj.com/problems/PRIME1/) do Spoj, copiado (e traduzido)
 abaixo, para referência:
@@ -158,12 +161,12 @@ abaixo, para referência:
 > 3 \
 > 5
 
-O objetivo aqui não é resolver o problema completamente, mas apenas se preocupar com a leitura dos dados. A entrada de
-dados segue um padrão bem definido, conforme exemplo. A primeira linha contém apenas um número, que deve ser lido na
+O objetivo aqui **não** é resolver o problema completamente, apenas implementar a leitura dos dados. A entrada de
+dados segue um padrão bem definido, conforme o exemplo acima. A primeira linha contém apenas um número, que deve ser lido na
 variável `t`. As `t` linhas seguintes devem conter pares de números `(m, n)`.
 
-Conforme visto anteriormente, é possível fazer a leitura dos dados a partir do `std::cin`. Dessa forma, para recuperar
-o valor de `t` é possível simplesmente fazer:
+Conforme visto, é possível fazer a leitura dos dados a partir do `std::cin`. Utiliza-se, então, essa forma para fazer
+a leitura da variável `t`:
 
 ```c++
 #include <iostream>
@@ -179,7 +182,7 @@ int main() {
 
 A seguir, para fazer a leitura dos pares `m` e `n`, é possível utilizar um `for` com um contador de `i = 0` até `t`.
 Enquanto esse contador não chegar no valor de `t`, lê-se um novo par de valores. Assume-se que os valores serão dois
-números válidos separados.
+números válidos (Não é feita nenhuma verificação sobre os valores).
 
 ```c++
 #include <iostream>

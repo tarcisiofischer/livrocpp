@@ -24,12 +24,12 @@ int main()
 ```
 
 `word` não é do tipo `std::string`. Isso por que C++ não possui `string` como tipo primitivo da linguagem. Ao invés
-disso, `word` possui tipo `const char[8]`, que representa um "array de 8 elementos do tipo `char`" (7 caracteres + 1
-caracter de fim de texto, representado por `\0`). Por outro lado, `other_word` e `yet_another_word` são do tipo
-`std::string`.
+disso, `word` possui tipo `const char[8]`, que representa um "array de 8 elementos do tipo `char`" (7 caracteres na
+palavra "Exemplo" + 1 caracter de fim de texto, representado por `\0`).
+Por outro lado, `other_word` e `yet_another_word` são do tipo `std::string`.
 
 A vantagem de utilizar `std::string` ao invés de `const char[]`, é que ela provê várias funções e métodos de manipulação
-e extração de dados de strings. Por exemplo, é possível concatenar duas `std::string`s utilizando o operador `+`, mas
+e extração de dados para strings. Por exemplo, é possível concatenar duas `std::string`s utilizando o operador `+`, mas
 não é possível fazer o mesmo com `const char[]`:
 
 ```c++
@@ -46,9 +46,9 @@ int main()
     
     // O código abaixo produz um erro de compilação, pois não é possível
     // somar duas variáveis do tipo `const char*`:
-    // auto string1 = "Hello ";
-    // auto string2 = "World";
-    // auto string3 = string1 + string2; // ERRO de compilação
+    // auto var1 = "Hello ";
+    // auto var2 = "World";
+    // auto var3 = var1 + var2; // ERRO de compilação
     
     return 0;
 }
