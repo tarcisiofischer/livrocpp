@@ -1,3 +1,5 @@
+**[CLIQUE AQUI PARA ACESSAR O LIVRO!](https://tarcisiofischer.github.io/livrocpp/)**
+
 Esse livro virtual gratuito é uma iniciativa da comunidade [C/C++ Brasil](https://t.me/cppbrazil) que pretende trazer uma fonte moderna, confiável e completa para o estudo de C++. Considere também o [material de aprendizado](https://github.com/cppbrasil/material-de-aprendizado), uma coleção de materiais e links para aprendizado de C e de C++, em português ou inglês.
 
 Sendo um livro da comunidade, você leitor também pode contribuir com correções e melhorias. Basta participar da nossa comunidade do Telegram e abrir um pull request no nosso repositório. Toda ajuda é bem vinda! :)
