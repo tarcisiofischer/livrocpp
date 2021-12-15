@@ -208,7 +208,7 @@ target_compile_features(
 )
 ```
 
-O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [https://en.cppreference.com/w/cpp/compiler_support](cppreference) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
+O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [cppreference](https://en.cppreference.com/w/cpp/compiler_support) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 
 ```cpp
 #include <iostream>
