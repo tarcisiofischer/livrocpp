@@ -51,7 +51,6 @@ int main()
 }
 ```
 
-
 `f.hpp`
 
 ```cpp
@@ -223,4 +222,3 @@ Uma representação do que foi feito é mostrada abaixo:
 Erros de compilação (sintaxe e pré-processamento, por exemplo) acontecerão mesmo quando você tentar compilar o arquivo
 isoladamente. Erros de _linkagem_ (tais como `undefined reference`) acontecerão apenas quando você tentar compilar todos
 os arquivos em conjunto ou quando você estiver executando a etapa de linkagem manualmente.
-

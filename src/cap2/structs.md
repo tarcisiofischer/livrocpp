@@ -48,4 +48,3 @@ struct Player {
 No exemplo, utiliza-se a palavra reservada `using` para criar um `type alias` (um "apelido" para um tipo qualquer).
 Basicamente, da-se um novo nome para um tipo que já existia. No exemplo acima, `Life` será equivalente ao tipo `unsigned int`, ou seja, um inteiro não negativo.
 Nesse caso, essa escolha foi feita a fim de propiciar maior semântica ao leitor.
-

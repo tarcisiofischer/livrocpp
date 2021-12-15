@@ -49,4 +49,3 @@ int main()
 Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`.
 Isto causa um pouco de confusão, e será melhor explicado adiante.
 Por ora, mantenha em mente as formas de declarar vistas acima (Perceba o sufixo "s" no terceiro caso utilizando `auto`!)
-
