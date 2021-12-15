@@ -9,6 +9,7 @@ reproduzir. Apenas para fins didáticos, essa seção utilizará o Sistema Opera
 pela linha de comando (terminal). Considere o seguinte programa:
 
 `main.cpp`
+
 ```cpp
 #include <iostream>
 
@@ -37,6 +38,7 @@ Essa é uma das motivações para separar o projeto em vários arquivos. Move-se
 para os arquivos `f.hpp` e `g.hpp`:
 
 `main.cpp`
+
 ```cpp
 #include <iostream>
 #include "f.hpp"
@@ -51,6 +53,7 @@ int main()
 
 
 `f.hpp`
+
 ```cpp
 double f(double x)
 {
@@ -59,6 +62,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #include "f.hpp"
 
@@ -89,6 +93,7 @@ Isso fica bem claro quando verificamos o output da etapa de pré-processamento i
 O problema pode ser resolvido, incluindo os _include guards_ (#ifndef ... #define ... #endif), conforme código abaixo:
 
 `f.hpp`
+
 ```cpp
 #ifndef __F_HPP
 #define __F_HPP
@@ -102,6 +107,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #ifndef __G_HPP
 #define __G_HPP
@@ -138,6 +144,7 @@ int main()
 ```
 
 `f.hpp`
+
 ```cpp
 #ifndef __F_HPP
 #define __F_HPP
@@ -148,6 +155,7 @@ double f(double x);
 ```
 
 `f.cc`
+
 ```cpp
 #include "f.hpp"
 
@@ -158,6 +166,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #ifndef __G_HPP
 #define __G_HPP
@@ -170,6 +179,7 @@ double g(double x);
 ```
 
 `g.cc`
+
 ```cpp
 #include "g.hpp"
 

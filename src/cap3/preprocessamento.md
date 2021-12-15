@@ -12,6 +12,7 @@ Considere o seguinte exemplo: imagine que você tem um projeto com 2 arquivos, `
 ser feito utilizando o `#include`:
 
 `sum.hpp`
+
 ```cpp
 int sum(int a, int b)
 {
@@ -20,6 +21,7 @@ int sum(int a, int b)
 ```
 
 `main.cpp`
+
 ```cpp
 #include <iostream>
 #include "sum.hpp"
@@ -49,6 +51,7 @@ a macro `__A_HPP` está definida. Sendo assim, o `ifndef` do arquivo `a.hpp` per
 o mesmo arquivo.
 
 `main.cpp`
+
 ```cpp
 #include "a.hpp"
 
@@ -59,6 +62,7 @@ int main()
 ```
 
 `a.hpp`
+
 ```cpp
 #ifndef __A_HPP
 #define __A_HPP
@@ -69,6 +73,7 @@ int main()
 ```
 
 `b.hpp`
+
 ```cpp
 #ifndef __B_HPP
 #define __B_HPP

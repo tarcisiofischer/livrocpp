@@ -23,6 +23,7 @@ uma função ou classe, mas também para organizar o projeto. Eles são estrutur
 bibliotecas e aplicativos escritos em C++ que são implementados sem o uso de `namespaces`.
 
 Para resolver o problema comentado, poderia-se escrever o código anterior da seguinte forma:
+
 ```cpp
 namespace main_display {
     void write(std::string const& message)

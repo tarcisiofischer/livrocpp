@@ -39,6 +39,7 @@ Ao invocar a função `sum`, a soma dos valores `a` e `b` será computada. Esse 
 Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível, específica para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para os casos (a) sem o uso de `constexpr` e para o caso (b) com o uso de `constexpr`:
 
 a) Sem o uso de `constexpr`:
+
 ```asm
 mov     esi, 2
 mov     edi, 1
@@ -47,6 +48,7 @@ mov     DWORD PTR [rbp-8], eax
 ```
 
 b) Com o uso de `constexpr`:
+
 ```asm
 mov     DWORD PTR [rbp-8], 3
 ```
@@ -56,6 +58,7 @@ Não se preocupe caso não compreenda totalmente os códigos de máquina apresen
 É importante notar que `constexpr` só será executado em tempo de compilação caso seja possível conhecer todos os dados necessários para sua execução. Ainda no exemplo, considerando o caso (c), nota-se que utilizar uma variável não-`const` em uma função contendo o modificador `constexpr` ocasionará no seguinte código de máquina gerado:
 
 c) Com uso de `constexpr`, porém, a variável `a` não é `const`
+
 ```asm
 mov     DWORD PTR [rbp-4], 1
 mov     eax, DWORD PTR [rbp-4]
