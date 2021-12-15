@@ -70,7 +70,7 @@ double g(double x)
 
 Compilar esse pequeno exemplo produz a seguinte mensagem de erro:
 
-```
+```sh
 $ g++ main.cc 
 In file included from g.hpp:1,
                  from main.cc:3:
@@ -197,7 +197,7 @@ O processo de compilação da forma como está invocado acima, na verdade inclui
 vimos) e o processo de linkagem. É possível invocar o compilador individualmente para cada arquivo arquivo `.cpp` e,
 posteriormente, invocar o processo de linkagem separadamente. Faremos isso para fins didáticos:
 
-```
+```sh
 g++ -c g.cc -I.
 g++ -c f.cc -I.
 g++ -c main.cc -I.
