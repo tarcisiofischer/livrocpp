@@ -1,4 +1,4 @@
-## Tipos definidos pelo usuário
+# Tipos definidos pelo usuário
 
 Structs (estruturas) são uma forma de adicionar tipos novos ao programa (user defined types). São uma forma de adicionar mais semântica à grupos de variáveis que se relacionam de alguma forma.
 

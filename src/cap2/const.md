@@ -1,4 +1,4 @@
-## const, constexpr e consteval
+# const, constexpr e consteval
 
 Conforme apresentado no capítulo 2.6, o modificador `const` pode ser utilizado para criar constantes (variáveis com acesso apenas de leitura). Alterar uma variável que contém o modificador `const` causa um erro de compilação:
 

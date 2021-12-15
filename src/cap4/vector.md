@@ -1,4 +1,4 @@
-## Vector
+# Vector
 
 `std::vector` permite o programador a criar um vetor com um tamanho dinâmico de elementos. Em outras palavras, é uma estrutura que permite inserir e remover elementos de uma lista em tempo de execução. No exemplo abaixo, A linha 3 inclui o header `<vector>`, para que seja possível utilizar a estrutura de dados `std::vector`. A linha 17 cria uma instancia de um `vector`. Os elementos desse `vector` serão do tipo `Point`. Ou seja, não será possível colocar inteiros, doubles, ou variáveis de nenhum outro tipo nesse `vector`. O `vector` foi inicializado sem elementos e, nas linhas 19 e 20, dois elementos são adicionados utilizando o método `push_back`.
 

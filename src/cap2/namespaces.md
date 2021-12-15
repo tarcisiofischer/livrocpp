@@ -1,4 +1,4 @@
-## namespaces
+# namespaces
 
 Considere o seguinte cenário: Você está ajudando no desenvolvimento de um software de um painel digital para uma loja.
 O painel mostra mensagens de promoções primárias da loja e, agora, deseja-se adicionar um painel secundário para exibir

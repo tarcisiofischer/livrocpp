@@ -1,4 +1,4 @@
-## Map
+# Map
 
 `std::map` é uma estrutura de dados que permite mapear dois dados de forma eficiente. Ele é formado por vários pares de chave (`key`) e valor (`value`). É necessário explicitar os tipos de dados sendo mapeados, ou seja, `std::map<K, V>` mapeia dados do tipo `K` em dados do tipo `V`. Por exemplo, se `K=double` e `V=int`, então `std::map<double, int>` mapeia valores do tipo double em valores do tipo `int`. A sintaxe é como o exemplo:
 
