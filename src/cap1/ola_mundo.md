@@ -101,11 +101,11 @@ drwxr-xr-x 7 user user 4096 Nov  9 17:01 .git
 
 Utilize algum "editor de texto pra programação" pra escrever algo no arquivo criado. Evite editores como Word, Office, LibreOffice ou Wordpad, pois esses não são editores de texto cru, e portanto não trabalham normalmente com arquivos de texto simples. Também evite editores de texto simples demais, como o Notepad. Alguns editores sugeridos:
 
-* Visual Studio Code: https://code.visualstudio.com
-* Atom: https://www.atom.io
-* Kate: https://www.kate-editor.org
-* Emacs: https://www.gnu.org/emacs
-* Vim: https://www.vim.org
+* [Visual Studio Code](https://code.visualstudio.com)
+* [Atom](https://www.atom.io)
+* [Kate](https://www.kate-editor.org)
+* [Emacs](https://www.gnu.org/emacs)
+* [Vim](https://www.vim.org)
 
 O arquivo deve conter informações básicas do projeto, como seu titulo, uma breve descrição, autor, informações de como compilar o projeto, bibliotecas e ferramentas dependentes, e qualquer outras informações relevantes para outros desenvolvedores. Exemplo:
 
