@@ -141,3 +141,31 @@ int main()
 Perceba que, como `i = i + 1` não faz parte do _loop body_, ele é executado independentemente do `continue`. Lembre-se que isso não se aplica ao `break`.
 
 É possível que você não veja vantagens imediatas no uso dessas duas instruções, mas elas podem simplificar o código e às vezes são até necessárias.
+
+## Devo utilizar `{` e `}`?
+
+Você pode ter percebido que os corpos das instruções `if` (e suas partes `else`), `for` e `while` podem ser tanto uma instrução "simples" quanto uma instrução composta. Não é necessário utilizar uma instrução composta quando você já possui apenas uma instrução. Por exemplo, os dois `if` são equivalentes:
+
+```cpp
+if (a) {
+    b = 5;
+}
+
+if (a)
+    b = 5;
+```
+
+Agora, quando precisamos de mais de uma instrução, precisamos agrupá-las como uma só:
+
+```cpp
+if (a) {
+    b = 5;
+    c = 6;
+} // Ok! Ambas as atribuições fazem parte do if
+
+if (a)
+    b = 5;
+    c = 6; // Ops! Essa instrução não faz parte do if 
+```
+
+Alguns programadores optam por utilizar sempre instruções compostas para evitar surpresas. Há bons argumentos tanto a favor quanto contra isso, portanto ao trabalhar em um projeto preexistente siga padrão já utilizado.
