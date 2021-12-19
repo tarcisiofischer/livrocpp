@@ -113,9 +113,9 @@ int main()
 }
 ```
 
-Assim que o _thread_ de execução atinge a instrução `break`, o laço é imediatamente interrompido; o `i` deixa de ser incrementado e vamos direto para nosso `return`.
+Assim que a execução do programa atinge a instrução `break`, o laço é imediatamente interrompido; o `i` deixa de ser incrementado e vamos direto para nosso `return`.
 
-Caso queiramos interromper a execução de nosso _loop body_ mas continuar iterando, devemos utilizar a instrução `continue`:
+Caso queiramos interromper a execução do corpo (a instrução composta—delimitada por chaves) de nosso laço mas continuar iterando, devemos utilizar a instrução `continue`:
 
 ```cpp
 #include <iostream>
@@ -131,14 +131,14 @@ int main()
         if (op == 's')
             continue;
         
-        std::cout << "Executando o resto do loop body" << std::endl;
+        std::cout << "Executando o resto do corpo do laço" << std::endl;
     }
 
     return 0;
 }
 ```
 
-Perceba que, como `i = i + 1` não faz parte do _loop body_, ele é executado independentemente do `continue`. Lembre-se que isso não se aplica ao `break`.
+Perceba que, como `i = i + 1` não faz parte do corpo do laço, ele é executado independentemente do `continue`. Lembre-se que isso não se aplica ao `break`.
 
 É possível que você não veja vantagens imediatas no uso dessas duas instruções, mas elas podem simplificar o código e às vezes são até necessárias.
 

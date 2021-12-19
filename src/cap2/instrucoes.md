@@ -1,8 +1,8 @@
 # Instruções
 
-Não confunda instruções do C++ com instruções de uma ISA, instruções em C++ são conceitos de alto nível e servem para dividir a execução do código em etapas.
+Instruções em C++ são conceitos de alto nível e servem para dividir a execução do código em etapas. Não deve-se confundi-las com instruções de um processador.
 
-Existem vários tipos de instruções, as mais comuns sendo as instruções de expressão (_expression-statements_). Instruções de expressão são, simplesmente, operações como `x + 2`, `a + 5 * 3` e `pi = atan(i) * 4`, seguidas de um `;`. Ao declarar variáveis, nós utilizamos instruções de declaração (_declaration-statements_).
+Existem vários tipos de instruções, as mais comuns sendo as instruções de expressão (_expression-statements_). Instruções de expressão  são, simplesmente, operações como `x + 2`, `a + 5 * 3` e `pi = atan(i) * 4`, seguidas de um `;`. Ao declarar variáveis, nós utilizamos instruções de declaração (_declaration-statements_).
 
 ## Instruções compostas
 
