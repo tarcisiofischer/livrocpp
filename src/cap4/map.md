@@ -2,7 +2,7 @@
 
 `std::map` é a primeira estrutura de dados que será abordada nesse livro. Pense em uma estrutura de dados como uma `struct` que guarda informações para consultas, e que algumas estruturas organizam os dados de uma maneira específica para que as consultas sejam mais rápidas.
 
-Toda estrutura de dados é diferente uma da outra, e mais apta para resolver um problema do que outro, por exemplo, todas as coisas que são feitas com `std::map` podem ser feitas com `std::vector` (estrutura exibida daqui a dois "subcapítulos"), mas dependendo do que seja, fazer com `std::map` pode ser mais fácil e simples, ou mais difícil e complicado.
+Toda estrutura de dados é diferente uma da outra, e mais apta para resolver um problema do que outro, por exemplo, todas as coisas que são feitas com `std::map` podem ser feitas com `std::vector` (estrutura exibida posteriormente), mas dependendo do que seja, fazer com `std::map` pode ser mais fácil e simples, ou mais difícil e complicado.
 
 `std::map` é uma estrutura de dados que mapeia um dado à outro. Ele é formado por vários pares de chave (`key`) e valor (`value`), depois de montado, dada uma chave, a estrutura deverá retornar qual é o valor único que foi atribuído àquela chave.
 
@@ -21,6 +21,7 @@ Vamos criar um `std::map` vazio, adicionar cada linha dessa tabela, e então, da
 ```cpp
 #include <iostream>
 #include <map>
+#include <string>
 
 int main()
 {
