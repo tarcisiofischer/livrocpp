@@ -1,4 +1,4 @@
-## namespaces
+# namespaces
 
 Considere o seguinte cenário: Você está ajudando no desenvolvimento de um software de um painel digital para uma loja.
 O painel mostra mensagens de promoções primárias da loja e, agora, deseja-se adicionar um painel secundário para exibir
@@ -23,6 +23,7 @@ uma função ou classe, mas também para organizar o projeto. Eles são estrutur
 bibliotecas e aplicativos escritos em C++ que são implementados sem o uso de `namespaces`.
 
 Para resolver o problema comentado, poderia-se escrever o código anterior da seguinte forma:
+
 ```cpp
 namespace main_display {
     void write(std::string const& message)

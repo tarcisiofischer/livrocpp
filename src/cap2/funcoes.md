@@ -1,4 +1,4 @@
-## Funções
+# Funções
 
 Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao código, utilizamos funções. Funções extraem parcelas do código para fora do local onde ela é utilizada.
 

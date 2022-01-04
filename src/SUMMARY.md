@@ -4,6 +4,7 @@
     - [Olá mundo!](cap1/ola_mundo.md)
 - [Conceitos básicos](cap2/introducao.md)
     - [Variáveis](cap2/variaveis.md)
+    - [Instruções](cap2/instrucoes.md)
     - [Estruturas de controle](cap2/estruturas_de_controle.md)
     - [Funções](cap2/funcoes.md)
     - [Tipos definidos pelo usuário](cap2/structs.md)

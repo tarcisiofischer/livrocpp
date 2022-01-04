@@ -20,7 +20,7 @@ Para executar o programa, é preciso utilizar um programa chamado _compilador_, 
 
 Esta etapa é dependente do ambiente de trabalho que você está utilizando. Apenas para fins ilustrativos, os comandos abaixo mostram o processo de compilação em ambiente Linux, utilizando o GCC.
 
-```
+```sh
 $ g++ -o ola_mundo ola_mundo.cpp
 $ ./ola_mundo
 Olá Mundo!
@@ -65,7 +65,7 @@ Alguns comandos básicos para o terminal:
 
 Sugere-se criar uma pasta de projetos dentro da pasta inicial do seu usuário, conforme exemplo:
 
-```
+```sh
 $ mkdir Projetos
 $ mkdir Projetos/OlaMundo
 $ cd Projetos/OlaMundo
@@ -75,7 +75,7 @@ $ pwd
 
 Utiliza-se o git para criar um novo repositório dentro da pasta recém criada (veja abaixo). Você pode verificar a existência de uma nova pasta chamada `.git` utilizando o comando `ls`. As opções `-al` servem para exibir arquivos ocultos (`-a`) e para exibir os arquivo em uma lista vertical (`-l`).
 
-```
+```sh
 $ pwd
 /home/user/Projetos/OlaMundo
 $ git init .
@@ -89,7 +89,7 @@ drwxr-xr-x 7 user user 4096 Nov  9 16:51 .git
 
 Neste momento, é importante iniciar uma estrutura básica de projeto, com arquivos que não necessariamente compõem o código fonte. Mesmo sendo um código exemplo, algumas padronizações são importantes em qualquer código porque assim outros programadores saibam por onde começar a olhar o seu projeto. Crie o arquivo `README.md` (O nome `README.md` é reconhecido por diversas ferramentas de gerenciamento de código). O formato `.md` significa `Markdown` e é um formato de texto puro que tem alguma informação sobre a formatação do conteúdo.
 
-```
+```sh
 $ touch README.md
 $ ls -la
 total 12
@@ -101,15 +101,15 @@ drwxr-xr-x 7 user user 4096 Nov  9 17:01 .git
 
 Utilize algum "editor de texto pra programação" pra escrever algo no arquivo criado. Evite editores como Word, Office, LibreOffice ou Wordpad, pois esses não são editores de texto cru, e portanto não trabalham normalmente com arquivos de texto simples. Também evite editores de texto simples demais, como o Notepad. Alguns editores sugeridos:
 
-* Visual Studio Code: https://code.visualstudio.com
-* Atom: https://www.atom.io
-* Kate: https://www.kate-editor.org
-* Emacs: https://www.gnu.org/emacs
-* Vim: https://www.vim.org
+* [Visual Studio Code](https://code.visualstudio.com)
+* [Atom](https://www.atom.io)
+* [Kate](https://www.kate-editor.org)
+* [Emacs](https://www.gnu.org/emacs)
+* [Vim](https://www.vim.org)
 
 O arquivo deve conter informações básicas do projeto, como seu titulo, uma breve descrição, autor, informações de como compilar o projeto, bibliotecas e ferramentas dependentes, e qualquer outras informações relevantes para outros desenvolvedores. Exemplo:
 
-```
+```markdown
 # Projeto: Olá mundo
 
 Esse projeto serve como esboço do que é necessário para começar
@@ -118,7 +118,7 @@ a trabalhar com C++ no mundo real.
 
 o `#` Cria uma linha de cabeçalho, que é o título do arquivo, e parágrafos são espaçados com uma linha em branco. Este livro está sendo escrito em markdown, e o resultado final é o que você está lendo! Adicione o arquivo ao seu repositório:
 
-```
+```sh
 $ pwd
 /home/user/Projetos/OlaMundo
 $ git status
@@ -135,7 +135,7 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 Perceba a linha `Untracked files:`, essa é a lista de arquivos que o git ainda não está gerenciando. Precisamos adicionar o arquivo no índice de arquivos gerenciados pelo git:
 
-```
+```sh
 $ pwd
 /home/user/Projetos/OlaMundo
 $ git add README.md
@@ -152,7 +152,7 @@ Changes to be committed:
 
 O comando executado não adicionou nada ao repositório, apenas adicionou o arquivo à `Staging Area`, que é a área onde os arquivos ficam preparados para serem adicionados em uma revisão. A seguir, commitamos o arquivo com uma mensagem descrevendo o que foi feito, da seguinte forma:
 
-```
+```sh
 $ git commit -m "Adicionado arquivo Readme."
 [master (root-commit) 478f2b6] Adicionado arquivo Readme.
  1 file changed, 6 insertions(+)
@@ -161,7 +161,7 @@ $ git commit -m "Adicionado arquivo Readme."
 
 A configuração do projeto pode ser feita utilizando o `CMake`. O `CMake` é um gerenciador padrão para projetos em C++, e serve para traduzir as informações do código fonte, a sua organização em arquivos, e quais subprojetos você está fazendo dentro de seu código, para as ferramentas da linguagem - como `compiladores`, `debuggers`, `IDEs`. Assim, prepare um arquivo chamado `CMakeLists.txt` juntamente com uma pasta chamada `src` (source), onde ficará o código fonte do projeto.
 
-```
+```sh
 $ pwd
 /home/user/Projetos/OlaMundo
 $ touch CMakeLists.txt
@@ -172,7 +172,7 @@ $ touch src/CMakeLists.txt
 
 O sistema de arquivos no momento é esse:
 
-```
+```text
 .
 ├── CMakeLists.txt
 ├── README.md
@@ -183,7 +183,7 @@ O sistema de arquivos no momento é esse:
 
 Perceba que existem 2 arquivos `CMakeLists.txt`. O que está na pasta raiz do projeto irá definir as configurações de base, e irá adicionar a pasta `src` no projeto. O conteúdo do arquivo na pasta raiz deve ser conforme segue:
 
-```
+```cmake
 cmake_minimum_required(VERSION 3.19)
 project(OlaMundo CXX)
 
@@ -192,7 +192,7 @@ add_subdirectory(src)
 
 Onde a primeira linha define a versão minima de CMake necessária para trabalhar com o projeto. A segunda linha especifica o nome do projeto para o CMake. A última linha adiciona a pasta `src` ao projeto. Nessa pasta, encontra-se outro arquivo `CMakeLists.txt`, contendo configurações de compilação.
 
-```
+```cmake
 add_executable(HelloWorld)
 
 target_sources(
@@ -208,7 +208,7 @@ target_compile_features(
 )
 ```
 
-O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [https://en.cppreference.com/w/cpp/compiler_support](cppreference) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
+O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [cppreference](https://en.cppreference.com/w/cpp/compiler_support) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 
 ```cpp
 #include <iostream>
@@ -224,7 +224,7 @@ A única diferenca deste código para milhares de códigos de outros livros é a
 
 Para determinar como o CMake irá configurar nossos projetos, é sugerido criar uma configuração base. A partir da versão 3.19, o `CMake` possui um comando `--preset` que utiliza uma configuração pre-determinada. Crie um arquivo chamado `CMakePresets.json`, na pasta raiz do projeto:
 
-```
+```json
 {
     "version": 1,
     "cmakeMinimumRequired": {
@@ -264,7 +264,7 @@ Com essa configuração criamos dois geradores:
 
 Por fim, para configurar o projeto utilizando o preset escolhido:
 
-```
+```sh
 $ pwd
 /home/user/Projetos/OlaMundo
 $ ls
@@ -299,7 +299,7 @@ Preset CMake variables:
 
 A última linha indica onde os arquivos de build do projeto foram gerados. Esta se refere à linha definida em `binaryDir` no arquivo de preset. Para compilar o programa, deve-se executar `cmake --build`. Por exemplo, para compilar o projeto em debug:
 
-```
+```sh
 $ cmake --build ./build/debug
 Scanning dependencies of target HelloWorld
 [ 50%] Building CXX object src/CMakeFiles/HelloWorld.dir/main.cpp.o

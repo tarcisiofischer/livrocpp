@@ -122,7 +122,7 @@ int main() {
 }
 ```
 
-### Estudo de Caso: Input de dados para juizes online
+## Estudo de Caso: Input de dados para juizes online
 
 Existem vários sites na internet para exercitar a prática de programação e algoritmos. Esses sites são conhecidos como
 "juizes online" como, por exemplo, [UVa](https://onlinejudge.org/) e [Spoj](https://www.spoj.com/). Nesses sites, é comum
@@ -211,7 +211,7 @@ sirva de entrada para um programa. Por exemplo, digamos que você compile o arqu
 (por exemplo, `input.txt`) cujo conteúdo é conforme dado abaixo, e redirecionar o conteúdo desse arquivo para a entrada
 do programa `programa`, da seguinte forma: `./programa < input.txt`.
 
-```
+```text
 2
 1 10
 3 5
@@ -220,7 +220,7 @@ do programa `programa`, da seguinte forma: `./programa < input.txt`.
 O resultado da execução é dado abaixo. Essa é uma forma rápida de manter arquivos de teste para problemas de maratona de
 programação e juizes online.
 
-```
+```sh
 $ ./programa < input.txt 
 CASOS DE TESTE: 2
 Processando dados: (1, 10)

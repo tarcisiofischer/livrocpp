@@ -9,6 +9,7 @@ reproduzir. Apenas para fins didáticos, essa seção utilizará o Sistema Opera
 pela linha de comando (terminal). Considere o seguinte programa:
 
 `main.cpp`
+
 ```cpp
 #include <iostream>
 
@@ -37,6 +38,7 @@ Essa é uma das motivações para separar o projeto em vários arquivos. Move-se
 para os arquivos `f.hpp` e `g.hpp`:
 
 `main.cpp`
+
 ```cpp
 #include <iostream>
 #include "f.hpp"
@@ -49,8 +51,8 @@ int main()
 }
 ```
 
-
 `f.hpp`
+
 ```cpp
 double f(double x)
 {
@@ -59,6 +61,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #include "f.hpp"
 
@@ -70,7 +73,7 @@ double g(double x)
 
 Compilar esse pequeno exemplo produz a seguinte mensagem de erro:
 
-```
+```sh
 $ g++ main.cc 
 In file included from g.hpp:1,
                  from main.cc:3:
@@ -89,6 +92,7 @@ Isso fica bem claro quando verificamos o output da etapa de pré-processamento i
 O problema pode ser resolvido, incluindo os _include guards_ (#ifndef ... #define ... #endif), conforme código abaixo:
 
 `f.hpp`
+
 ```cpp
 #ifndef __F_HPP
 #define __F_HPP
@@ -102,6 +106,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #ifndef __G_HPP
 #define __G_HPP
@@ -138,6 +143,7 @@ int main()
 ```
 
 `f.hpp`
+
 ```cpp
 #ifndef __F_HPP
 #define __F_HPP
@@ -148,6 +154,7 @@ double f(double x);
 ```
 
 `f.cc`
+
 ```cpp
 #include "f.hpp"
 
@@ -158,6 +165,7 @@ double f(double x)
 ```
 
 `g.hpp`
+
 ```cpp
 #ifndef __G_HPP
 #define __G_HPP
@@ -170,6 +178,7 @@ double g(double x);
 ```
 
 `g.cc`
+
 ```cpp
 #include "g.hpp"
 
@@ -197,7 +206,7 @@ O processo de compilação da forma como está invocado acima, na verdade inclui
 vimos) e o processo de linkagem. É possível invocar o compilador individualmente para cada arquivo arquivo `.cpp` e,
 posteriormente, invocar o processo de linkagem separadamente. Faremos isso para fins didáticos:
 
-```
+```sh
 g++ -c g.cc -I.
 g++ -c f.cc -I.
 g++ -c main.cc -I.
@@ -213,4 +222,3 @@ Uma representação do que foi feito é mostrada abaixo:
 Erros de compilação (sintaxe e pré-processamento, por exemplo) acontecerão mesmo quando você tentar compilar o arquivo
 isoladamente. Erros de _linkagem_ (tais como `undefined reference`) acontecerão apenas quando você tentar compilar todos
 os arquivos em conjunto ou quando você estiver executando a etapa de linkagem manualmente.
-

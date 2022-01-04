@@ -1,4 +1,4 @@
-## Variáveis
+# Variáveis
 
 C++ é uma linguagem de programação estaticamente tipada. Isso significa que todas as variáveis possuem um tipo, e o tipo da variável não muda, até que ela deixe de existir (nos referimos a isso como "tempo de vida", ou "_lifetime_", de uma variável). Em C++, a definição de uma variável se dá da seguinte forma:
 
@@ -49,4 +49,3 @@ int main()
 Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`.
 Isto causa um pouco de confusão, e será melhor explicado adiante.
 Por ora, mantenha em mente as formas de declarar vistas acima (Perceba o sufixo "s" no terceiro caso utilizando `auto`!)
-
