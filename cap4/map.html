@@ -144,7 +144,55 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="map"><a class="header" href="#map">Map</a></h2>
-<p><code>std::map</code> é uma estrutura de dados que permite mapear dois dados de forma eficiente. Ele é formado por vários pares de chave (<code>key</code>) e valor (<code>value</code>). É necessário explicitar os tipos de dados sendo mapeados, ou seja, <code>std::map&lt;K, V&gt;</code> mapeia dados do tipo <code>K</code> em dados do tipo <code>V</code>. Por exemplo, se <code>K=double</code> e <code>V=int</code>, então <code>std::map&lt;double, int&gt;</code> mapeia valores do tipo double em valores do tipo <code>int</code>. A sintaxe é como o exemplo:</p>
+<p><code>std::map</code> é a primeira estrutura de dados que será abordada nesse livro. Pense em uma estrutura de dados como uma <code>struct</code> que guarda informações para consultas, e que algumas estruturas organizam os dados de uma maneira específica para que as consultas sejam mais rápidas.</p>
+<p>Toda estrutura de dados é diferente uma da outra, e mais apta para resolver um problema do que outro, por exemplo, todas as coisas que são feitas com <code>std::map</code> podem ser feitas com <code>std::vector</code> (estrutura exibida posteriormente), mas dependendo do que seja, fazer com <code>std::map</code> pode ser mais fácil e simples, ou mais difícil e complicado.</p>
+<p><code>std::map</code> é uma estrutura de dados que mapeia um dado à outro. Ele é formado por vários pares de chave (<code>key</code>) e valor (<code>value</code>), depois de montado, dada uma chave, a estrutura deverá retornar qual é o valor único que foi atribuído àquela chave.</p>
+<p>Considere a seguinte tabela de dados como exemplo:</p>
+<table><thead><tr><th>Nome</th><th>Idade</th></tr></thead><tbody>
+<tr><td><code>&quot;Alice&quot;</code></td><td>20</td></tr>
+<tr><td><code>&quot;Bruno&quot;</code></td><td>30</td></tr>
+<tr><td><code>&quot;Carol&quot;</code></td><td>40</td></tr>
+<tr><td><code>&quot;Júlia&quot;</code></td><td>50</td></tr>
+<tr><td><code>&quot;Pedro&quot;</code></td><td>50</td></tr>
+</tbody></table>
+<p>Vamos criar um <code>std::map</code> vazio, adicionar cada linha dessa tabela, e então, dado um nome, quermos ter certeza que a estrutura vai retornar a idade correta.</p>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;map&gt;
+#include &lt;string&gt;
+
+int main()
+{
+    // An empty map
+    std::map&lt;std::string, int&gt; ages;
+    // Adding the data
+    ages[&quot;Alice&quot;] = 20;
+    ages[&quot;Bruno&quot;] = 30;
+    ages[&quot;Carol&quot;] = 40;
+    ages[&quot;Júlia&quot;] = 50;
+    ages[&quot;Pedro&quot;] = 50;
+
+    // Outputs: &quot;Alice tem 20 anos.&quot;
+    std::cout &lt;&lt; &quot;Alice tem &quot; &lt;&lt; ages[&quot;Alice&quot;] &lt;&lt; &quot; anos.\n&quot;;
+
+    // Outputs: &quot;Pedro tem 50 anos.&quot;
+    std::cout &lt;&lt; &quot;Pedro tem &quot; &lt;&lt; ages[&quot;Pedro&quot;] &lt;&lt; &quot; anos.\n&quot;;
+
+    ages[&quot;Pedro&quot;] = 51;
+    // &quot;Pedro agora tem 51 anos.&quot;
+    std::cout &lt;&lt; &quot;Pedro agora tem &quot; &lt;&lt; ages[&quot;Pedro&quot;] &lt;&lt; &quot; anos.\n&quot;;
+
+
+    return 0;
+}
+</code></pre>
+<p>Para declarar essa estrutura, é necessário explicitar os tipos de dados das chaves e dos valores, com a seguinte sintaxe:</p>
+<pre><code class="language-cpp">std::map&lt;K, V&gt;
+</code></pre>
+<p>Isso representa um <code>map</code> que possui chaves do tipo <code>K</code> e valores do tipo <code>V</code>, no exemplo acima o mapa foi declarado da seguinte forma:</p>
+<pre><code class="language-cpp">std::map&lt;std::string, int&gt; ages;
+</code></pre>
+<p>Nesse caso, <code>K=std::string</code> e <code>V=int</code>, então <code>std::map&lt;std::string, int&gt;</code> mapeia pares de string e inteiros.</p>
+<p>Também é possível iterar em todos os elementos do <code>map</code>:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;map&gt;
 
