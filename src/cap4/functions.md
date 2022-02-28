@@ -1,0 +1,3 @@
+std::function & lambda
+===
+
