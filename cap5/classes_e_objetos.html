@@ -203,7 +203,11 @@ int main()
         this-&gt;nome = nome;
     }
 </code></pre>
-<p>Onde <code>this</code> é uma variável especial que é um ponteiro para a própria instância da classe em questão. O código acima altera o valor do membro <code>this-&gt;nome</code> para o valor contido na variável <code>nome</code>. Diferente do código anterior, <code>this-&gt;nome</code> primeiro é inicializado com valor vazio, para somente ser alterado dentro do corpo do construtor de <code>Cachorro</code>.</p>
+<p>Onde <code>this</code> é uma variável especial que é um ponteiro para a própria instância da classe em questão. O uso de <code>this</code> é
+opcional dentro do escopo da classe, de forma que é possível se referir à atributos da mesma diretamente.
+O código acima altera o valor do membro <code>nome</code> para o valor contido na variável local <code>nome</code>. Diferente do código
+anterior, <code>this-&gt;nome</code> primeiro é inicializado com valor vazio, para somente ser alterado dentro do corpo do construtor
+de <code>Cachorro</code>.</p>
 <p>Assim como qualquer outra variável em C++, instâncias de classes podem ser alocadas na pilha ou na heap. Para alocar uma instância na pilha, basta seguir o procedimento dos exemplos anteriores, copiado abaixo apenas para facilitar a leitura:</p>
 <pre><code class="language-c++">int main()
 {
