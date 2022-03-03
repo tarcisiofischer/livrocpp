@@ -76,7 +76,11 @@ Note que o `: nome(nome)` está ANTES da abertura do escopo do corpo do construt
     }
 ```
 
-Onde `this` é uma variável especial que é um ponteiro para a própria instância da classe em questão. O código acima altera o valor do membro `this->nome` para o valor contido na variável `nome`. Diferente do código anterior, `this->nome` primeiro é inicializado com valor vazio, para somente ser alterado dentro do corpo do construtor de `Cachorro`.
+Onde `this` é uma variável especial que é um ponteiro para a própria instância da classe em questão. O uso de `this` é
+opcional dentro do escopo da classe, de forma que é possível se referir à atributos da mesma diretamente.
+O código acima altera o valor do membro `nome` para o valor contido na variável local `nome`. Diferente do código
+anterior, `this->nome` primeiro é inicializado com valor vazio, para somente ser alterado dentro do corpo do construtor
+de `Cachorro`.
 
 Assim como qualquer outra variável em C++, instâncias de classes podem ser alocadas na pilha ou na heap. Para alocar uma instância na pilha, basta seguir o procedimento dos exemplos anteriores, copiado abaixo apenas para facilitar a leitura:
 
