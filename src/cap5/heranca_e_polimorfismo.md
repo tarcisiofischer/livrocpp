@@ -282,7 +282,7 @@ int main()
 ```
 
 Utiliza-se um `std::vector` de `unique_ptr` neste exemplo pois não é possível criar um `std::vector<ElementoGrafico>` (já que
-trata-se de uma _interface_) e nem um `std::vector<ElementoGrafico&>` (Pois não é possível criar um `vector` de referências).
+trata-se de uma _interface_) e nem um `std::vector<ElementoGrafico&>` (já que não é possível criar um `vector` de referências).
 A última alternativa seria `std::vector<ElementoGrafico*>`, que funcionaria normalmente, exceto pelo fato de que seria
 necessário fazer o gerenciamento da memória de alguma forma. Para delegar esse gerenciamento, decide-se utilizar os
 _smart pointers_ (nesse caso `unique_ptr`) de forma a simplificar o código final.
