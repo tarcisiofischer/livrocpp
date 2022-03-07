@@ -132,7 +132,7 @@ que __as duas__ chamadas retornarem o texto `Comportamento da classe mae.`.
 Uma classe pode possuir métodos virtuais sem implementação, como no próximo exemplo. Classes com pelo menos um método
 virtual sem implementação não podem ser instanciadas. Ou seja, não é possível construir um objeto cujo tipo seja uma
 classe com métodos sem implementação. Classes cujos métodos são todos virtuais e sem implementação são chamadas
-_interfaces_. Classes que contenham pelo menos um método com implementação são chamadas _abstratas_. Portanto, no
+_interfaces_. Classes que contenham pelo menos um método com implementação são chamadas _classes abstratas_. Portanto, no
 exemplo abaixo a classe `ClasseInterface` é uma interface.
 
 ```c++
