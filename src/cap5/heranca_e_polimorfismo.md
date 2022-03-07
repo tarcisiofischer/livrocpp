@@ -1,7 +1,7 @@
 Herança e Polimorfismo
 ===
 
-Chama-se _herança_ o mecanismo que permite uma classe herdar membros (métodos
+Chama-se _herança_ o mecanismo que permite a uma classe herdar membros (métodos
 e atributos) de outra classe. Tal mecanismo permite reaproveitar código comum entre classes filhas. Porém, uma vantagem
 ainda mais importante é a possibilidade de criar _interfaces_.
 
