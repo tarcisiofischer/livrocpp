@@ -28,7 +28,7 @@
     - [Algoritmos](cap4/algoritmos.md)
 - [Programação orientada a objetos](cap5/introducao.md)
     - [Classes e objetos](cap5/classes_e_objetos.md)
-    - [Herança e polimorfismo]()
+    - [Herança e polimorfismo](cap5/heranca_e_polimorfismo.md)
     - [Composição vs herança]()
     - [Tratamento de erros e exceções]()
     - [Sobrecarga de operadores]()
