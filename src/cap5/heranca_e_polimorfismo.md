@@ -63,7 +63,7 @@ int main()
 O exemplo é extremamente simples, e serve apenas para ilustrar a sintaxe de herança em C++ e iniciar um contato do leitor
 sobre esses aspectos da linguagem. Note que ambas as instâncias `objeto_1` e `objeto_2` podem invocar o método
 `metodo_1`, e apenas a instância da classe `ClasseFilha` pode invocar o método `metodo_2`. Isso ocorre porque `objeto_2`
-é uma instância da classe `ClasseFilha`, que possui tanto os métodos e atributos de `ClasseMae` quanto àqueles
+é uma instância da classe `ClasseFilha`, que possui tanto os métodos e atributos de `ClasseMae` quanto aqueles
 referentes à própria classe `ClasseFilha`.
 
 O construtor da classe `ClasseFilha` precisa invocar o construtor da classe mãe (`ClasseMae`) de forma a construir
