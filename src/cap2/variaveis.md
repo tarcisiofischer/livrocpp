@@ -28,7 +28,7 @@ int main()
 }
 ```
 
-Em C++, o tipo `string`, para representar textos, não é um tipo primitivo. Por isso, existe o tipo `std::string` na biblioteca padrão do C++ (_stdlib_). Para utilizá-lo, é necessário incluir o header `<string>`, da mesma forma que incluímos `<iostream>` anteriormente para podermos escrever na tela.
+Em C++, o tipo `string`, para representar textos, não é um tipo primitivo. Para isso, existe o tipo `std::string` na biblioteca padrão do C++ (_stdlib_). Para utilizá-lo, é necessário incluir o header `<string>`, da mesma forma que incluímos `<iostream>` anteriormente para podermos escrever na tela.
 
 ```cpp
 #include <string>
@@ -48,4 +48,4 @@ int main()
 
 Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`.
 Isto causa um pouco de confusão, e será melhor explicado adiante.
-Por ora, mantenha em mente as formas de declarar vistas acima (Perceba o sufixo "s" no terceiro caso utilizando `auto`!)
+Por ora, mantenha em mente as formas de declarar vistas acima (perceba o sufixo "s" no terceiro caso utilizando `auto`!)
