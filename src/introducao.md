@@ -10,7 +10,7 @@ C++ é uma linguagem de programação de propósito geral, compilada, estaticame
 
 ## Ferramentas necessárias
 
-Apesar de este livro focar no ensino de C++ moderno, é necessário se preocupar com algumas questões técnicas relacionadas ao ferramental. A princípio, é possível utilizar qualquer editor de texto ou IDE (Integrated Development Environment - Ambiente Integrado de Desenvolvimento) para escrever os códigos. É necessário ter em mãos algum compilador para traduzir o código fonte para código executável. Existem diferentes implementações de compiladores para C++. Na maior parte dos casos, não há distinção de uso entre os compiladores. Nos raros casos onde isso não é verdade, este livro deixará claro no texto as eventuais diferenças.
+Apesar de este livro focar no ensino de C++ moderno, é necessário se preocupar com algumas questões técnicas relacionadas ao ferramental. A princípio, é possível utilizar qualquer editor de texto ou IDE (Integrated Development Environment - Ambiente Integrado de Desenvolvimento) para escrever os códigos. É necessário ter em mãos algum compilador para traduzir o código-fonte para código executável. Existem diferentes implementações de compiladores para C++. Na maior parte dos casos, não há distinção de uso entre os compiladores. Nos raros casos onde isso não é verdade, este livro deixará claro no texto as eventuais diferenças.
 
 Fica a cargo do leitor procurar e escolher as ferramentas de preferência para seguir com a leitura. Em ambiente Linux, os compiladores mais comuns são o GCC e o Clang. Em ambiente Windows, os compiladores mais comuns são o Microsoft Visual C++ e o Intel C++ Compiler.
 
