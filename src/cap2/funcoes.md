@@ -4,7 +4,7 @@ Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao 
 
 Elas servem para que não precisemos reescrever o mesmo código múltiplas vezes, e permitem que sigamos o princípio do _Não Se Repita_ ([Don't repeat yourself](https://pt.wikipedia.org/wiki/Don%27t_repeat_yourself) - DRY).
 
-Funções podem ou não receper _parâmetros_, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada, e eles aparecem entre parênteses após o nome da função, separados por vírgula.
+Funções podem ou não receber _parâmetros_, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada, e eles aparecem entre parênteses após o nome da função, separados por vírgula.
 
 Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi chamada. Abaixo um exemplo de função:
 
