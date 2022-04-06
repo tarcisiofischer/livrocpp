@@ -57,7 +57,7 @@ Este livro segue a seguinte notação:
 
 Alguns comandos básicos para o terminal:
 
-* `pwd`: Retorna a localização da pasta que você está nesse momento
+* `pwd`: Retorna o caminho da pasta em que você está nesse momento
 * `cd`: Muda de pasta ("Change Directory")
 * `mkdir`: Cria uma pasta ("Make Directory")
 * `touch`: Cria um arquivo
