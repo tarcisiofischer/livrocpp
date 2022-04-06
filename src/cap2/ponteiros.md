@@ -40,8 +40,11 @@ int main()
    int* b = &a;
    *b = 9;
    std::cout << a << std::endl;
+   // Saída: 9
    std::cout << b << std::endl;
+   // Saída: um endereço de memória (como 0x7ffcf973efb8 por exemplo)
    std::cout << *b << std::endl;
+   // Saída: 9
    return 0;
 }
 ```
