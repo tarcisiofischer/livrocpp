@@ -1,14 +1,22 @@
 # Variáveis
 
-C++ é uma linguagem de programação estaticamente tipada. Isso significa que todas as variáveis possuem um tipo, e o tipo da variável não muda, até que ela deixe de existir (nos referimos a isso como "tempo de vida", ou "_lifetime_", de uma variável). Em C++, a definição de uma variável se dá da seguinte forma:
+Uma variável é um meio de armazenar valores e atribuir nomes a eles; de modo mais técnico, variáveis são um espaço de memória no seu computador usado para guardar informações, que podem ser de vários _tipos_: números, caracteres, texto, entre outros. Graças a isso, diz-se que C++ é uma linguagem de programação _tipada_.
+
+Em C++, todas as variáveis possuem um tipo, e o tipo da variável _não muda_, até que ela deixe de existir (nos referimos a isso como o "tempo de vida", ou "_lifetime_", de uma variável). Diz-se então que C++ é uma linguagem de programação _estaticamente_ tipada.
+
+Variáveis são definidas da seguinte forma:
 
 ```cpp
 int main()
 {
     int some_int = 8;
+    // A variávei de nome some_int é do tipo inteiro (int) e possui o valor 8
     float some_float = 9.2;
+    // A variávei de nome some_float é do tipo ponto flutuante (float) e possui o valor 9.2
     char some_char = 'a';
+    // A variávei de nome some_int é do tipo caractere (char) e possui o valor 'a'
     bool some_bool = true;
+    // A variávei de nome some_int é do tipo booleano (bool) e possui o valor true
 
     return 0;
 }
@@ -16,7 +24,7 @@ int main()
 
 O tempo de vida de uma variável é delimitado por seu escopo. O escopo de uma variável é determinado pelo bloco que a contém, delimitado por chaves (`{}`). O exemplo anterior possui quatro variáveis, cada uma de um tipo diferente, e todas elas estão no escopo da função "main". Uma variável chega ao fim do seu tempo de vida ao final do escopo que a contém. Se uma variável está fora de qualquer escopo, ela é chamada de _variável global_.
 
-Alternativamente, C++ moderno (do padrão C++11 em diante) traz uma sintaxe alternativa para definir o tipo das variáveis, por meio da palavra chave `auto`. Dessa forma, não é necessário explicitar o tipo das variáveis. Note que a variável ainda possui um tipo bem definido. A única diferença é que o tipo é determinado automaticamente em tempo de compilação, através de um processo chamado _inferência_:
+Alternativamente, C++ moderno (do padrão C++11 em diante) traz uma sintaxe alternativa para definir o tipo das variáveis, por meio da palavra chave `auto`. Dessa forma, não é necessário explicitar o tipo das variáveis. Note que a variável ainda possui um tipo bem definido. A única diferença é que o tipo é determinado automaticamente em tempo de compilação (compile time), através de um processo chamado _inferência_:
 
 ```cpp
 int main()
@@ -46,6 +54,6 @@ int main()
 }
 ```
 
-Note que um literal de texto entre aspas duplas como `"my string"` não é do tipo `std::string`.
+Note que um _literal de texto_ entre aspas duplas como `"my string"` não é do tipo `std::string`.
 Isto causa um pouco de confusão, e será melhor explicado adiante.
 Por ora, mantenha em mente as formas de declarar vistas acima (perceba o sufixo "s" no terceiro caso utilizando `auto`!)
