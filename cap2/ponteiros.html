@@ -165,7 +165,7 @@ int main()
 </code></pre>
 <p>Os endereços na tabela estão em hexadecimal, pois é a forma comum de representar endereços de memória. São valores meramente ilustrativos, de forma que, caso você execute o programa no seu computador, irá ter resultados diferentes.</p>
 <p>Apesar do uso do mesmo simbolo (<code>&amp;</code>), nesse caso <code>&amp;a</code> não é uma referência. Essa distinção é importante: Caso <code>&amp;</code> esteja ao lado de um tipo (<code>int</code>, <code>double</code>, <code>Point</code>, etc...) tem-se uma referência. Por outro lado, caso <code>&amp;</code> esteja ao lado do nome de uma variável (como no caso acima), lê-se &quot;endereço de...&quot; (no exemplo, &quot;endereço de <code>a</code>&quot;).</p>
-<p>O operador <code>*</code> aplicado à uma variável cujo tipo é um ponteiro, retorna o valor apontado por aquela variável, da seguinte forma:</p>
+<p>O operador <code>*</code> aplicado a uma variável cujo tipo é um ponteiro, retorna o valor apontado por aquela variável, da seguinte forma:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
@@ -174,14 +174,17 @@ int main()
    int* b = &amp;a;
    *b = 9;
    std::cout &lt;&lt; a &lt;&lt; std::endl;
+   // Saída: 9
    std::cout &lt;&lt; b &lt;&lt; std::endl;
+   // Saída: um endereço de memória (como 0x7ffcf973efb8 por exemplo)
    std::cout &lt;&lt; *b &lt;&lt; std::endl;
+   // Saída: 9
    return 0;
 }
 </code></pre>
 <p>As variáveis criadas até agora nos exemplos desse livro são todas criadas numa região de memória denominada <strong>stack</strong>. O gerenciamento dessa memória é feito automaticamente, ou seja, as variáveis são criadas e alocadas na região da stack ao entrar em determinado escopo e, ao sair do mesmo, as variáveis são automaticamente removidas.</p>
-<p>Outra forma de alocar memória é por meio das funções <code>malloc</code> e <code>new</code>. Em C++, sugere-se sempre utilizar <code>new</code> para alocação dinâmica de memória, ao invés de <code>malloc</code>, pois para instâncias de classes o <code>new</code> chama o construtor, fazendo a inicialização da variável, como será visto em capitulos posteriores.</p>
-<p>Variáveis alocadas com <code>new</code> e <code>malloc</code> são colocadas em uma região de memória denominada <strong>heap</strong>. Diferente da stack, essas variáveis não são removidas automaticamente ao sairem do escopo corrente. O gerenciamento do tempo de vida desse tipo de variável deve ser feito pelo programador. O programador deve devolver a memória ao sistema operacional após término de uso da variável por meio da função <code>delete</code>, como no exemplo abaixo:</p>
+<p>Outra forma de alocar memória é por meio das funções <code>malloc</code> e <code>new</code>. No geral, <code>malloc</code> é o jeito antigo de gerenciar memória, herdado do C. Em C++, sugere-se sempre utilizar <code>new</code> para alocação dinâmica de memória, ao invés de <code>malloc</code>, pois para instâncias de classes o <code>new</code> chama o construtor, fazendo a inicialização da variável, como será visto em capitulos posteriores.</p>
+<p>Variáveis alocadas com <code>new</code> e <code>malloc</code> são colocadas em uma região de memória denominada <strong>heap</strong>. Diferente da stack, essas variáveis não são removidas automaticamente ao saírem do escopo corrente. O gerenciamento do tempo de vida desse tipo de variável deve ser feito pelo programador. O programador deve devolver a memória ao sistema operacional após término de uso da variável por meio da função <code>delete</code>, como no exemplo abaixo:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
  
 int main()
@@ -193,9 +196,10 @@ int main()
    return 0;
 }
 </code></pre>
-<p>A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável a de tipo <code>int*</code>. A linha 6 mostra o valor apontado por a. A linha 7 deleta (devolve a memória) alocada na linha 5. Não deve-se utilizar uma variável depois que foi feito a deleção da mesma. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.</p>
-<p>Gerenciar memória da heap não é um problema trivial. O mal gerenciamento da memória pode ocasionar em uma excessiva utilização da memória RAM, como é o caso dos vazamentos de memória (<strong>memory leaks</strong>), que é quando o programador &quot;esquece&quot; de devolver a memória.</p>
-<p>Smart pointers são estruturas de dados que auxiliam no gerenciamento de dados alocados na heap. Basicamente, a estrutura aloca a variável na heap e, ao não ser mais utilizada, remove automaticamente a mesma. O exemplo abaixo é trivial, e apenas mostra o funcionamento da infraestrutura, mas não consegue captar o valor de seu uso. O uso de ponteiros e alocação dinâmica é especialmente relevante nos casos de interfaceamento com bibliotecas de baixo nível (por exemplo, funções C), ou no caso de uso de polimorfismo em programação orientada a objetos em C++, tema que será discutido posteriormente nesse livro.</p>
+<p>A linha 5 faz a alocação dinâmica de uma variável do tipo int, inicializada com valor 3, e atribui o endereço dessa variável alocada para a variável <code>a</code> de tipo <code>int*</code>. A linha 6 mostra o valor apontado por <code>a</code>. A linha 7 deleta (devolve) a memória alocada na linha 5. Não deve-se utilizar uma variável depois que foi deletada. No caso de sistemas operacionais de propósito geral, como Windows e Linux, toda a memória alocada que não foi deletada é automaticamente devolvida no momento que o programa termina.</p>
+<p>Gerenciar memória da heap não é um problema trivial. O mau gerenciamento da memória pode ocasionar em uma excessiva utilização da memória RAM, como é o caso dos vazamentos de memória (<strong>memory leaks</strong>), que é quando o programador &quot;esquece&quot; de devolver a memória.</p>
+<p>Smart pointers são estruturas de dados que auxiliam no gerenciamento de dados alocados na heap. Basicamente, a estrutura aloca a variável na heap e, ao não ser mais utilizada, a remove automaticamente. De um modo geral, é boa prática de C++ utilizar smart pointers em abundância.</p>
+<p>O exemplo abaixo é trivial, e apenas mostra o funcionamento da infraestrutura, mas não consegue captar por completo o valor de usar smart pointers. O uso de ponteiros e alocação dinâmica é especialmente relevante nos casos de interfaceamento com bibliotecas de baixo nível (por exemplo, funções C), ou no caso de uso de polimorfismo em programação orientada a objetos em C++, tema que será discutido posteriormente nesse livro.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 #include &lt;memory&gt;
 

@@ -152,7 +152,7 @@
     return 0;
 }
 </code></pre>
-<p>Esse capítulo apresenta a diferença entre os modificadores <code>const</code>, <code>constexpr</code> e <code>consteval</code>, considerando seu uso em relação à variáveis e funções. O uso do modificador <code>constinit</code> e do modificador <code>const</code> em relação à métodos de classes será abordado apenas em capítulos posteriores.</p>
+<p>Este capítulo apresenta a diferença entre os modificadores <code>const</code>, <code>constexpr</code> e <code>consteval</code>, considerando seu uso em relação à variáveis e funções. O uso do modificador <code>constinit</code> e do modificador <code>const</code> em relação a métodos de classes será abordado apenas em capítulos posteriores.</p>
 <p>Para compreender a diferença entre os modificadores, considere o seguinte código:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -171,8 +171,8 @@ int main()
     std::cout &lt;&lt; x;
 }
 </code></pre>
-<p>Ao invocar a função <code>sum</code>, a soma dos valores <code>a</code> e <code>b</code> será computada. Esse calculo será feito em <strong>tempo de execução</strong>. Isso significa que a soma será efetuada apenas quando o usuário executar o programa. Por outro lado, ao utilizar <code>constexpr</code> (introduzido no C++11) na função <code>sum</code>, a função potencialmente será executada em <strong>tempo de compilação</strong>, ou seja, o valor de <code>x</code> talvez seja computado no momento de compilação do programa, caso as tenha-se disponível as informações necessárias para tal.</p>
-<p>Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível, específica para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para os casos (a) sem o uso de <code>constexpr</code> e para o caso (b) com o uso de <code>constexpr</code>:</p>
+<p>Ao invocar a função <code>sum</code>, a soma dos valores <code>a</code> e <code>b</code> será computada. Esse calculo será feito em <strong>tempo de execução</strong> (runtime). Isso significa que a soma será efetuada apenas quando o usuário executar o programa. Por outro lado, ao utilizar <code>constexpr</code> (introduzido no C++11) na função <code>sum</code>, a função potencialmente será executada em <strong>tempo de compilação</strong> (compile time), ou seja, o valor de <code>x</code> talvez seja computado no momento de compilação do programa, caso as informações necessárias para tal estejam disponíveis.</p>
+<p>Para compreender esse processo, é importante lembrar que todo código C++ é compilado, gerando um arquivo binário que contém o código de máquina. Esse arquivo binário contém instruções em linguagem de baixo nível específicas para cada processador. Mostra-se abaixo uma comparação de dois trechos de código de baixo nível gerados pelo exemplo anterior para o caso (a) sem o uso de <code>constexpr</code> e para o caso (b) com o uso de <code>constexpr</code>:</p>
 <p>a) Sem o uso de <code>constexpr</code>:</p>
 <pre><code class="language-asm">mov     esi, 2
 mov     edi, 1
@@ -182,7 +182,7 @@ mov     DWORD PTR [rbp-8], eax
 <p>b) Com o uso de <code>constexpr</code>:</p>
 <pre><code class="language-asm">mov     DWORD PTR [rbp-8], 3
 </code></pre>
-<p>Não se preocupe caso não compreenda totalmente os códigos de máquina apresentados acima. Eles apenas ilustram a diferença de código gerado. No caso (a), a linha <code>call sum(int, int)</code> mostra que a função <code>sum</code> será de fato invocada em tempo de execução. Já no caso (b), uma única linha é gerada, contendo o resultado (<code>3</code>) que foi, portanto, calculado em tempo de compilação e por isso aparece diretamente no código gerado.</p>
+<p>Não se preocupe caso não compreenda totalmente os códigos de máquina apresentados acima; trata-se de uma linguagem chamada <em>assembly</em>, extremamente próxima da linguagem de máquina. O código assembly está sendo usado apenas para ilustrar a diferença de código gerado: menos linhas aqui significa código mais eficiente. No caso (a), a linha <code>call sum(int, int)</code> mostra que a função <code>sum</code> será de fato invocada em tempo de execução. Já no caso (b), uma única linha é gerada, contendo o resultado (<code>3</code>) que foi, portanto, calculado em tempo de compilação e por isso aparece diretamente no código gerado.</p>
 <p>É importante notar que <code>constexpr</code> só será executado em tempo de compilação caso seja possível conhecer todos os dados necessários para sua execução. Ainda no exemplo, considerando o caso (c), nota-se que utilizar uma variável não-<code>const</code> em uma função contendo o modificador <code>constexpr</code> ocasionará no seguinte código de máquina gerado:</p>
 <p>c) Com uso de <code>constexpr</code>, porém, a variável <code>a</code> não é <code>const</code></p>
 <pre><code class="language-asm">mov     DWORD PTR [rbp-4], 1
@@ -203,15 +203,15 @@ consteval int sum(int a, int b)
 
 int main()
 {
-    // int a = 1; // Caso (a)
+    // int a = 1; // Caso (a), gera erro de compilação
     constexpr int a = 1; // Caso (b)
     // const int a = 1; // Caso (c)
     int x = sum(a, 2);
     std::cout &lt;&lt; x;
 }
 </code></pre>
-<p>No exemplo acima, o caso (a) ocasionará em um erro de compilação. Os casos (b) e (c) geram o valor da variável <code>x</code> em tempo de compilação garantidamente. Note que, apesar dos casos (b) e (c) produzirem o mesmo código nesse caso, o uso de <code>const</code> e de <code>constexpr</code> não é equivalente, como será visto à seguir.</p>
-<p>Basicamente, o modificador <code>const</code> aplicado à uma variável declara que aquela variável não será modificada em tempo de execução. O modificador <code>constexpr</code> aplicado à uma variável declara que aquela variável será computada em tempo de compilação e não será modificada em tempo de execução. Dessa forma, o caso (a) abaixo irá compilar normalmente, pois a variável <code>a</code> irá conter uma cópia constante da variável <code>var</code>, em tempo de execução. Já o caso (b) não irá compilar, pois a variável <code>a</code> não pode ser processada em tempo de compilação, visto que a variável <code>var</code> poderia ter sido modificada em algum momento no código.</p>
+<p>No exemplo acima, o caso (a) ocasionará em um erro de compilação. Os casos (b) e (c) geram o valor da variável <code>x</code> em tempo de compilação garantidamente. Note que, apesar dos casos (b) e (c) produzirem o mesmo código nesse caso, o uso de <code>const</code> e de <code>constexpr</code> não é equivalente, como será visto a seguir.</p>
+<p>Basicamente, o modificador <code>const</code> aplicado a uma variável declara que aquela variável não será modificada em tempo de execução. O modificador <code>constexpr</code> aplicado a uma variável declara que aquela variável será computada em tempo de compilação e não será modificada em tempo de execução. Dessa forma, o caso (a) abaixo irá compilar normalmente, pois a variável <code>a</code> irá conter uma cópia constante da variável <code>var</code>, em tempo de execução. Já o caso (b) não irá compilar, pois a variável <code>a</code> não pode ser processada em tempo de compilação, visto que a variável <code>var</code> poderia ter sido modificada em algum momento no código.</p>
 <pre><code class="language-cpp">int main()
 {
     int var = 1;

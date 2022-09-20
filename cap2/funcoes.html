@@ -144,9 +144,10 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="funções"><a class="header" href="#funções">Funções</a></h1>
-<p>Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao código, utilizamos funções. Funções extraem parcelas do código para fora do local onde ela é utilizada.</p>
-<p>Funções podem ou não receper parâmetros, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada.</p>
-<p>Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi invocada. Abaixo um exemplo de função:</p>
+<p>Para deixar partes do programa reutilizáveis, e para adicionar legibilidade ao código, utilizamos funções. Funções são pedaços de código que são definidas uma vez em um lugar, mas que podem ser reutilizadas quantas vezes quiser em outros lugares do código.</p>
+<p>Elas servem para que não precisemos reescrever o mesmo código múltiplas vezes, e permitem que sigamos o princípio do <em>Não Se Repita</em> (<a href="https://pt.wikipedia.org/wiki/Don%27t_repeat_yourself">Don't repeat yourself</a> - DRY).</p>
+<p>Funções podem ou não receber <em>parâmetros</em>, que são usados para levar informações de um escopo para outro. Os parâmetros são, por padrão, cópias das variáveis que são levadas ao escopo da função invocada, e eles aparecem entre parênteses após o nome da função, separados por vírgula.</p>
+<p>Funções possuem também um valor de retorno, que possibilita capturar uma variável concebida dentro do escopo da função para o local onde ela foi chamada. Abaixo um exemplo de função:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int calculate_sum(int a, int b)
@@ -172,8 +173,8 @@ int main()
    return 0;
 }
 </code></pre>
-<p>No código acima, foi definida uma função <code>calculate_sum</code>, que efetua a soma dos valores entre <code>a</code> até <code>b</code> (inclusive), e retorna essa soma. O tipo de retorno de uma função é determinado em sua assinatora. A assinatura de uma função é o conjunto contendo seu nome, seu tipo e seus parâmetros, por exemplo, <code>int calculate_sum(int a, int b)</code>.</p>
-<p>As funções devem ser pelo menos declaradas antes de serem utilizadas. Por exemplo, se movermos a definição da função <code>calculate_sum</code> para baixo da função <code>main</code>, teriamos um erro de compilação. Existe uma distinção entre declarar uma função e definir uma função. Declarar uma função é apenas mostrar que ela existe, sem determinar seu funcionamento (Ou seja, sem adicionar o corpo de código dela). Definir uma função é adicionar um corpo de código à uma declaração.</p>
+<p>No código acima, foi definida uma função <code>calculate_sum</code>, que necessita de dois parâmetros do tipo int <code>a</code> e <code>b</code>, e que efetua a soma dos valores de <code>a</code> a <code>b</code>, e retorna essa soma (por exemplo, se <code>a</code> for 2 e <code>b</code> for 5, a soma será 2 + 3 + 4 + 5, e o valor retornado será 14). O tipo de retorno de uma função é determinado em sua <em>assinatura</em>. A assinatura de uma função é o conjunto contendo seu nome, seu tipo e seus parâmetros, por exemplo, <code>int calculate_sum(int a, int b)</code>.</p>
+<p>As funções devem ser pelo menos <em>declaradas</em> antes de serem utilizadas. Por exemplo, se movermos a definição da função <code>calculate_sum</code> para baixo da função <code>main</code>, teriamos um erro de compilação. Existe uma distinção entre <em>declarar</em> uma função e <em>definir</em> uma função. Declarar uma função é apenas mostrar que ela existe, sem determinar seu funcionamento (ou seja, sem adicionar o corpo de código dela). Definir uma função é adicionar um corpo de código a uma declaração.</p>
 <p>No exemplo acima, estamos definindo a função <code>calculate_sum</code>. Um exemplo de separação entre a declaração e a definição de função é mostrado abaixo.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -204,10 +205,10 @@ int calculate_sum(int a, int b)
    return sum;
 }
 </code></pre>
-<p>Caso a função não retorne nenhum valor, é possível utilizar a palavra reservada <code>void</code>, conforme exemplo abaixo. Funções com tipo de retorno <code>void</code> podem (opcionalmente) omitir a chamada <code>return</code>.</p>
+<p>Caso a função não retorne nenhum valor, é possível utilizar a palavra reservada <code>void</code>, conforme exemplo abaixo. Funções com tipo de retorno <code>void</code> podem (opcionalmente) omitir a chamada <code>return</code>, indicando o término da função. Enquanto funções com retornos específicos são particularmente úteis para obter o resultado de uma operação para que façamos algo com ele, funções do tipo <code>void</code> são particularmente úteis para executar uma ação. No exemplo anterior, queríamos obter um resultado, um número que representa uma soma, e fizemos algo mais com ele em <code>main()</code>. No exemplo seguinte, a única ação sendo executada é printar na tela o texto &quot;Olá Mundo!&quot;, e não queremos fazer nenhuma operação com este texto depois que a função é executada.</p>
 <pre><code class="language-cpp">void say_hello()
 {
-   std::cout &lt;&lt; &quot;Ola Mundo!&quot; &lt;&lt; std::endl;
+   std::cout &lt;&lt; &quot;Olá Mundo!&quot; &lt;&lt; std::endl;
 
    // Opcional:
    // return

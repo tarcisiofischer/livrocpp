@@ -145,7 +145,7 @@
                     <main>
                         <h1 id="estruturas-de-controle"><a class="header" href="#estruturas-de-controle">Estruturas de controle</a></h1>
 <h2 id="a-estrutura-if--else-if--else"><a class="header" href="#a-estrutura-if--else-if--else">A estrutura &quot;<code>if</code>&quot; / &quot;<code>else if</code>&quot; / &quot;<code>else</code>&quot;</a></h2>
-<p>Estruturas de controle são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura <code>if</code>/<code>else if</code>/<code>else</code>. Ela nos permite tomar decisões e executar instruções diferentes dada uma ou mais condições. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:</p>
+<p>Estruturas de controle (control structures, control flow) são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura <code>if</code>/<code>else if</code>/<code>else</code>. Ela nos permite tomar decisões e executar instruções diferentes dada uma ou mais condições. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:</p>
 <ul>
 <li>Clientes abaixo de 10 anos de idade não pagam.</li>
 <li>Clientes acima de 50 anos pagam meia-entrada.</li>
@@ -171,10 +171,10 @@ int main()
    }
 }
 </code></pre>
-<p>O exemplo acima introduz também uma forma de ler dados de entrada providenciados pelo usuário. Note que a variável <code>age</code> é inicializada com o valor 0. Porém, a linha <code>std::cin &gt;&gt; age;</code> permite ao usuário que estiver executando o programa informar um novo valor para <code>age</code>. Desta forma, o valor de <code>age</code> que será utilizado pelo programa será conhecido apenas durante a execução.</p>
-<p>No exemplo, a linha 10 sempre será executada, depois que o usuário informar o valor de age. Porém, a linha 13 será executada apenas se (<code>if</code>) a variável <code>age</code> tiver um valor abaixo de 10. A construção <code>else if</code> permite fazer um novo teste caso o teste anterior falhe, ou seja, a condição não seja verdadeira. Por outro lado, utilizar apenas <code>else</code> faz com que, caso nenhuma das condições anteriores tenha sido satisfeita, o código dentro do bloco seguinte execute garantidamente. Experimente alterar o valor de <code>age</code> para fazer com que o programa siga cada uma das possibilidades.</p>
+<p>O exemplo acima introduz também uma forma de ler dados de entrada (input) providenciados pelo usuário. Note que a variável <code>age</code> é inicializada com o valor 0. Porém, a linha <code>std::cin &gt;&gt; age;</code> permite ao usuário que estiver executando o programa informar um novo valor para <code>age</code>. Desta forma, o valor de <code>age</code> que será utilizado pelo programa será conhecido apenas durante a execução.</p>
+<p>No exemplo, a linha 10 sempre será executada depois que o usuário informar o valor de <code>age</code>. Porém, a linha 13 será executada apenas se (<code>if</code>) a variável <code>age</code> tiver um valor abaixo de 10. A construção <code>else if</code> permite fazer um novo teste caso o teste anterior falhe, ou seja, a condição não seja verdadeira. Por outro lado, utilizar apenas <code>else</code> faz com que, caso nenhuma das condições anteriores tenha sido satisfeita, o código dentro do bloco seguinte execute garantidamente. Experimente alterar o valor de <code>age</code> para fazer com que o programa siga cada uma das possibilidades.</p>
 <h2 id="as-estruturas-while-e-for"><a class="header" href="#as-estruturas-while-e-for">As estruturas <code>while</code> e <code>for</code></a></h2>
-<p>As estruturas de controle <code>while</code> e <code>for</code> servem para repetir um bloco de código até que uma condição seja satisfeita. No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (<code>while</code>) a resposta não for <code>s</code> (sim) nem <code>n</code> (não), a mesma pergunta aparecerá para o usuário. Uma vez que o usuário der uma resposta válida, um <code>if</code> imprime a reação correspondente à resposta do usuário.</p>
+<p>As estruturas de controle <code>while</code> e <code>for</code> servem para repetir um bloco de código até que uma condição seja satisfeita. Este tipo específico de estrutura de controle se chama <em>laço</em> (loop). No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (<code>while</code>) a resposta não for <code>s</code> (sim) nem <code>n</code> (não), a mesma pergunta aparecerá para o usuário. Uma vez que o usuário der uma resposta válida, um <code>if</code> imprime a reação correspondente à resposta do usuário.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
@@ -193,7 +193,7 @@ int main()
    }
 }
 </code></pre>
-<p>Em geral, usamos o laço <code>while</code> quando não existe uma definição clara de quantas vezes precisamos rodar o laço, apenas uma condição de continuidade que deve eventualmente tornar-se falsa.</p>
+<p>Em geral, usamos o laço <code>while</code> quando não existe uma definição clara de quantas vezes precisamos rodar o laço, apenas uma condição de continuidade que deve em algum momento posterior tornar-se falsa.</p>
 <p>O laço <code>for</code> adiciona legibilidade ao código quando temos uma inicialização e um passo que deve ser executado em toda iteração do laço. Tudo que é feito com um laço <code>for</code> pode também ser feito com um laço <code>while</code>, e vice versa. A diferença entre eles é que, em alguns casos, a leitura do código fica mais natural com um ou com outro. Ao contrário do <code>while</code>, o <code>for</code> se presta mais quando sabemos exatamente quantas vezes precisamos repetir as operações. No código abaixo, o laço <code>for</code> itera com valores de <code>i = a</code> até valor de <code>i = b</code>, somando 1 ao valor de <code>i</code> a cada iteração. Uma forma alternativa e mais compacta de escrever <code>i = i + 1</code> seria escrever <code>++i</code>.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -241,7 +241,7 @@ int main()
 }
 </code></pre>
 <p>Assim que a execução do programa atinge a instrução <code>break</code>, o laço é imediatamente interrompido; o <code>i</code> deixa de ser incrementado e vamos direto para nosso <code>return</code>.</p>
-<p>Caso queiramos interromper a execução do corpo (a instrução composta—delimitada por chaves) de nosso laço mas continuar iterando, devemos utilizar a instrução <code>continue</code>:</p>
+<p>Caso queiramos interromper a execução do corpo (a instrução composta, delimitada por chaves) de nosso laço mas continuar iterando, devemos utilizar a instrução <code>continue</code>:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
@@ -264,7 +264,7 @@ int main()
 <p>Perceba que, como <code>i = i + 1</code> não faz parte do corpo do laço, ele é executado independentemente do <code>continue</code>. Lembre-se que isso não se aplica ao <code>break</code>.</p>
 <p>É possível que você não veja vantagens imediatas no uso dessas duas instruções, mas elas podem simplificar o código e às vezes são até necessárias.</p>
 <h2 id="devo-utilizar--e-"><a class="header" href="#devo-utilizar--e-">Devo utilizar <code>{</code> e <code>}</code>?</a></h2>
-<p>Você pode ter percebido que os corpos das instruções <code>if</code> (e suas partes <code>else</code>), <code>for</code> e <code>while</code> podem ser tanto uma instrução &quot;simples&quot; quanto uma instrução composta. Não é necessário utilizar uma instrução composta quando você já possui apenas uma instrução. Por exemplo, os dois <code>if</code> são equivalentes:</p>
+<p>Você pode ter percebido que o corpo das instruções <code>if</code> (e suas partes <code>else</code>), <code>for</code> e <code>while</code> podem ser tanto uma instrução simples quanto uma instrução composta. Quando estas estruturas de controle consistem apenas de uma instrução, não é obrigatório utilizar chaves. Por exemplo, os dois <code>if</code> seguintes são equivalentes:</p>
 <pre><code class="language-cpp">if (a) {
     b = 5;
 }
@@ -282,7 +282,7 @@ if (a)
     b = 5;
     c = 6; // Ops! Essa instrução não faz parte do if 
 </code></pre>
-<p>Alguns programadores optam por utilizar sempre instruções compostas para evitar surpresas. Há bons argumentos tanto a favor quanto contra isso, portanto ao trabalhar em um projeto preexistente siga padrão já utilizado.</p>
+<p>Alguns programadores optam por utilizar sempre instruções compostas para evitar surpresas. Há bons argumentos tanto a favor quanto contra isso, portanto ao trabalhar em um projeto preexistente siga o padrão de estilo que já esteja sendo utilizado.</p>
 
                     </main>
 

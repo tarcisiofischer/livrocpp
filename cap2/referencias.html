@@ -151,8 +151,9 @@ int main()
 {
     int a = 1;
     int&amp; b = a;
-
+    // Já que a variável 'b' se refere a 'a',
     b = 7;
+    // então atribuir '7' para 'b' significa atribuir '7' para 'a'.
     std::cout &lt;&lt; &quot;a = &quot; &lt;&lt; a &lt;&lt; &quot;, b = &quot; &lt;&lt; b &lt;&lt; std::endl;
 
     return 0;
@@ -176,16 +177,17 @@ int main()
 {
     int my_a = 8;
     std::cout &lt;&lt; my_a &lt;&lt; std::endl;
-
+    // Saída: 8
     wont_change_data(my_a);
     std::cout &lt;&lt; my_a &lt;&lt; std::endl;
-
+    // Saída: 8
     will_change_data(my_a);
     std::cout &lt;&lt; my_a &lt;&lt; std::endl;
+    // Saída: 1
 }
 </code></pre>
 <p>Outro exemplo pode observado no código abaixo. Imagine que <code>Matrix</code> é uma estrutura de dados que representa uma matriz 100x100. A função <code>sum_elements</code> soma todos os elementos dessa matriz.</p>
-<p>O loop na função <code>main</code> foi criado sintéticamente para representar muitas chamadas da função <code>sum_elements</code>. Para cada invocação da função <code>sum_elements</code>, uma instância da estrutura de dados <code>Matrix</code> é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.</p>
+<p>O loop na função <code>main</code> foi criado sinteticamente para representar muitas chamadas da função <code>sum_elements</code>. Para cada invocação da função <code>sum_elements</code>, uma instância da estrutura de dados <code>Matrix</code> é copiada para o contexto da função, apenas para somar o valor de cada um de seus elementos.</p>
 <pre><code class="language-cpp">/**
  * Soma dos elementos de uma matriz 100x100
  * :param Matrix matrix:
@@ -215,9 +217,9 @@ int main()
 }
 </code></pre>
 <p>Uma forma de evitar a cópia dessa estrutura de dados é utilizando uma referência para uma <code>Matrix</code>, ou seja, trocando a assinatura da função para <code>double sum_elements(Matrix&amp; matrix)</code>. Apesar de resolver o problema das cópias desnecessárias, a solução mencionada não é ideal, pois passando uma referência à estrutura <code>Matrix</code>, os dados da estrutura podem ser modificados dentro do escopo da função.</p>
-<p>Normalmente, é interessante evitar funções com esse tipo de &quot;efeito colateral&quot; (&quot;side-effects&quot;), pois a medida que o projeto cresce, isso pode gerar um problema de mantenabilidade. Para ter noção do quanto essas cópias fazem diferença nesse caso, considere a comparação abaixo, extraída a partir de benchmark feito no site <a href="https://quick-bench.com/">Quick Bench</a>.</p>
+<p>Normalmente, é interessante evitar funções com esse tipo de &quot;efeito colateral&quot; (&quot;side effects&quot;), pois à medida que o projeto cresce, isso pode gerar um problema de manutenibilidade. Para ter noção do quanto essas cópias fazem diferença nesse caso, considere a comparação abaixo, extraída a partir de benchmark feito no site <a href="https://quick-bench.com/">Quick Bench</a>.</p>
 <p><img src="./images/benchmark-ref.png" alt="Benchmark" /></p>
-<p>Existem sim alguns programas que usam referências como parâmetros de funções e modificam seus dados. Não há problemas em fazer isso, desde que seja bem documentado ou seja óbvio ao leitor. Por exemplo, no caso acima, não é esperado que uma função de nome <code>sum_elements</code> altere os elemento da matriz, porém em uma função chamada <code>void sum_one_to_all_elements_in(Matrix&amp; m)</code> fica mais claro que todos os elementos da matriz serão alterados.</p>
+<p>Existem sim alguns programas que usam referências como parâmetros de funções e modificam seus dados. Não há problemas em fazer isso, desde que seja bem documentado ou seja óbvio ao leitor. Por exemplo, no caso acima, não é esperado que uma função de nome <code>sum_elements</code> altere os elemento da matriz, porém uma função chamada <code>void sum_one_to_all_elements_in(Matrix&amp; m)</code> deixa mais claro que todos os elementos da matriz serão alterados.</p>
 <p>Uma alternativa para evitar o problema comentado é o uso do modificador <code>const</code>, que faz com que a &quot;variável&quot; em questão seja constante, ou seja, não possa ser alterada durante a execução do programa. Antes de partir para seu uso no caso da função <code>sum_elements</code>, considere o uso de <code>const</code> em um exemplo mais simples:</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
@@ -227,7 +229,7 @@ int main()
    a = 9; // Erro de compilação
 }
 </code></pre>
-<p>O código acima não irá compilar. Isso por que a variável &quot;a&quot; é uma constante, ou seja, não se pode alterar seu valor, como se está tentando fazer na linha 6. Casos comuns de uso de <code>const</code> são, por exemplo, as variáveis matemáticas <code>PI</code> e <code>e</code>. O modificador <code>const</code> pode também ser utilizado em conjunto com referências, criando-se referências constantes, ou seja, não é possível alterar o valor da variável referenciada.</p>
+<p>O código acima não irá compilar. Isso porque a variável &quot;a&quot; é uma constante, ou seja, não se pode alterar seu valor, como se está tentando fazer na linha 6. Casos comuns de uso de <code>const</code> são, por exemplo, as variáveis matemáticas <code>PI</code> e <code>e</code>. O modificador <code>const</code> pode também ser utilizado em conjunto com referências, criando-se referências constantes, ou seja, não é possível alterar o valor da variável referenciada.</p>
 <pre><code class="language-cpp">#include &lt;iostream&gt;
 
 int main()
@@ -238,14 +240,14 @@ int main()
    b = 7; // Erro de compilação: `b` é uma referência const
 }
 </code></pre>
-<p>O código acima não irá compilar. O motivo é que não se pode alterar o valor de &quot;a&quot; por meio da referencia &quot;b&quot;, pois ela é uma referência <code>const</code>. Um detalhe importante a se comentar, é que o modificador <code>const</code> se aplica sempre ao tipo à sua esquerda. Se não houver nada à esquerda, ele se aplica ao tipo à direita. Dessa forma temos:</p>
+<p>O código acima não irá compilar. O motivo é que não se pode alterar o valor de &quot;a&quot; por meio da referência &quot;b&quot;, pois ela é uma referência <code>const</code>. Um detalhe importante a se comentar é que o modificador <code>const</code> se aplica sempre ao tipo à sua esquerda. Se não houver nada à esquerda, ele se aplica ao tipo à direita. Dessa forma temos:</p>
 <ul>
 <li><code>double const&amp; my_data</code>: Cria uma referência para um <code>const double</code></li>
 <li><code>const double&amp; my_data</code>: Cria uma referência para um <code>const double</code> (Igual à anterior)</li>
-<li><code>double &amp;const my_data</code>: Erro de compilação, pois não faz sentido ter uma &quot;referencia const&quot;, visto que referencias não são modificáveis</li>
+<li><code>double &amp;const my_data</code>: Erro de compilação, pois não faz sentido ter uma &quot;referência const&quot;, visto que referências não são modificáveis</li>
 </ul>
-<p>Por fim, voltando ao problema da matriz, quando escrevemos <code>double sum_elements(Matrix&amp; matrix)</code>, evitamos que a matriz seja copiada, e isso é um ponto positivo, em termos de performance. Porém, introduzimos um possível problema: Se a matriz for modificada dentro do escopo da função <code>sum_elements</code>, então a matriz do escopo da função <code>main</code> também será modificada.</p>
-<p>Por convenção, não esperamos que ninguém vá de fato modificar os elementos da matriz naquela função. É possível garantir isso utilizando <code>const&amp;</code>, isto é, se alguém por engano alterar a variável matrix de dentro da função <code>sum_elements</code>, um erro de compilação ocorrerá. A assinatura da função fica da seguinte forma: <code>double sum_elements(Matrix const&amp; matrix)</code>, e nenhuma outra modificação é necessária.</p>
+<p>Por fim, voltando ao problema da matriz, quando escrevemos <code>double sum_elements(Matrix&amp; matrix)</code>, evitamos que a matriz seja copiada, e isso é um ponto positivo, em termos de performance. Porém, introduzimos um possível problema: se a matriz for modificada dentro do escopo da função <code>sum_elements</code>, então a matriz do escopo da função <code>main</code> também será modificada.</p>
+<p>Por convenção, não esperamos que ninguém vá de fato modificar os elementos da matriz naquela função. É possível garantir isso utilizando <code>const&amp;</code>, isto é, se alguém por engano alterar a variável <code>matrix</code> de dentro da função <code>sum_elements</code>, um erro de compilação ocorrerá. A assinatura da função fica da seguinte forma: <code>double sum_elements(Matrix const&amp; matrix)</code>, e nenhuma outra modificação é necessária.</p>
 
                     </main>
 
