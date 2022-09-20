@@ -2,7 +2,7 @@
 
 ## Olá mundo: Uma versão pragmática
 
-O objetivo deste capítulo é introduzir vários conceitos básicos de programação C++ para iniciantes, ao mesmo tempo. Para isso, inicia-se com o clássico código "Olá mundo", conforme abaixo. Apesar de simples, esse código tem muito à ensinar, como veremos. Copie o código abaixo para um arquivo de nome `ola_mundo.cpp`, e salve em algum diretório do seu sistema.
+O objetivo deste capítulo é introduzir vários conceitos básicos de programação C++ para iniciantes, ao mesmo tempo. Estes mesmos conceitos serão melhor elaborados mais pra frente. Iremos iniciar com o clássico código "Olá mundo", que segue abaixo. Apesar de simples, esse código tem muito a ensinar, como veremos. Copie o código abaixo para um arquivo de nome `ola_mundo.cpp`, e salve em algum diretório do seu sistema.
 
 ```cpp
 #include <iostream>
@@ -16,7 +16,7 @@ int main()
 
 Em primeiro lugar, a diretiva `#include` é a forma de incluir em nosso código as declarações necessárias para utilizar código externo. Ao incluir o header `iostream`, temos acesso à função `cout`, dentro do namespace `std`, que serve para escrever dados na tela durante a execução do programa. Seguindo, encontramos a função `main`. Essa função define o ponto de partida de qualquer programa C++. Dentro da função `main`, encontramos a instrução `std::cout` seguida da mensagem "Olá Mundo", que será mostrada na linha de comando. Por fim, temos o retorno da função main. É importante retornar o valor `0`, que significa, por convenção, que o programa terminou com sucesso.
 
-Para executar o programa, é preciso utilizar um programa chamado _compilador_, que executará um processo chamado _compilação_. Este processo é a tradução do código fonte para "código de maquina". No caso de C++, é a tradução do código escrito na linguagem para código executável por nossos computadores. Tente modificar o programa, trocando a mensagem, removendo partes do código e recompilando, verificando os erros que acontecem. Não tenha medo de errar e nem de gerar erros de compilação. Acredite, eles vão acontecer mesmo quando você estiver usando a linguagem com fluência.
+Para executar o programa, é preciso utilizar um programa chamado _compilador_ (compiler), que executará um processo chamado _compilação_ (compilation). Este processo é a tradução do código fonte para "código de máquina". No caso do C++, é a tradução do código escrito na linguagem para código executável por nossos computadores. Tente modificar o programa, trocando a mensagem, removendo partes do código e recompilando, verificando os erros que acontecem. Não tenha medo de errar e nem de gerar erros de compilação. Acredite, eles vão acontecer mesmo quando você estiver usando a linguagem com fluência.
 
 Esta etapa é dependente do ambiente de trabalho que você está utilizando. Apenas para fins ilustrativos, os comandos abaixo mostram o processo de compilação em ambiente Linux, utilizando o GCC.
 
@@ -32,17 +32,18 @@ Apesar do capítulo anterior ser suficiente para um primeiro contato com C++, ta
 
 ### Configurações de ambiente
 
-Nesta parte serão abordados os programas necessários para ter um "Olá mundo" funcional. O primeiro programa que precisamos instalar é o `git` - um sistema de versionamento de código. Seu propósito é que não precisemos perder tempo no futuro buscando informação sobre o código em e-mails, Google Docs ou pendrives (por exemplo). Iniciaremos um repositório git na pasta de projetos e iremos criar um projeto em C++ utilizando o **CMake**.
+Nesta parte serão abordados os programas necessários para ter um "Olá mundo" funcional. O primeiro programa que precisamos instalar é o `git` - um sistema de versionamento de código. Seu propósito é manter um registro facilmente acessável das alterações feitas em um projeto, de modo que não precisemos perder tempo no futuro buscando informação sobre o código em e-mails, Google Docs ou pendrives (por exemplo). Iniciaremos um repositório git na pasta de projetos e iremos criar um projeto em C++ utilizando o **CMake**.
 
 Se você utiliza:
 * Mac
     - Instale o `XCode Command Line Tools`
 * Windows
-    - vá em `www.git-scm.com` e baixe o instalador para windows
+    - vá em `www.git-scm.com` e baixe o instalador para Windows
 * Linux / BSD
     - Utilize o gerenciador de pacotes da sua distribuição para instalar o git
         - Debian, Ubuntu e derivados: apt
         - Fedora e derivados: dnf
+        - openSUSE e derivados: zypper
         - Arch e derivados: pacman
         - Outras: Verifique na documentação de sua distribuição como fazer a instalação
 
@@ -56,12 +57,12 @@ Este livro segue a seguinte notação:
 
 Alguns comandos básicos para o terminal:
 
-* `pwd`: Retorna o endereço da pasta que você está nesse momento
+* `pwd`: Retorna o caminho da pasta em que você está nesse momento
 * `cd`: Muda de pasta ("Change Directory")
 * `mkdir`: Cria uma pasta ("Make Directory")
 * `touch`: Cria um arquivo
-* `ls`: Lista os arquivos da pasta corrente
-* `tree`: Exibe as pastas em forma de arvore
+* `ls`: Lista os arquivos da pasta atual
+* `tree`: Exibe as pastas em forma de árvore
 
 Sugere-se criar uma pasta de projetos dentro da pasta inicial do seu usuário, conforme exemplo:
 
@@ -73,7 +74,7 @@ $ pwd
 /home/user/Projetos/OlaMundo
 ```
 
-Utiliza-se o git para criar um novo repositório dentro da pasta recém criada (veja abaixo). Você pode verificar a existência de uma nova pasta chamada `.git` utilizando o comando `ls`. As opções `-al` servem para exibir arquivos ocultos (`-a`) e para exibir os arquivo em uma lista vertical (`-l`).
+Utiliza-se o git para criar um novo repositório dentro da pasta recém-criada (veja abaixo). Você pode verificar a existência de uma nova pasta chamada `.git` utilizando o comando `ls`. As opções `-al` servem para exibir arquivos ocultos (`-a`) e para exibir os arquivo em uma lista vertical (`-l`).
 
 ```sh
 $ pwd
@@ -87,7 +88,7 @@ drwxr-xr-x 3 user user 4096 Nov  9 16:48 ..
 drwxr-xr-x 7 user user 4096 Nov  9 16:51 .git
 ```
 
-Neste momento, é importante iniciar uma estrutura básica de projeto, com arquivos que não necessariamente compõem o código fonte. Mesmo sendo um código exemplo, algumas padronizações são importantes em qualquer código porque assim outros programadores saibam por onde começar a olhar o seu projeto. Crie o arquivo `README.md` (O nome `README.md` é reconhecido por diversas ferramentas de gerenciamento de código). O formato `.md` significa `Markdown` e é um formato de texto puro que tem alguma informação sobre a formatação do conteúdo.
+Neste momento, é importante iniciar uma estrutura básica de projeto, com arquivos que não necessariamente compõem o código-fonte. Mesmo sendo um código exemplo, algumas padronizações são importantes em qualquer código para que outros programadores saibam por onde começar a olhar o seu projeto. Crie o arquivo `README.md` (o nome `README.md` é reconhecido por diversas ferramentas de gerenciamento de código). O formato `.md` significa `Markdown` e é um formato de texto puro que tem alguma informação sobre a formatação do conteúdo.
 
 ```sh
 $ touch README.md
@@ -99,7 +100,7 @@ drwxr-xr-x 7 user user 4096 Nov  9 17:01 .git
 -rw-r--r-- 1 user user    0 Nov  9 17:11 README.md
 ```
 
-Utilize algum "editor de texto pra programação" pra escrever algo no arquivo criado. Evite editores como Word, Office, LibreOffice ou Wordpad, pois esses não são editores de texto cru, e portanto não trabalham normalmente com arquivos de texto simples. Também evite editores de texto simples demais, como o Notepad. Alguns editores sugeridos:
+Utilize algum "editor de texto pra programação" pra escrever algo no arquivo criado. Evite editores como Microsoft Word, Microsoft Office, LibreOffice ou Wordpad, pois esses não são editores de texto cru, e portanto não trabalham normalmente com arquivos de texto simples. Também evite editores de texto simples demais, como o Notepad (Bloco de notas). Alguns editores sugeridos:
 
 * [Visual Studio Code](https://code.visualstudio.com)
 * [Atom](https://www.atom.io)
@@ -116,7 +117,7 @@ Esse projeto serve como esboço do que é necessário para começar
 a trabalhar com C++ no mundo real.
 ```
 
-o `#` Cria uma linha de cabeçalho, que é o título do arquivo, e parágrafos são espaçados com uma linha em branco. Este livro está sendo escrito em markdown, e o resultado final é o que você está lendo! Adicione o arquivo ao seu repositório:
+o `#` cria uma linha de cabeçalho, que é o título do arquivo, e parágrafos são espaçados com uma linha em branco. Este livro está sendo escrito em markdown, e o resultado final é o que você está lendo! Adicione o arquivo ao seu repositório:
 
 ```sh
 $ pwd
@@ -159,7 +160,7 @@ $ git commit -m "Adicionado arquivo Readme."
  create mode 100644 README.md
 ```
 
-A configuração do projeto pode ser feita utilizando o `CMake`. O `CMake` é um gerenciador padrão para projetos em C++, e serve para traduzir as informações do código fonte, a sua organização em arquivos, e quais subprojetos você está fazendo dentro de seu código, para as ferramentas da linguagem - como `compiladores`, `debuggers`, `IDEs`. Assim, prepare um arquivo chamado `CMakeLists.txt` juntamente com uma pasta chamada `src` (source), onde ficará o código fonte do projeto.
+A configuração do projeto pode ser feita utilizando o `CMake`. O `CMake` é um gerenciador padrão para projetos em C++, e serve para traduzir as informações do código-fonte, a sua organização em arquivos, e quais subprojetos você está fazendo dentro de seu código, para as ferramentas da linguagem - como `compiladores`, `depuradores` (debuggers), `IDEs`. Assim, prepare um arquivo chamado `CMakeLists.txt` juntamente com uma pasta chamada `src` (source), onde ficará o código-fonte do projeto.
 
 ```sh
 $ pwd
@@ -208,7 +209,7 @@ target_compile_features(
 )
 ```
 
-O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (Ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [cppreference](https://en.cppreference.com/w/cpp/compiler_support) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
+O comando `add_executable` determina que esse projeto irá gerar um executável `HelloWorld`. Esse executável será gerado a partir da compilação dos arquivos determinados em `target_sources` (ou seja, o arquivo `main.cpp`). Por fim, `target_compile_features` especifica as "features" necessárias para produzir o executável. No exemplo, utiliza-se a versão C++17 para a compilação do projeto. Sugere-se verificar a tabela encontrada no [cppreference](https://en.cppreference.com/w/cpp/compiler_support) para verificar as features disponíveis em cada versão do C++, para os compiladores mais comuns. Por fim, o conteúdo do arquivo `src/main.cpp` é mostrado abaixo.
 
 ```cpp
 #include <iostream>
@@ -222,7 +223,7 @@ int main() {
 
 A única diferenca deste código para milhares de códigos de outros livros é a adição do header `cstdlib` para o `EXIT_SUCCESS`. `cstdlib` possui `EXIT_SUCCESS` e `EXIT_FAILURE` para indicar quando algo deu errado ou não, e mesmo que não modifique o funcionamento do código (`EXIT_SUCCESS` é definido como `0`), é uma forma de explicitar o valor de retorno ao leitor.
 
-Para determinar como o CMake irá configurar nossos projetos, é sugerido criar uma configuração base. A partir da versão 3.19, o `CMake` possui um comando `--preset` que utiliza uma configuração pre-determinada. Crie um arquivo chamado `CMakePresets.json`, na pasta raiz do projeto:
+Para determinar como o CMake irá configurar nossos projetos, é sugerido criar uma configuração base. A partir da versão 3.19, o `CMake` possui um comando `--preset` que utiliza uma configuração predeterminada. Crie um arquivo chamado `CMakePresets.json`, na pasta raiz do projeto:
 
 ```json
 {
@@ -260,7 +261,7 @@ Para determinar como o CMake irá configurar nossos projetos, é sugerido criar 
 Com essa configuração criamos dois geradores:
 
 - Debug (Utilizando Unix Makefiles): A escolha do Unix Makefiles para o gerador de Debug é por ele ser sequencial, onde cada arquivo espera sua vez para ser compilado, facilitando a identificação de erros.
-- Release (Utilizando Ninja): A escolha do Ninja possibilita uma compilação paralela.
+- Release (Utilizando Ninja): A escolha do Ninja para o gerador de Release possibilita uma compilação paralela, onde múltiplos arquivos são compilados ao mesmo tempo, tornando a compilação mais rápida.
 
 Por fim, para configurar o projeto utilizando o preset escolhido:
 
@@ -307,4 +308,4 @@ Scanning dependencies of target HelloWorld
 [100%] Built target HelloWorld
 ```
 
-O objetivo desse capítulo foi dar uma longa introdução à C++ considerando várias ferramentas comuns em ambiente de trabalho profissional. Para maiores detalhes em relação às ferramentas, sugere-se buscar as documentação das mesmas, pois a explicação detalhada de cada uma foge do escopo desse livro.
+O objetivo desse capítulo foi dar uma longa introdução ao C++ considerando várias ferramentas comuns em ambiente de trabalho profissional. Para maiores detalhes em relação às ferramentas, sugere-se buscar as documentação das mesmas, pois a explicação detalhada de cada uma foge do escopo desse livro.

@@ -2,7 +2,7 @@
 
 ## A estrutura "`if`" / "`else if`" / "`else`"
 
-Estruturas de controle são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura `if`/`else if`/`else`. Ela nos permite tomar decisões e executar instruções diferentes dada uma ou mais condições. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:
+Estruturas de controle (control structures, control flow) são construções da linguagem que nos permitem fazer coisas mais complexas do que apenas executar instruções de maneira sequencial. A primeira que veremos é a estrutura `if`/`else if`/`else`. Ela nos permite tomar decisões e executar instruções diferentes dada uma ou mais condições. No exemplo abaixo, temos um programa simples que informa o preço que um cliente deve pagar em um cinema onde:
 
 - Clientes abaixo de 10 anos de idade não pagam.
 - Clientes acima de 50 anos pagam meia-entrada.
@@ -30,13 +30,13 @@ int main()
 }
 ```
 
-O exemplo acima introduz também uma forma de ler dados de entrada providenciados pelo usuário. Note que a variável `age` é inicializada com o valor 0. Porém, a linha `std::cin >> age;` permite ao usuário que estiver executando o programa informar um novo valor para `age`. Desta forma, o valor de `age` que será utilizado pelo programa será conhecido apenas durante a execução.
+O exemplo acima introduz também uma forma de ler dados de entrada (input) providenciados pelo usuário. Note que a variável `age` é inicializada com o valor 0. Porém, a linha `std::cin >> age;` permite ao usuário que estiver executando o programa informar um novo valor para `age`. Desta forma, o valor de `age` que será utilizado pelo programa será conhecido apenas durante a execução.
 
-No exemplo, a linha 10 sempre será executada, depois que o usuário informar o valor de age. Porém, a linha 13 será executada apenas se (`if`) a variável `age` tiver um valor abaixo de 10. A construção `else if` permite fazer um novo teste caso o teste anterior falhe, ou seja, a condição não seja verdadeira. Por outro lado, utilizar apenas `else` faz com que, caso nenhuma das condições anteriores tenha sido satisfeita, o código dentro do bloco seguinte execute garantidamente. Experimente alterar o valor de `age` para fazer com que o programa siga cada uma das possibilidades.
+No exemplo, a linha 10 sempre será executada depois que o usuário informar o valor de `age`. Porém, a linha 13 será executada apenas se (`if`) a variável `age` tiver um valor abaixo de 10. A construção `else if` permite fazer um novo teste caso o teste anterior falhe, ou seja, a condição não seja verdadeira. Por outro lado, utilizar apenas `else` faz com que, caso nenhuma das condições anteriores tenha sido satisfeita, o código dentro do bloco seguinte execute garantidamente. Experimente alterar o valor de `age` para fazer com que o programa siga cada uma das possibilidades.
 
 ## As estruturas `while` e `for`
 
-As estruturas de controle `while` e `for` servem para repetir um bloco de código até que uma condição seja satisfeita. No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (`while`) a resposta não for `s` (sim) nem `n` (não), a mesma pergunta aparecerá para o usuário. Uma vez que o usuário der uma resposta válida, um `if` imprime a reação correspondente à resposta do usuário.
+As estruturas de controle `while` e `for` servem para repetir um bloco de código até que uma condição seja satisfeita. Este tipo específico de estrutura de controle se chama _laço_ (loop). No exemplo abaixo, o programa pergunta se o usuário deseja aprender C++. Enquanto (`while`) a resposta não for `s` (sim) nem `n` (não), a mesma pergunta aparecerá para o usuário. Uma vez que o usuário der uma resposta válida, um `if` imprime a reação correspondente à resposta do usuário.
 
 ```cpp
 #include <iostream>
@@ -58,7 +58,7 @@ int main()
 }
 ```
 
-Em geral, usamos o laço `while` quando não existe uma definição clara de quantas vezes precisamos rodar o laço, apenas uma condição de continuidade que deve eventualmente tornar-se falsa.
+Em geral, usamos o laço `while` quando não existe uma definição clara de quantas vezes precisamos rodar o laço, apenas uma condição de continuidade que deve em algum momento posterior tornar-se falsa.
 
 O laço `for` adiciona legibilidade ao código quando temos uma inicialização e um passo que deve ser executado em toda iteração do laço. Tudo que é feito com um laço `for` pode também ser feito com um laço `while`, e vice versa. A diferença entre eles é que, em alguns casos, a leitura do código fica mais natural com um ou com outro. Ao contrário do `while`, o `for` se presta mais quando sabemos exatamente quantas vezes precisamos repetir as operações. No código abaixo, o laço `for` itera com valores de `i = a` até valor de `i = b`, somando 1 ao valor de `i` a cada iteração. Uma forma alternativa e mais compacta de escrever `i = i + 1` seria escrever `++i`.
 
@@ -115,7 +115,7 @@ int main()
 
 Assim que a execução do programa atinge a instrução `break`, o laço é imediatamente interrompido; o `i` deixa de ser incrementado e vamos direto para nosso `return`.
 
-Caso queiramos interromper a execução do corpo (a instrução composta—delimitada por chaves) de nosso laço mas continuar iterando, devemos utilizar a instrução `continue`:
+Caso queiramos interromper a execução do corpo (a instrução composta, delimitada por chaves) de nosso laço mas continuar iterando, devemos utilizar a instrução `continue`:
 
 ```cpp
 #include <iostream>
@@ -144,7 +144,7 @@ Perceba que, como `i = i + 1` não faz parte do corpo do laço, ele é executado
 
 ## Devo utilizar `{` e `}`?
 
-Você pode ter percebido que os corpos das instruções `if` (e suas partes `else`), `for` e `while` podem ser tanto uma instrução "simples" quanto uma instrução composta. Não é necessário utilizar uma instrução composta quando você já possui apenas uma instrução. Por exemplo, os dois `if` são equivalentes:
+Você pode ter percebido que o corpo das instruções `if` (e suas partes `else`), `for` e `while` podem ser tanto uma instrução simples quanto uma instrução composta. Quando estas estruturas de controle consistem apenas de uma instrução, não é obrigatório utilizar chaves. Por exemplo, os dois `if` seguintes são equivalentes:
 
 ```cpp
 if (a) {
@@ -168,4 +168,4 @@ if (a)
     c = 6; // Ops! Essa instrução não faz parte do if 
 ```
 
-Alguns programadores optam por utilizar sempre instruções compostas para evitar surpresas. Há bons argumentos tanto a favor quanto contra isso, portanto ao trabalhar em um projeto preexistente siga padrão já utilizado.
+Alguns programadores optam por utilizar sempre instruções compostas para evitar surpresas. Há bons argumentos tanto a favor quanto contra isso, portanto ao trabalhar em um projeto preexistente siga o padrão de estilo que já esteja sendo utilizado.

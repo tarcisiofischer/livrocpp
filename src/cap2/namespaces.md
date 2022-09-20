@@ -1,8 +1,8 @@
-# namespaces
+# Namespaces
 
-Considere o seguinte cenário: Você está ajudando no desenvolvimento de um software de um painel digital para uma loja.
+Considere o seguinte cenário: você está ajudando no desenvolvimento de um software de um painel digital para uma loja.
 O painel mostra mensagens de promoções primárias da loja e, agora, deseja-se adicionar um painel secundário para exibir
-promoções secundárias. Você foi designado à implementar uma função que toma como parâmetro uma mensagem e à mostra no
+promoções secundárias. Você foi designado a implementar uma função que toma como parâmetro uma mensagem e a mostra no display do
 novo painel. Para tal, você começa a escrever o código:
 
 ```cpp
@@ -13,7 +13,7 @@ void write(std::string const& message)
 ```
 
 Para sua surpresa, já existe uma outra função com exatamente a mesma assinatura, e você recebe o seguinte erro de
-compilação: `error: redefinition of 'void write(string)'`. De fato, existe um problema de ambiguidade: Ambas funções
+compilação: `error: redefinition of 'void write(string)'`. De fato, existe um problema de ambiguidade: Ambas as funções
 foram criadas para o mesmo propósito: escrever uma mensagem em um display. Porém, o display em questão é diferente
 dependendo do contexto. Existem várias maneiras de resolver tal problema. Uma possibilidade é dividir as implementações
 em `namespaces` diferentes.
@@ -61,7 +61,7 @@ apareceu já nos primeiros capítulos desse livro, para utilizar a função `cou
  
 int main()
 {
-    std::cout << "Ola mundo!" << std::endl;
+    std::cout << "Olá mundo!" << std::endl;
     return 0;
 }
 ```
@@ -81,7 +81,7 @@ int main()
 {
     // `using` dentro do escopo de alguma função é preferível
     using namespace std;
-    cout << "Ola mundo!" << endl;
+    cout << "Ol mundo!" << endl;
     
     return 0;
 }
