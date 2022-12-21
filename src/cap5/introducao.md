@@ -1,7 +1,5 @@
-Introdução à biblioteca padrão do C++
-===
+# Programação orientada a objetos
 
-A biblioteca padrão do C++ provê algumas funcionalidades básicas para desenvolvimento de software, como strings,
-vetores, listas, tuplas, além de funções utilitárias para lidar com gerenciamento de memória, I/O, sistema de arquivos,
-threads, entre outras. Esse capítulo apresenta uma breve introdução, mostrando algumas das funcionalidades disponíveis
-na biblioteca. Não é necessário baixar nem configurar nada, para utilizar a biblioteca padrão.
+Uma diferença fundamental entre C e C++ é que C++ possui diversos recursos para
+programação orientada a objetos, mas o que isso significa? Este capítulo busca
+responder isso.
