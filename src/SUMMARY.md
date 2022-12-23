@@ -28,7 +28,7 @@
     - [Algoritmos](cap4/algoritmos.md)
 - [Programação orientada a objetos](cap5/introducao.md)
     - [Objetos](cap5/objetos.md)
-    - [Relações]()
+    - [Relações](cap5/relacoes.md)
     - [Especificadores de acesso]()
     - [Polimorfismo]()
     - [Tratamento de erros e exceções]()
