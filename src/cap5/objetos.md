@@ -1,5 +1,7 @@
 # Objetos
 
+## O que é um objeto?
+
 **Não se confunda. Este capítulo utiliza o termo _objeto_ no contexto geral de
 programação orientada a objetos. Em C++ esse termo possui outro significado, mas
 não nos aprofundaremos nele agora.**
@@ -30,3 +32,17 @@ realizadas com ele. Adicionalmente, o método _depositar_ não pode ser acessado
 sem _c_. Isso reduz o número de identificadores em um programa e a chance de
 dois nomes entrarem em conflito: outro objeto pode ter um método com o mesmo
 nome, sem causar nenhum problema.
+
+## Como saber quais campos e métodos um objeto possui?
+
+Em C++ utiliza-se o estilo de POO baseado em classes. Nesse estilo, objetos são
+categorizados por classes: os campos e métodos existentes em determinado objeto
+são definidos por sua classe. Isso reduz a duplicação de código, já que vários
+objetos podem possuir a mesma classe.
+
+Ao criar os objetos _o1_ e _o2_ com classe _Cofre_, dizemos que _o1_ e _o2_ são
+instâncias de _Cofre_. Os métodos especificados em _Cofre_ podem ser utilizados
+por ambas as instâncias, e cada uma possui sua própria cópia de cada campo.
+Portanto, se a classe _Cofre_ especifica o campo _valor_ e o método _esvaziar_,
+a execução de `o1.esvaziar()` poderá acessar e modificar o valor de `o1.v`, mas
+não de `o2.v`.
