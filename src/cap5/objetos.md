@@ -2,9 +2,13 @@
 
 ## O que é um objeto?
 
+---
+
 **Não se confunda. Este capítulo utiliza o termo _objeto_ no contexto geral de
-programação orientada a objetos. Em C++ esse termo possui outro significado, mas
-não nos aprofundaremos nele agora.**
+programação orientada a objetos. Em C++ esse termo possui outro
+significado**[^cpp-obj]
+
+---
 
 Na programação orientada a objetos (POO), funções e dados podem ser unidos para
 formar o que chamamos objetos. Comumente, essas funções são chamadas _métodos_,
@@ -32,6 +36,11 @@ realizadas com ele. Adicionalmente, o método _depositar_ não pode ser acessado
 sem _c_. Isso reduz o número de identificadores em um programa e a chance de
 dois nomes entrarem em conflito: outro objeto pode ter um método com o mesmo
 nome, sem causar nenhum problema.
+
+<!-- prettier-ignore -->
+[^cpp-obj]: Uma definição aproximada de objeto em C++ é uma entidade que
+representa um valor. Tanto instâncias de classes quanto variáveis de tipos
+simples e valores temporários são objetos.
 
 ## Como saber quais campos e métodos um objeto possui?
 
