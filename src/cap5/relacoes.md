@@ -39,13 +39,11 @@ Aqui está um exemplo mais complexo utilizando essas relações:
   - Campos:
     - peso (herdado de _Objeto_)
 - Classe _Caixa_:
-
   - Herda de: _Objeto_
   - Métodos:
     - Abrir
     - Fechar
   - Campos:
-
     - peso (herdado de _Objeto_)
 
 Com essas três classes, podemos modelar um caixa eletrônico:
