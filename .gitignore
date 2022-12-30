@@ -1,2 +1,6 @@
 /book
 .idea
+
+# Executáveis
+*.out
+*.exe
