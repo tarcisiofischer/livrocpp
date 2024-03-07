@@ -51,3 +51,4 @@
 - [Programação paralela e concorrente]()
     - [Threads]()
     - [Async]()
+- [FAQ](faq.md)
